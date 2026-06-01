@@ -20,12 +20,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 22px; }
 
 .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 10px rgba(0,0,0,0.06); }
-.kpi-card { background: white; border-radius: 12px; padding: 18px 20px; box-shadow: 0 1px 10px rgba(0,0,0,0.06); }
-.kpi-card .label { font-size: 12px; color: #95a5a6; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-.kpi-card .value { font-size: 34px; font-weight: 800; color: #2d3436; line-height: 1; }
-.kpi-card .sub { font-size: 12px; color: #b2bec3; margin-top: 5px; }
-.kpi-card .accent { color: #667eea; }
-.kpi-card .accent-red { color: #e74c3c; }
+
+/* Metrics Comparison Table */
+.metrics-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 22px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 10px rgba(0,0,0,0.06); }
+.metrics-table th { background: #f8f9fc; padding: 12px 16px; text-align: left; font-weight: 600; color: #636e72; border-bottom: 2px solid #e9ecef; font-size: 12px; }
+.metrics-table th.col-ww { background: rgba(102,126,234,0.08); color: #667eea; }
+.metrics-table th.col-t1 { background: rgba(231,76,60,0.06); color: #e74c3c; }
+.metrics-table td { padding: 12px 16px; border-bottom: 1px solid #f1f3f5; }
+.metrics-table tr:last-child td { border-bottom: none; }
+.metrics-table td.ww-cell { background: rgba(102,126,234,0.03); font-weight: 700; }
+.metrics-table td.t1-cell { background: rgba(231,76,60,0.02); font-weight: 700; }
+.metrics-table .metric-name { font-weight: 600; color: #2d3436; font-size: 13px; }
 
 .section-title { font-size: 17px; font-weight: 700; margin: 28px 0 14px; color: #2d3436; display: flex; align-items: center; gap: 8px; }
 .section-title::before { content: ''; display: inline-block; width: 4px; height: 18px; background: linear-gradient(180deg, #667eea, #764ba2); border-radius: 2px; }
@@ -35,14 +40,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC'
 .insight.orange { border-color: #f39c12; }
 .insight.red { border-color: #e74c3c; }
 .insight strong { color: #2d3436; }
-
-.compare-pair { display: flex; gap: 4px; align-items: center; justify-content: center; padding: 12px 16px; }
-.compare-side { text-align: center; flex: 1; }
-.compare-side .clabel { font-size: 11px; color: #95a5a6; margin-bottom: 4px; }
-.compare-side .cval { font-size: 28px; font-weight: 800; }
-.cval.ww { color: #667eea; }
-.cval.t1 { color: #e74c3c; }
-.compare-vs { font-size: 13px; color: #dfe6e9; font-weight: 700; padding: 0 6px; }
 
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th { background: #f8f9fc; padding: 10px 12px; text-align: left; font-weight: 600; color: #636e72; border-bottom: 2px solid #e9ecef; font-size: 12px; }
@@ -54,11 +51,6 @@ tr:hover td { background: #fafbff; }
 
 .tag { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 11px; font-weight: 600; }
 .tag-purple { background: #e8daef; color: #6c3483; }
-.tag-blue { background: #d6eaf8; color: #1a5276; }
-.tag-green { background: #d5f5e3; color: #1e8449; }
-.tag-orange { background: #fef9e7; color: #b7770d; }
-.tag-red { background: #fdedec; color: #922b21; }
-.tag-gray { background: #f2f3f4; color: #7f8c8d; }
 
 .chart-wrap { position: relative; height: 280px; }
 .chart-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: #2d3436; }
@@ -68,7 +60,11 @@ tr:hover td { background: #fafbff; }
 
 .highlight { font-weight: 800; color: #667eea; }
 .highlight-red { font-weight: 800; color: #e74c3c; }
-.nodata-badge { font-size: 11px; color: #b2bec3; }
+
+.top-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.top-table th { background: #f8f9fc; padding: 8px 10px; font-size: 11px; border-bottom: 2px solid #e9ecef; }
+.top-table td { padding: 8px 10px; border-bottom: 1px solid #f1f3f5; font-size: 12px; }
+.top-table .rank { font-weight: 800; font-size: 16px; }
 
 @media (max-width: 900px) {
   .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
@@ -82,8 +78,12 @@ tr:hover td { background: #fafbff; }
 
 <div class="header">
   <h1>GrowMe 广告素材测试报告</h1>
-  <div class="subtitle">0525周 · 58条素材 · 7大内容方向 · 数据来源：Facebook Ads API</div>
-  <div><span class="badge">⏱ 更新时间：2026-06-01</span> <span class="badge" style="background:rgba(39,174,96,0.2);border-color:rgba(39,174,96,0.3);">WW消耗 $1,838</span></div>
+  <div class="subtitle">0525周 · 59条素材 · 7大内容方向 · 数据来源：Facebook Ads API</div>
+  <div>
+    <span class="badge">⏱ 更新时间：2026-06-01</span>
+    <span class="badge" style="background:rgba(102,126,234,0.2);border-color:rgba(102,126,234,0.3);">WW消耗 $1,838</span>
+    <span class="badge" style="background:rgba(231,76,60,0.2);border-color:rgba(231,76,60,0.3);">T1消耗 $1,369</span>
+  </div>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;">
     <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:16px 20px;">
@@ -93,7 +93,8 @@ tr:hover td { background: #fafbff; }
         <div><div style="font-size:22px;font-weight:800;">97</div><div style="font-size:11px;opacity:0.7;">订阅</div></div>
         <div><div style="font-size:22px;font-weight:800;">68</div><div style="font-size:11px;opacity:0.7;">购物</div></div>
         <div><div style="font-size:22px;font-weight:800;">1.08</div><div style="font-size:11px;opacity:0.7;">ROAS</div></div>
-        <div><div style="font-size:22px;font-weight:800;">$1,254</div><div style="font-size:11px;opacity:0.7;">消耗</div></div>
+        <div><div style="font-size:22px;font-weight:800;">$1254</div><div style="font-size:11px;opacity:0.7;">消耗</div></div>
+        <div><div style="font-size:22px;font-weight:800;">$0.78</div><div style="font-size:11px;opacity:0.7;">CPI</div></div>
       </div>
     </div>
     <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:16px 20px;">
@@ -103,7 +104,8 @@ tr:hover td { background: #fafbff; }
         <div><div style="font-size:22px;font-weight:800;">16</div><div style="font-size:11px;opacity:0.7;">T1订阅</div></div>
         <div><div style="font-size:22px;font-weight:800;">4</div><div style="font-size:11px;opacity:0.7;">T1购物</div></div>
         <div><div style="font-size:22px;font-weight:800;">0.18</div><div style="font-size:11px;opacity:0.7;">T1 ROAS</div></div>
-        <div><div style="font-size:22px;font-weight:800;">1.94%</div><div style="font-size:11px;opacity:0.7;">T1 CTR</div></div>
+        <div><div style="font-size:22px;font-weight:800;">$459</div><div style="font-size:11px;opacity:0.7;">T1消耗</div></div>
+        <div><div style="font-size:22px;font-weight:800;">$3.51</div><div style="font-size:11px;opacity:0.7;">T1 CPI</div></div>
       </div>
     </div>
   </div>
@@ -111,25 +113,203 @@ tr:hover td { background: #fafbff; }
 
 <div class="container">
 
-  <!-- KPI 汇总 -->
-  <div class="section-title">本周核心数据</div>
-  <div class="grid-4" id="kpi-cards"></div>
+  <div class="section-title">WW（全球）vs T1 国家 · 核心指标对照</div>
+  <table class="metrics-table">
+    <thead>
+      <tr>
+        <th style="width:120px;">指标</th>
+        <th class="col-ww" style="width:200px;">🌍 WW 全球</th>
+        <th class="col-t1" style="width:200px;">🎯 T1 国家</th>
+        <th style="width:150px;">对比</th>
+      </tr>
+    </thead>
+    <tbody>
 
-  <!-- WW vs T1 对比 -->
-  <div class="section-title">WW（全球）vs T1 国家对比</div>
-  <div class="grid-3" id="compare-kpi"></div>
+      <tr>
+        <td class="metric-name">总消耗</td>
+        <td class="ww-cell">$1,837.80</td>
+        <td class="t1-cell">$1,369.11</td>
+        <td style="color:#95a5a6;font-size:11px;">WW=1.3x T1</td>
+      </tr>
+      <tr>
+        <td class="metric-name">空消耗<br><span style="font-weight:400;font-size:11px;color:#95a5a6;">（无转化的消耗）</span></td>
+        <td class="ww-cell">$216.96 <span style="font-weight:400;font-size:11px;color:#e74c3c;">(11.8%)</span></td>
+        <td class="t1-cell">$300.22 <span style="font-weight:400;font-size:11px;color:#e74c3c;">(21.9%)</span></td>
+        <td style="font-size:11px;color:#95a5a6;">浪费比</td>
+      </tr>
+      <tr>
+        <td class="metric-name">素材测出率</td>
+        <td class="ww-cell">73% (43/59条)</td>
+        <td class="t1-cell">98% (58/59条)</td>
+        <td style="font-size:11px;color:#95a5a6;">T1覆盖更广</td>
+      </tr>
+      <tr>
+        <td class="metric-name">展示量</td>
+        <td class="ww-cell">1,143,937</td>
+        <td class="t1-cell">136,684</td>
+        <td style="font-size:11px;color:#95a5a6;">WW=8.4x T1</td>
+      </tr>
+      <tr>
+        <td class="metric-name">平均 CPM</td>
+        <td class="ww-cell">$1.61</td>
+        <td class="t1-cell">$10.02</td>
+        <td style="font-size:11px;color:#95a5a6;">T1=6.2x WW</td>
+      </tr>
+      <tr>
+        <td class="metric-name">安装量</td>
+        <td class="ww-cell">1,859</td>
+        <td class="t1-cell">270</td>
+        <td style="font-size:11px;color:#95a5a6;">WW=6.9x T1</td>
+      </tr>
+      <tr>
+        <td class="metric-name">平均 CPI<br><span style="font-weight:400;font-size:11px;color:#95a5a6;">（单次安装成本）</span></td>
+        <td class="ww-cell">$0.99</td>
+        <td class="t1-cell">$5.07</td>
+        <td style="font-size:11px;color:#95a5a6;">T1=5.1x WW</td>
+      </tr>
+      <tr>
+        <td class="metric-name">平均 ROAS</td>
+        <td class="ww-cell">0.48</td>
+        <td class="t1-cell">0.48</td>
+        <td style="font-size:11px;color:#95a5a6;">持平</td>
+      </tr>
+      <tr>
+        <td class="metric-name">总订阅</td>
+        <td class="ww-cell">106</td>
+        <td class="t1-cell">37</td>
+        <td style="font-size:11px;color:#95a5a6;"></td>
+      </tr>
+      <tr>
+        <td class="metric-name">总购物</td>
+        <td class="ww-cell">74</td>
+        <td class="t1-cell">10</td>
+        <td style="font-size:11px;color:#95a5a6;"></td>
+      </tr>
+    </tbody>
+  </table>
 
-  <!-- 关键洞察 -->
+  <div class="section-title">头部素材消耗拆解（消耗 Top 5）</div>
+  <div class="grid-2">
+    <div class="card">
+      <h3 style="font-size:14px;font-weight:600;margin-bottom:14px;color:#667eea;">🌍 WW 全球 Top 5</h3>
+      <div style="overflow-x:auto;">
+        <table class="top-table">
+          <thead><tr><th>#</th><th>主题</th><th>消耗</th><th>CPI</th><th>订阅</th><th>ROAS</th><th style="font-size:10px;">消耗占比</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank" style="color:#667eea;">1</td>
+              <td><span class="tag tag-purple">人生感悟</span> <strong>牛皮纸：成长思维</strong></td>
+              <td style="font-weight:700;">$1,254.10</td>
+              <td>$0.78</td>
+              <td>97</td>
+              <td>1.08</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:68%;background:#667eea;"></div></div><span style="font-size:10px;color:#95a5a6;">68%</span></div></td>
+            </tr>
+            <tr>
+              <td class="rank" style="color:#667eea;">2</td>
+              <td><span class="tag tag-purple">人生感悟</span> <strong>11件人生后期会明白的事</strong></td>
+              <td style="font-weight:700;">$246.50</td>
+              <td>$3.08</td>
+              <td>4</td>
+              <td>0.21</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:13%;background:#667eea;"></div></div><span style="font-size:10px;color:#95a5a6;">13%</span></div></td>
+            </tr>
+            <tr>
+              <td class="rank" style="color:#667eea;">3</td>
+              <td><span class="tag tag-purple">学习</span> <strong>英语流利</strong></td>
+              <td style="font-weight:700;">$120.24</td>
+              <td>$1.74</td>
+              <td>5</td>
+              <td>0.15</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:7%;background:#667eea;"></div></div><span style="font-size:10px;color:#95a5a6;">7%</span></div></td>
+            </tr>
+            <tr>
+              <td class="rank" style="color:#667eea;">4</td>
+              <td><span class="tag tag-purple">心理疗愈</span> <strong>爱自己</strong></td>
+              <td style="font-weight:700;">$91.30</td>
+              <td>$1.4</td>
+              <td>0</td>
+              <td>--</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:5%;background:#667eea;"></div></div><span style="font-size:10px;color:#95a5a6;">5%</span></div></td>
+            </tr>
+            <tr>
+              <td class="rank" style="color:#667eea;">5</td>
+              <td><span class="tag tag-purple">沟通能力</span> <strong>大胆开口说</strong></td>
+              <td style="font-weight:700;">$18.36</td>
+              <td>$4.59</td>
+              <td>0</td>
+              <td>--</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:1%;background:#667eea;"></div></div><span style="font-size:10px;color:#95a5a6;">1%</span></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="font-size:14px;font-weight:600;margin-bottom:14px;color:#e74c3c;">🎯 T1 国家 Top 5</h3>
+      <div style="overflow-x:auto;">
+        <table class="top-table">
+          <thead><tr><th>#</th><th>主题</th><th>消耗</th><th>CPI</th><th>T1订阅</th><th>ROAS</th><th style="font-size:10px;">消耗占比</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank" style="color:#e74c3c;">1</td>
+              <td><span class="tag tag-purple">学习</span> <strong>英语流利</strong></td>
+              <td style="font-weight:700;">$459.37</td>
+              <td>$3.51</td>
+              <td>16</td>
+              <td>0.18</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:34%;background:#e74c3c;"></div></div><span style="font-size:10px;color:#95a5a6;">34%</span></div></td>
+            </tr>
+            <tr>
+              <td class="rank" style="color:#e74c3c;">2</td>
+              <td><span class="tag tag-purple">人生感悟</span> <strong>牛皮纸：成长思维</strong></td>
+              <td style="font-weight:700;">$273.83</td>
+              <td>$3.42</td>
+              <td>11</td>
+              <td>0.14</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:20%;background:#e74c3c;"></div></div><span style="font-size:10px;color:#95a5a6;">20%</span></div></td>
+            </tr>
+            <tr>
+              <td class="rank" style="color:#e74c3c;">3</td>
+              <td><span class="tag tag-purple">人生感悟</span> <strong>11件人生后期会明白的事</strong></td>
+              <td style="font-weight:700;">$214.62</td>
+              <td>$11.3</td>
+              <td>7</td>
+              <td>--</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:16%;background:#e74c3c;"></div></div><span style="font-size:10px;color:#95a5a6;">16%</span></div></td>
+            </tr>
+            <tr>
+              <td class="rank" style="color:#e74c3c;">4</td>
+              <td><span class="tag tag-purple">沟通能力</span> <strong>大胆开口说</strong></td>
+              <td style="font-weight:700;">$99.75</td>
+              <td>$19.95</td>
+              <td>2</td>
+              <td>0.29</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:7%;background:#e74c3c;"></div></div><span style="font-size:10px;color:#95a5a6;">7%</span></div></td>
+            </tr>
+            <tr>
+              <td class="rank" style="color:#e74c3c;">5</td>
+              <td><span class="tag tag-purple">未分类</span> <strong>oneway2</strong></td>
+              <td style="font-weight:700;">$41.90</td>
+              <td>$41.9</td>
+              <td>0</td>
+              <td>--</td>
+              <td><div style="display:flex;align-items:center;gap:4px;"><div class="progress-bar" style="flex:1;min-width:60px;"><div class="progress-fill" style="width:3%;background:#e74c3c;"></div></div><span style="font-size:10px;color:#95a5a6;">3%</span></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <div class="section-title">核心洞察</div>
   <div id="insights-section"></div>
 
-  <!-- 分类表现矩阵 -->
   <div class="section-title">7大内容方向 · 表现矩阵</div>
   <div class="card" style="margin-bottom:22px;overflow-x:auto;">
     <table id="matrix-table"></table>
   </div>
 
-  <!-- 图表行 -->
   <div class="grid-2">
     <div class="card chart-card">
       <h3>📥 各分类订阅数 WW vs T1</h3>
@@ -151,15 +331,10 @@ tr:hover td { background: #fafbff; }
     </div>
   </div>
 
-  <!-- 有数据素材详细对比 -->
   <div class="section-title">有数据素材 · WW vs T1 全量对比</div>
   <div class="card" style="margin-bottom:22px;overflow-x:auto;">
     <table id="detail-table"></table>
   </div>
-
-  <!-- 无数据素材 -->
-  <div class="section-title">无消耗素材 · 待重测</div>
-  <div id="retest-section"></div>
 
   <div style="text-align:center;color:#b2bec3;font-size:12px;margin-top:40px;padding:20px;">
     数据来源：Facebook Ads API（只读，未修改原始数据）| 生成时间：<span id="gen-time"></span>
@@ -167,103 +342,96 @@ tr:hover td { background: #fafbff; }
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════════
-// 数据 — Facebook Ads API 0525周（更新于 2026-06-01）
-// ═══════════════════════════════════════════════════════════
-
-const CATEGORIES = ["人生感悟", "自律成长", "心理疗愈", "成长焦虑", "金融/机会", "学习", "沟通能力"];
-
 const CREATIVES = [
-  {cat:'人生感悟', theme:'牛皮纸：成长思维', ww:{ctr:1.46,cvr:0.13,subs:97,purch:68,roas:1.08,spend:1254.1}, t1:{ctr:1.89,cvr:0.12,subs:11,purch:2,roas:0.14}},
-  {cat:'人生感悟', theme:'11件人生后期会明白的事', ww:{ctr:2.01,cvr:0.03,subs:4,purch:3,roas:0.21,spend:246.5}, t1:{ctr:4.13,cvr:0.02,subs:7,purch:0}},
-  {cat:'人生感悟', theme:'规划你的人生', ww:{ctr:1.73,subs:0,purch:0,spend:6.93}, t1:{ctr:1.14,cvr:0.12,subs:1,purch:2,roas:1.33}},
-  {cat:'人生感悟', theme:'成为自己的矿藏', ww:{ctr:2.39,cvr:0.03,subs:0,purch:0,spend:4.51}, t1:{}},
-  {cat:'人生感悟', theme:'重新开始', ww:{ctr:6.84,cvr:0.01,subs:0,purch:0,spend:4.44}, t1:{}},
-  {cat:'人生感悟', theme:'新闻信息', ww:{ctr:1.57,subs:0,purch:0,spend:2.49}, t1:{}},
-  {cat:'人生感悟', theme:'不要在意别人的看法', ww:{ctr:1.3,cvr:0.14,subs:0,purch:0,spend:2.22}, t1:{}},
-  {cat:'人生感悟', theme:'AI时代的思考', ww:{ctr:1.69,cvr:0.04,subs:0,purch:0,spend:2.11}, t1:{}},
-  {cat:'人生感悟', theme:'新闻/资讯', ww:{ctr:0.93,subs:0,purch:0,spend:1.99}, t1:{}},
-  {cat:'人生感悟', theme:'时间不等人', ww:{ctr:1.36,cvr:0.08,subs:0,purch:0,spend:1.86}, t1:{}},
-  {cat:'人生感悟', theme:'给年长者的忠告', ww:{ctr:0.56,subs:0,purch:0,spend:0.58}, t1:{}},
-  {cat:'人生感悟', theme:'缓慢燃烧：沉淀自己', ww:{ctr:0.81,subs:0,purch:0,spend:0.41}, t1:{}},
-  {cat:'人生感悟', theme:'实际上...', ww:{ctr:2.52,subs:0,purch:0,spend:0.3}, t1:{}},
-  {cat:'人生感悟', theme:'缓慢开始', ww:{ctr:2.0,subs:0,purch:0,spend:0.06}, t1:{}},
-  {cat:'人生感悟', theme:'经典智慧', ww:{}, t1:{}},
-  {cat:'人生感悟', theme:'别再和别人比较', ww:{}, t1:{}},
-  {cat:'人生感悟', theme:'界面的力量', ww:{}, t1:{}},
-  {cat:'人生感悟', theme:'人生旅程', ww:{}, t1:{}},
-  {cat:'人生感悟', theme:'人生感悟', ww:{}, t1:{}},
-  {cat:'人生感悟', theme:'深度思考', ww:{}, t1:{}},
-  {cat:'人生感悟', theme:'关于你', ww:{}, t1:{}},
-  {cat:'自律成长', theme:'日常惯例的力量', ww:{ctr:2.51,cvr:0.01,subs:0,purch:0,spend:9.63}, t1:{}},
-  {cat:'自律成长', theme:'成功的秘诀', ww:{ctr:0.99,cvr:0.03,subs:0,purch:0,spend:9.42}, t1:{}},
-  {cat:'自律成长', theme:'叠加成长', ww:{ctr:1.46,cvr:0.47,subs:0,purch:0,spend:3.04}, t1:{}},
-  {cat:'自律成长', theme:'持续成长', ww:{ctr:0.8,subs:0,purch:0,spend:2.86}, t1:{}},
-  {cat:'自律成长', theme:'两年改变自己', ww:{ctr:3.49,subs:0,purch:0,spend:1.28}, t1:{}},
-  {cat:'自律成长', theme:'一个习惯改变一切', ww:{ctr:0.4,subs:0,purch:0,spend:0.77}, t1:{}},
-  {cat:'自律成长', theme:'快速行动', ww:{ctr:4.17,subs:0,purch:0,spend:0.27}, t1:{}},
-  {cat:'自律成长', theme:'坚持下去', ww:{ctr:4.09,subs:0,purch:0,spend:0.18}, t1:{}},
-  {cat:'自律成长', theme:'微习惯的力量', ww:{}, t1:{}},
-  {cat:'自律成长', theme:'停止浪费', ww:{}, t1:{}},
-  {cat:'自律成长', theme:'别浪费时间', ww:{}, t1:{}},
-  {cat:'心理疗愈', theme:'爱自己', ww:{ctr:1.3,cvr:0.1,subs:0,purch:0,spend:91.3}, t1:{}},
-  {cat:'心理疗愈', theme:'建立自信', ww:{ctr:1.36,cvr:0.04,subs:0,purch:0,spend:11.58}, t1:{}},
-  {cat:'心理疗愈', theme:'治愈关系', ww:{ctr:1.82,cvr:0.02,subs:0,purch:0,spend:11.22}, t1:{}},
-  {cat:'心理疗愈', theme:'自信的力量', ww:{ctr:4.76,cvr:0.22,subs:0,purch:0,spend:0.95}, t1:{}},
-  {cat:'心理疗愈', theme:'致所有女孩', ww:{subs:0,purch:0,spend:0.01}, t1:{}},
-  {cat:'心理疗愈', theme:'找到自我', ww:{}, t1:{}},
-  {cat:'成长焦虑', theme:'慢英语', ww:{ctr:12.0,subs:0,purch:0,spend:0.2}, t1:{}},
-  {cat:'成长焦虑', theme:'沉默的力量', ww:{ctr:3.16,subs:0,purch:0,spend:0.14}, t1:{}},
-  {cat:'成长焦虑', theme:'警示与提醒', ww:{}, t1:{}},
-  {cat:'金融/机会', theme:'职业机会', ww:{ctr:2.53,subs:0,purch:0,spend:0.2}, t1:{}},
-  {cat:'学习', theme:'英语流利', ww:{ctr:1.38,cvr:0.12,subs:5,purch:3,roas:0.15,spend:120.24}, t1:{ctr:1.94,cvr:0.18,subs:16,purch:4,roas:0.18}},
-  {cat:'学习', theme:'阅读提升英语', ww:{ctr:1.24,cvr:0.14,subs:0,purch:0,spend:16.67}, t1:{}},
-  {cat:'学习', theme:'教育的价值', ww:{ctr:2.06,subs:0,purch:0,spend:0.97}, t1:{}},
-  {cat:'学习', theme:'终身学习', ww:{ctr:0.56,subs:0,purch:0,spend:0.71}, t1:{}},
-  {cat:'学习', theme:'学习建议', ww:{subs:0,purch:0,spend:0.15}, t1:{}},
-  {cat:'学习', theme:'学习方法', ww:{ctr:1.04,subs:0,purch:0,spend:0.05}, t1:{}},
-  {cat:'学习', theme:'A2英语学习', ww:{}, t1:{}},
-  {cat:'学习', theme:'跟作者学', ww:{}, t1:{}},
-  {cat:'沟通能力', theme:'大胆开口说', ww:{ctr:1.64,cvr:0.03,subs:0,purch:0,spend:19.33}, t1:{ctr:1.24,cvr:0.03,subs:2,purch:2,roas:0.29}},
-  {cat:'沟通能力', theme:'谈论技巧', ww:{ctr:1.91,cvr:0.05,subs:0,purch:0,spend:5.89}, t1:{}},
-  {cat:'沟通能力', theme:'学会倾听', ww:{ctr:0.72,subs:0,purch:0,spend:0.43}, t1:{}},
-  {cat:'沟通能力', theme:'谈吐得体', ww:{subs:0,purch:0,spend:0.16}, t1:{}},
-  {cat:'沟通能力', theme:'像CEO那样说话', ww:{}, t1:{}},
-  {cat:'未分类', theme:'oneway2', ww:{ctr:1.01,subs:0,purch:0,spend:1.56}, t1:{}},
-  {cat:'未分类', theme:'shengjing', ww:{ctr:1.92,subs:0,purch:0,spend:0.09}, t1:{}},
-  {cat:'未分类', theme:'oneway1', ww:{}, t1:{}}
+  {cat:'人生感悟', theme:"牛皮纸：成长思维", ww:{ctr:1.46,cvr:0.13,subs:97,purch:68,roas:1.08,spend:1254.1,installs:1607,impr:870610,cpi:0.78,cpm:1.44}, t1:{ctr:1.89,cvr:0.12,subs:11,purch:2,roas:0.14,spend:273.83,installs:80,impr:36827,cpi:3.42,cpm:7.44}},
+  {cat:'人生感悟', theme:"11件人生后期会明白的事", ww:{ctr:2.01,cvr:0.03,subs:4,purch:3,roas:0.21,spend:246.5,installs:80,impr:125265,cpi:3.08,cpm:1.97}, t1:{ctr:4.13,cvr:0.02,subs:7,purch:0,spend:214.62,installs:19,impr:19939,cpi:11.3,cpm:10.76}},
+  {cat:'人生感悟', theme:"规划你的人生", ww:{ctr:1.73,subs:0,purch:0,spend:6.93,installs:0,impr:2778,cpm:2.49}, t1:{ctr:1.14,cvr:0.12,subs:1,purch:2,roas:1.33,spend:21.32,installs:3,impr:2198,cpi:7.11,cpm:9.7}},
+  {cat:'人生感悟', theme:"成为自己的矿藏", ww:{ctr:2.39,cvr:0.03,subs:0,purch:0,spend:4.51,installs:1,impr:1378,cpi:4.51,cpm:3.27}, t1:{ctr:2.21,subs:0,purch:0,spend:3.35,installs:0,impr:271,cpm:12.36}},
+  {cat:'人生感悟', theme:"重新开始", ww:{ctr:6.84,cvr:0.01,subs:0,purch:0,spend:4.44,installs:1,impr:2293,cpi:4.44,cpm:1.94}, t1:{ctr:8.27,subs:0,purch:0,spend:12.22,installs:0,impr:1016,cpm:12.03}},
+  {cat:'人生感悟', theme:"新闻信息", ww:{ctr:1.57,subs:0,purch:0,spend:2.49,installs:0,impr:1022,cpm:2.44}, t1:{ctr:1.96,cvr:0.24,subs:0,purch:0,spend:25.89,installs:10,impr:2091,cpi:2.59,cpm:12.38}},
+  {cat:'人生感悟', theme:"不要在意别人的看法", ww:{ctr:1.3,cvr:0.14,subs:0,purch:0,spend:2.22,installs:2,impr:1078,cpi:1.11,cpm:2.06}, t1:{ctr:2.87,subs:0,purch:0,spend:3.37,installs:0,impr:279,cpm:12.08}},
+  {cat:'人生感悟', theme:"AI时代的思考", ww:{ctr:1.69,cvr:0.04,subs:0,purch:0,spend:2.11,installs:1,impr:1479,cpi:2.11,cpm:1.43}, t1:{ctr:1.6,cvr:0.5,subs:0,purch:0,spend:1.09,installs:1,impr:125,cpi:1.09,cpm:8.72}},
+  {cat:'人生感悟', theme:"新闻/资讯", ww:{ctr:0.93,subs:0,purch:0,spend:1.99,installs:0,impr:970,cpm:2.05}, t1:{ctr:1.14,subs:0,purch:0,spend:2.82,installs:0,impr:211,cpm:11.81}},
+  {cat:'人生感悟', theme:"时间不等人", ww:{ctr:1.36,cvr:0.08,subs:0,purch:0,spend:1.86,installs:1,impr:956,cpi:1.86,cpm:1.94}, t1:{ctr:3.01,subs:0,purch:0,spend:1.55,installs:0,impr:166,cpm:9.34}},
+  {cat:'人生感悟', theme:"给年长者的忠告", ww:{ctr:0.56,subs:0,purch:0,spend:0.58,installs:0,impr:177,cpm:3.28}, t1:{ctr:16.67,subs:0,purch:0,spend:0.04,installs:0,impr:6,cpm:6.67}},
+  {cat:'人生感悟', theme:"缓慢燃烧：沉淀自己", ww:{ctr:0.81,subs:0,purch:0,spend:0.41,installs:0,impr:123,cpm:3.31}, t1:{subs:0,purch:0,spend:0.29,installs:0,impr:30,cpm:9.67}},
+  {cat:'人生感悟', theme:"实际上...", ww:{ctr:2.52,subs:0,purch:0,spend:0.3,installs:0,impr:119,cpm:2.52}, t1:{ctr:3.7,subs:0,purch:0,spend:0.42,installs:0,impr:54,cpm:7.78}},
+  {cat:'人生感悟', theme:"缓慢开始", ww:{ctr:2.0,subs:0,purch:0,spend:0.06,installs:0,impr:50,cpm:1.2}, t1:{subs:0,purch:0,spend:0.06,installs:0,impr:7,cpm:8.57}},
+  {cat:'人生感悟', theme:"经典智慧", ww:{}, t1:{ctr:0.8,subs:0,purch:0,spend:5.97,installs:0,impr:497,cpm:12.01}},
+  {cat:'人生感悟', theme:"别再和别人比较", ww:{}, t1:{subs:0,purch:0,spend:0,installs:0,impr:1}},
+  {cat:'人生感悟', theme:"界面的力量", ww:{}, t1:{subs:0,purch:0,spend:0.29,installs:0,impr:13,cpm:22.31}},
+  {cat:'人生感悟', theme:"人生旅程", ww:{}, t1:{ctr:1.1,subs:0,purch:0,spend:18.1,installs:0,impr:1548,cpm:11.69}},
+  {cat:'人生感悟', theme:"人生感悟", ww:{}, t1:{ctr:0.74,subs:0,purch:0,spend:9.91,installs:0,impr:947,cpm:10.46}},
+  {cat:'人生感悟', theme:"深度思考", ww:{}, t1:{subs:0,purch:0,spend:0,installs:0,impr:1}},
+  {cat:'人生感悟', theme:"关于你", ww:{}, t1:{subs:0,purch:0,spend:0.02,installs:0,impr:1,cpm:20.0}},
+  {cat:'自律成长', theme:"日常惯例的力量", ww:{ctr:2.51,cvr:0.01,subs:0,purch:0,spend:9.63,installs:1,impr:7582,cpi:9.63,cpm:1.27}, t1:{ctr:4.42,subs:0,purch:0,spend:17.43,installs:0,impr:1789,cpm:9.74}},
+  {cat:'自律成长', theme:"成功的秘诀", ww:{ctr:0.99,cvr:0.03,subs:0,purch:0,spend:9.42,installs:1,impr:3418,cpi:9.42,cpm:2.76}, t1:{subs:0,purch:0,spend:0.1,installs:0,impr:17,cpm:5.88}},
+  {cat:'自律成长', theme:"叠加成长", ww:{ctr:1.46,cvr:0.47,subs:0,purch:0,spend:3.04,installs:7,impr:1025,cpi:0.43,cpm:2.96}, t1:{ctr:1.48,subs:0,purch:0,spend:1.75,installs:0,impr:203,cpm:8.62}},
+  {cat:'自律成长', theme:"持续成长", ww:{ctr:0.8,subs:0,purch:0,spend:2.86,installs:0,impr:880,cpm:3.25}, t1:{subs:0,purch:0,spend:0.03,installs:0,impr:5,cpm:6.0}},
+  {cat:'自律成长', theme:"两年改变自己", ww:{ctr:3.49,subs:0,purch:0,spend:1.28,installs:0,impr:455,cpm:2.54}, t1:{ctr:1.5,cvr:0.67,subs:0,purch:0,spend:6.04,installs:6,impr:608,cpi:0.99,cpm:9.97}},
+  {cat:'自律成长', theme:"一个习惯改变一切", ww:{ctr:0.4,subs:0,purch:0,spend:0.77,installs:0,impr:249,cpm:3.09}, t1:{ctr:3.23,subs:0,purch:0,spend:0.34,installs:0,impr:31,cpm:10.97}},
+  {cat:'自律成长', theme:"快速行动", ww:{ctr:4.17,subs:0,purch:0,spend:0.27,installs:0,impr:192,cpm:1.41}, t1:{subs:0,purch:0,spend:0.17,installs:0,impr:4,cpm:42.5}},
+  {cat:'自律成长', theme:"坚持下去", ww:{ctr:4.09,subs:0,purch:0,spend:0.18,installs:0,impr:170,cpm:1.05}, t1:{ctr:2.33,cvr:0.03,subs:0,purch:0,spend:41.4,installs:3,impr:3859,cpi:13.8,cpm:10.73}},
+  {cat:'自律成长', theme:"微习惯的力量", ww:{}, t1:{}},
+  {cat:'自律成长', theme:"停止浪费", ww:{}, t1:{subs:0,purch:0,spend:0.12,installs:0,impr:7,cpm:17.14}},
+  {cat:'自律成长', theme:"别浪费时间", ww:{}, t1:{ctr:0.92,cvr:0.22,subs:0,purch:0,spend:9.65,installs:2,impr:981,cpi:4.83,cpm:9.84}},
+  {cat:'心理疗愈', theme:"爱自己", ww:{ctr:1.3,cvr:0.1,subs:0,purch:0,spend:91.3,installs:65,impr:49589,cpi:1.4,cpm:1.84}, t1:{ctr:1.27,cvr:0.08,subs:0,purch:0,spend:16.46,installs:2,impr:2048,cpi:8.23,cpm:8.04}},
+  {cat:'心理疗愈', theme:"建立自信", ww:{ctr:1.36,cvr:0.04,subs:0,purch:0,spend:11.58,installs:3,impr:4762,cpi:3.69,cpm:2.83}, t1:{ctr:1.83,subs:0,purch:0,spend:3.99,installs:0,impr:441,cpm:10.76}},
+  {cat:'心理疗愈', theme:"治愈关系", ww:{ctr:1.82,cvr:0.02,subs:0,purch:0,spend:11.22,installs:2,impr:5000,cpi:5.61,cpm:2.24}, t1:{ctr:4.19,subs:0,purch:0,spend:13.3,installs:0,impr:978,cpm:13.6}},
+  {cat:'心理疗愈', theme:"自信的力量", ww:{ctr:4.76,cvr:0.22,subs:0,purch:0,spend:0.95,installs:2,impr:189,cpi:0.47,cpm:5.03}, t1:{subs:0,purch:0,spend:0.07,installs:0,impr:11,cpm:6.36}},
+  {cat:'心理疗愈', theme:"致所有女孩", ww:{subs:0,purch:0,spend:0.01,installs:0,impr:21,cpm:0.48}, t1:{ctr:100.0,subs:0,purch:0,spend:0,installs:0,impr:1}},
+  {cat:'心理疗愈', theme:"找到自我", ww:{}, t1:{subs:0,purch:0,spend:0.06,installs:0,impr:4,cpm:15.0}},
+  {cat:'成长焦虑', theme:"慢英语", ww:{ctr:12.0,subs:0,purch:0,spend:0.2,installs:0,impr:100,cpm:2.07}, t1:{ctr:2.55,cvr:0.5,subs:0,purch:0,spend:22.74,installs:2,impr:1450,cpi:1.22,cpm:18.32}},
+  {cat:'成长焦虑', theme:"沉默的力量", ww:{ctr:3.16,subs:0,purch:0,spend:0.14,installs:0,impr:95,cpm:1.47}, t1:{ctr:3.44,subs:0,purch:0,spend:7.53,installs:0,impr:611,cpm:12.32}},
+  {cat:'成长焦虑', theme:"警示与提醒", ww:{}, t1:{subs:0,purch:0,spend:0.14,installs:0,impr:14,cpm:10.0}},
+  {cat:'金融/机会', theme:"职业机会", ww:{ctr:2.53,subs:0,purch:0,spend:0.2,installs:0,impr:78,cpm:2.53}, t1:{subs:0,purch:0,spend:0.05,installs:0,impr:6,cpm:8.33}},
+  {cat:'学习', theme:"英语流利", ww:{ctr:1.38,cvr:0.12,subs:5,purch:3,roas:0.15,spend:120.24,installs:69,impr:40710,cpi:1.74,cpm:2.95}, t1:{ctr:1.94,cvr:0.18,subs:16,purch:4,roas:0.18,spend:459.37,installs:131,impr:38429,cpi:3.51,cpm:11.95}},
+  {cat:'学习', theme:"阅读提升英语", ww:{ctr:1.24,cvr:0.14,subs:0,purch:0,spend:16.67,installs:9,impr:5167,cpi:1.85,cpm:3.23}, t1:{ctr:2.12,subs:0,purch:0,spend:4.13,installs:0,impr:353,cpm:11.11}},
+  {cat:'学习', theme:"教育的价值", ww:{ctr:2.06,subs:0,purch:0,spend:0.97,installs:0,impr:582,cpm:1.66}, t1:{ctr:4.0,subs:0,purch:0,spend:0.25,installs:0,impr:25,cpm:10.0}},
+  {cat:'学习', theme:"终身学习", ww:{ctr:0.56,subs:0,purch:0,spend:0.71,installs:0,impr:177,cpm:4.01}, t1:{subs:0,purch:0,spend:0.11,installs:0,impr:10,cpm:11.0}},
+  {cat:'学习', theme:"学习建议", ww:{subs:0,purch:0,spend:0.15,installs:0,impr:64,cpm:2.34}, t1:{subs:0,purch:0,spend:0.59,installs:0,impr:32,cpm:18.44}},
+  {cat:'学习', theme:"学习方法", ww:{ctr:1.04,subs:0,purch:0,spend:0.05,installs:0,impr:96,cpm:0.52}, t1:{subs:0,purch:0,spend:0.21,installs:0,impr:23,cpm:9.13}},
+  {cat:'学习', theme:"A2英语学习", ww:{}, t1:{ctr:1.07,cvr:0.31,subs:0,purch:0,spend:13.07,installs:5,impr:1489,cpi:2.61,cpm:8.78}},
+  {cat:'学习', theme:"跟作者学", ww:{}, t1:{subs:0,purch:0,spend:0,installs:0,impr:1}},
+  {cat:'沟通能力', theme:"大胆开口说", ww:{ctr:1.3,cvr:0.03,subs:0,purch:0,spend:18.36,installs:4,impr:10160,cpi:4.59,cpm:1.81}, t1:{ctr:1.24,cvr:0.03,subs:2,purch:2,roas:0.29,spend:99.75,installs:5,impr:11567,cpi:19.95,cpm:8.62}},
+  {cat:'沟通能力', theme:"谈论技巧", ww:{ctr:1.91,cvr:0.05,subs:0,purch:0,spend:5.89,installs:3,impr:2932,cpi:1.96,cpm:2.01}, t1:{subs:0,purch:0,spend:0.45,installs:0,impr:59,cpm:7.63}},
+  {cat:'沟通能力', theme:"大胆开口说", ww:{ctr:1.97,subs:0,purch:0,spend:0.97,installs:0,impr:709,cpm:1.37}, t1:{ctr:1.12,subs:0,purch:0,spend:9.09,installs:0,impr:1071,cpm:8.49}},
+  {cat:'沟通能力', theme:"学会倾听", ww:{ctr:0.72,subs:0,purch:0,spend:0.43,installs:0,impr:138,cpm:3.12}, t1:{ctr:1.67,subs:0,purch:0,spend:1.27,installs:0,impr:60,cpm:21.17}},
+  {cat:'沟通能力', theme:"谈吐得体", ww:{subs:0,purch:0,spend:0.16,installs:0,impr:52,cpm:3.02}, t1:{subs:0,purch:0,spend:0.72,installs:0,impr:50,cpm:14.4}},
+  {cat:'沟通能力', theme:"像CEO那样说话", ww:{}, t1:{subs:0,purch:0,spend:0.18,installs:0,impr:10,cpm:18.0}},
+  {cat:'未分类', theme:"oneway2", ww:{ctr:1.01,subs:0,purch:0,spend:1.56,installs:0,impr:995,cpm:1.57}, t1:{ctr:0.8,cvr:0.03,subs:0,purch:0,spend:41.9,installs:1,impr:4110,cpi:41.9,cpm:10.19}},
+  {cat:'未分类', theme:"shengjing", ww:{ctr:1.92,subs:0,purch:0,spend:0.09,installs:0,impr:52,cpm:1.73}, t1:{ctr:5.1,subs:0,purch:0,spend:1.49,installs:0,impr:98,cpm:15.2}},
+  {cat:'未分类', theme:"oneway1", ww:{}, t1:{subs:0,purch:0,spend:0,installs:0,impr:1}}
 ];
-
 const INSIGHTS_DATA = [
-    {type:'green', text:`📚 <strong>人生感悟·牛皮纸：成长思维</strong> 是本周 WW 最强素材：订阅 97 次、购物 68 次、ROAS 1.08，消耗 $1,254.10。建议下周围绕这类「实用成长建议」方向新增 3-5 条变体。`},
-    {type:'', text:`🎯 <strong>T1 最佳：学习·英语流利</strong> — T1 订阅 16 次、购物 4 次。T1 用户对语言学习/技能提升类内容接受度高，CPM 高但转化质量好。`},
-    {type:'', text:`💎 <strong>T1 最高 ROAS 1.33：人生感悟·规划你的人生</strong>。转化效率极高，虽消耗不大但创意形式值得拆解分析，可作为 T1 专用素材模板。`},
-    {type:'', text:`📊 <strong>本周 58 条素材，42 条有数据（72%覆盖率）</strong>。WW 总消耗 $1,837.80，WW 订阅 106/T1 订阅 37。多数素材因算法未分配预算而显示 CTR 但无转化，说明 FB 算法在集中消耗 2-3 个优质素材。`},
-    {type:'orange', text:`💡 <strong>高CTR低转化信号</strong>：成长焦虑·慢英语 WW CTR 高达 12.0%，但未产生订阅/购物。内容吸引力强但转化链路中断，建议检查落地页或定价。`}
+    {type:'green', text:`📚 <strong>人生感悟·牛皮纸：成长思维</strong> 是本周 WW 最强素材：消耗 $1,254.10（占WW总消耗68%）、订阅 97 次、购物 68 次、ROAS 1.08、CPI $0.78。FB 算法几乎将所有预算集中于此。`},
+    {type:'', text:`🎯 <strong>T1 最佳：学习·英语流利</strong> — 消耗 $459.37、T1订阅 16 次。T1 CPM($10.02) 远高于 WW($1.61)，转化用户质量更高。`},
+    {type:'', text:`💎 <strong>T1 高转化信号：人生感悟·规划你的人生</strong> ROAS 1.33。虽量不大但转化效率高。`},
+    {type:'', text:`📊 <strong>WW空消耗 $216.96</strong>（占11.8%），T1空消耗 $300.22。WW 测出率 73%，T1 测出率 98%。`},
+    {type:'orange', text:`💡 <strong>CPI对比</strong>：WW 平均 CPI $0.99，T1 平均 CPI $5.07（T1 是 WW 的 5.1 倍）。WW 量大价低，T1 少但贵。`}
 ];
 
-// ══════════════════════════════
-// 工具函数
-// ══════════════════════════════
-function hasWWData(c) { const d=c.ww; return d&&(d.subs!=null||d.purch!=null||d.ctr!=null||d.cvr!=null||d.roas!=null); }
-function hasT1Data(c) { const d=c.t1; return d&&(d.subs!=null||d.purch!=null||d.ctr!=null||d.cvr!=null||d.roas!=null); }
-function hasAnyData(c) { return hasWWData(c)||hasT1Data(c); }
-function fmt(v, suffix='') { return (v!=null&&v!==''&&!isNaN(v)) ? v+suffix : '--'; }
-function fmtPct(v) { return (v!=null&&!isNaN(v)) ? v.toFixed(2)+'%' : '--'; }
-function fmtRoas(v) { return (v!=null&&!isNaN(v)) ? v.toFixed(2) : '--'; }
-function fmtMoney(v) { return (v!=null&&!isNaN(v)) ? '$'+v.toFixed(0) : '--'; }
+const CATEGORIES = ["人生感悟","自律成长","心理疗愈","成长焦虑","金融/机会","学习","沟通能力"];
 
-// ─── 分类汇总 ───
+function hasWWData(c) { var d=c.ww; return d&&(d.subs!=null||d.purch!=null||d.ctr!=null||d.cvr!=null||d.roas!=null||d.spend>0||d.impr>0); }
+function hasT1Data(c) { var d=c.t1; return d&&(d.subs!=null||d.purch!=null||d.ctr!=null||d.cvr!=null||d.roas!=null||d.spend>0||d.impr>0); }
+function hasAnyData(c) { return hasWWData(c)||hasT1Data(c); }
+function fmt(v, s) { return (v!=null&&v!=""&&!isNaN(v)) ? v+(s||"") : "--"; }
+function fmtPct(v) { return (v!=null&&!isNaN(v)) ? v.toFixed(2)+"%" : "--"; }
+function fmtRoas(v) { return (v!=null&&!isNaN(v)) ? v.toFixed(2) : "--"; }
+function fmtMoney(v) { return (v!=null&&!isNaN(v)) ? "$"+v.toFixed(0) : "--"; }
+function fmtCpi(v) { return (v!=null&&!isNaN(v)) ? "$"+v.toFixed(2) : "--"; }
+
 function catStats() {
-  const s = {};
-  CATEGORIES.forEach(c => { s[c]={total:0,anyData:0,wwData:0,t1Data:0,wwSubs:0,wwPurch:0,t1Subs:0,t1Purch:0,wwRoasSum:0,wwRoasCnt:0,t1RoasSum:0,t1RoasCnt:0,wwCtrSum:0,wwCtrCnt:0,t1CtrSum:0,t1CtrCnt:0,wwSpend:0}; });
-  CREATIVES.forEach(cr => {
+  var s = {};
+  CATEGORIES.forEach(function(c) { s[c]={total:0,anyData:0,wwData:0,t1Data:0,wwSubs:0,wwPurch:0,t1Subs:0,t1Purch:0,wwRoasSum:0,wwRoasCnt:0,t1RoasSum:0,t1RoasCnt:0,wwCtrSum:0,wwCtrCnt:0,t1CtrSum:0,t1CtrCnt:0,wwSpend:0,t1Spend:0,wwInstalls:0,t1Installs:0}; });
+  CREATIVES.forEach(function(cr) {
     if(!s[cr.cat]) return;
-    const cs = s[cr.cat]; cs.total++;
+    var cs = s[cr.cat]; cs.total++;
     if (hasWWData(cr)) {
       cs.wwData++; cs.anyData++;
       cs.wwSubs += (cr.ww.subs||0); cs.wwPurch += (cr.ww.purch||0);
-      cs.wwSpend += (cr.ww.spend||0);
+      cs.wwSpend += (cr.ww.spend||0); cs.wwInstalls += (cr.ww.installs||0);
       if(cr.ww.roas!=null){cs.wwRoasSum+=cr.ww.roas;cs.wwRoasCnt++;}
       if(cr.ww.ctr!=null){cs.wwCtrSum+=cr.ww.ctr;cs.wwCtrCnt++;}
     }
@@ -271,6 +439,7 @@ function catStats() {
       cs.t1Data++;
       if(!hasWWData(cr)) cs.anyData++;
       cs.t1Subs += (cr.t1.subs||0); cs.t1Purch += (cr.t1.purch||0);
+      cs.t1Spend += (cr.t1.spend||0); cs.t1Installs += (cr.t1.installs||0);
       if(cr.t1.roas!=null){cs.t1RoasSum+=cr.t1.roas;cs.t1RoasCnt++;}
       if(cr.t1.ctr!=null){cs.t1CtrSum+=cr.t1.ctr;cs.t1CtrCnt++;}
     }
@@ -278,205 +447,133 @@ function catStats() {
   return s;
 }
 
-const CS = catStats();
-
-const total = CREATIVES.length;
-const wwTotal = CREATIVES.filter(hasWWData).length;
-const t1Total = CREATIVES.filter(hasT1Data).length;
-const wwSubs = CREATIVES.reduce((s,c)=>s+(hasWWData(c)?(c.ww.subs||0):0),0);
-const wwPurch = CREATIVES.reduce((s,c)=>s+(hasWWData(c)?(c.ww.purch||0):0),0);
-const t1Subs = CREATIVES.reduce((s,c)=>s+(hasT1Data(c)?(c.t1.subs||0):0),0);
-const t1Purch = CREATIVES.reduce((s,c)=>s+(hasT1Data(c)?(c.t1.purch||0):0),0);
-const totalSpend = CREATIVES.reduce((s,c)=>s+(c.ww.spend||0),0);
-
+var CS = catStats();
 document.getElementById('gen-time').textContent = new Date().toLocaleString('zh-CN');
 
-// ─── KPI 卡片 ───
+// Insights
 (function(){
-  const el = document.getElementById('kpi-cards');
-  const withData = CREATIVES.filter(hasAnyData).length;
-  const wwBest = [...CREATIVES].filter(c=>hasWWData(c)&&(c.ww.subs||0)>0).sort((a,b)=>(b.ww.subs||0)-(a.ww.subs||0))[0];
-  const t1Best = [...CREATIVES].filter(c=>hasT1Data(c)&&(c.t1.subs||0)>0).sort((a,b)=>(b.t1.subs||0)-(a.t1.subs||0))[0];
-  const cards = [
-    {lbl:'素材总条数', val:total, sub:'条创意主题', cls:'accent'},
-    {lbl:'有数据覆盖', val:`${withData}/${total}`, sub:`数据率 ${Math.round(withData/total*100)}%`, cls:''},
-    {lbl:'WW总订阅', val:wwSubs, sub:`${wwTotal}条有效`, cls:'accent'},
-    {lbl:'T1总订阅', val:t1Subs, sub:`${t1Total}条有效`, cls:'accent-red'},
-    {lbl:'WW总购物', val:wwPurch, sub:'次', cls:'accent'},
-    {lbl:'T1总购物', val:t1Purch, sub:'次', cls:'accent-red'},
-    {lbl:'WW总消耗', val:'$'+Math.round(totalSpend), sub:'USD', cls:'accent'},
-    {lbl:'WW最高ROAS', val:wwBest&&wwBest.ww.roas?wwBest.ww.roas:'--', sub:wwBest?wwBest.cat+'·'+wwBest.theme:'', cls:'accent'},
-  ];
-  el.innerHTML = cards.map(c=>`<div class="kpi-card">
-    <div class="label">${c.lbl}</div>
-    <div class="value ${c.cls}">${c.val}</div>
-    <div class="sub">${c.sub}</div>
-  </div>`).join('');
+  var el = document.getElementById('insights-section');
+  el.innerHTML = INSIGHTS_DATA.map(function(i){ return '<div class="insight '+i.type+'">'+i.text+'</div>'; }).join('');
 })();
 
-// ─── WW vs T1 对比 ───
+// Matrix table
 (function(){
-  const el = document.getElementById('compare-kpi');
-  const rows = [
-    {lbl:'总订阅数', ww:wwSubs, t1:t1Subs, unit:'次'},
-    {lbl:'总购物数', ww:wwPurch, t1:t1Purch, unit:'次'},
-    {lbl:'有效素材数', ww:wwTotal, t1:t1Total, unit:'条'},
-  ];
-  el.innerHTML = rows.map(r=>`<div class="card">
-    <div style="font-size:12px;color:#95a5a6;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">${r.lbl}</div>
-    <div class="compare-pair">
-      <div class="compare-side"><div class="clabel">🌍 WW全球</div><div class="cval ww">${r.ww}</div></div>
-      <div class="compare-vs">vs</div>
-      <div class="compare-side"><div class="clabel">🎯 T1国家</div><div class="cval t1">${r.t1}</div></div>
-    </div>
-    <div style="margin-top:8px;font-size:11px;color:#95a5a6;text-align:center;">
-      ${r.t1>r.ww ? '💡 T1 更强' : r.ww>r.t1 ? '💡 WW 更强' : '🤝 持平'}
-    </div>
-  </div>`).join('');
-})();
-
-// ─── 关键洞察 ───
-(function(){
-  const el = document.getElementById('insights-section');
-  const colors = ['green','','','','orange'];
-  el.innerHTML = INSIGHTS_DATA.map((i,idx)=>`<div class="insight ${colors[idx]||''}">${i.text}</div>`).join('');
-})();
-
-// ─── 方向矩阵 ───
-(function(){
-  const t = document.getElementById('matrix-table');
-  const CAT_ICONS = {'人生感悟':'🌅','自律成长':'💪','心理疗愈':'🧘','成长焦虑':'😤','金融/机会':'💰','学习':'📚','沟通能力':'🗣️'};
-  let h = `<thead><tr><th>方向</th><th>条数</th><th class="ww-bg">WW有数据</th><th class="ww-bg">WW订阅</th><th class="ww-bg">WW购物</th><th class="ww-bg">WW ROAS均</th><th class="ww-bg">WW消耗</th><th class="t1-bg">T1有数据</th><th class="t1-bg">T1订阅</th><th class="t1-bg">T1购物</th><th class="t1-bg">T1 ROAS均</th><th>数据率</th></tr></thead><tbody>`;
-  const maxSubs = Math.max(1,...CATEGORIES.map(c=>CS[c].wwSubs+CS[c].t1Subs));
-  CATEGORIES.forEach(cat => {
-    const s = CS[cat];
-    const rate = s.total>0 ? Math.round(s.anyData/s.total*100) : 0;
-    const intensity = Math.min((s.wwSubs+s.t1Subs)/maxSubs,1);
-    const alpha = 0.08+intensity*0.4;
-    h += `<tr style="${s.anyData===0?'color:#aaa;':''}">
-      <td><strong>${CAT_ICONS[cat]||''} ${cat}</strong>${s.anyData===0?'<span class="tag tag-gray" style="margin-left:6px;font-size:10px;">无数据</span>':''}</td>
-      <td>${s.total}</td>
-      <td class="ww-bg">${s.wwData}</td>
-      <td class="ww-bg" style="background:rgba(102,126,234,${alpha});font-weight:700;">${s.wwSubs||0}</td>
-      <td class="ww-bg">${s.wwPurch||0}</td>
-      <td class="ww-bg">${s.wwRoasCnt>0?(s.wwRoasSum/s.wwRoasCnt).toFixed(2):'--'}</td>
-      <td class="ww-bg">${s.wwSpend>0?'$'+Math.round(s.wwSpend):'--'}</td>
-      <td class="t1-bg">${s.t1Data}</td>
-      <td class="t1-bg" style="background:rgba(231,76,60,${alpha*0.7});font-weight:700;">${s.t1Subs||0}</td>
-      <td class="t1-bg">${s.t1Purch||0}</td>
-      <td class="t1-bg">${s.t1RoasCnt>0?(s.t1RoasSum/s.t1RoasCnt).toFixed(2):'--'}</td>
-      <td><div style="display:flex;align-items:center;gap:6px;">
-        <span style="font-size:12px;${rate>0?'':'color:#ccc;'}">${rate}%</span>
-        <div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:${rate}%;background:${rate>50?'#27ae60':rate>20?'#f39c12':'#e74c3c'};"></div></div>
-      </div></td>
-    </tr>`;
+  var tbl = document.getElementById('matrix-table');
+  var CAT_ICONS = {"人生感悟":"🌅","自律成长":"💪","心理疗愈":"🧘","成长焦虑":"😤","金融/机会":"💰","学习":"📚","沟通能力":"🗣️"};
+  var h = '<thead><tr><th>方向</th><th>条数</th><th class="ww-bg">WW有数据</th><th class="ww-bg">WW消耗</th><th class="ww-bg">WW安装</th><th class="ww-bg">WW CPI</th><th class="ww-bg">WW订阅</th><th class="ww-bg">WW购物</th><th class="ww-bg">WW ROAS</th><th class="t1-bg">T1有数据</th><th class="t1-bg">T1消耗</th><th class="t1-bg">T1安装</th><th class="t1-bg">T1 CPI</th><th class="t1-bg">T1订阅</th><th class="t1-bg">T1购物</th><th class="t1-bg">T1 ROAS</th><th>数据率</th></tr></thead><tbody>';
+  CATEGORIES.forEach(function(cat) {
+    var s = CS[cat];
+    var rate = s.total>0 ? Math.round(s.anyData/s.total*100) : 0;
+    var wwCpi = s.wwInstalls>0 ? (s.wwSpend/s.wwInstalls).toFixed(2) : '--';
+    var t1Cpi = s.t1Installs>0 ? (s.t1Spend/s.t1Installs).toFixed(2) : '--';
+    var color = s.anyData===0 ? 'color:#aaa;' : '';
+    h += '<tr style="'+color+'">'+
+      '<td><strong>'+(CAT_ICONS[cat]||'')+' '+cat+'</strong></td>'+
+      '<td>'+s.total+'</td>'+
+      '<td class="ww-bg">'+s.wwData+'</td>'+
+      '<td class="ww-bg" style="font-weight:700;">'+(s.wwSpend>0?'$'+Math.round(s.wwSpend):'--')+'</td>'+
+      '<td class="ww-bg">'+(s.wwInstalls||0)+'</td>'+
+      '<td class="ww-bg">$'+wwCpi+'</td>'+
+      '<td class="ww-bg" style="font-weight:700;">'+(s.wwSubs||0)+'</td>'+
+      '<td class="ww-bg">'+(s.wwPurch||0)+'</td>'+
+      '<td class="ww-bg">'+(s.wwRoasCnt>0?(s.wwRoasSum/s.wwRoasCnt).toFixed(2):'--')+'</td>'+
+      '<td class="t1-bg">'+s.t1Data+'</td>'+
+      '<td class="t1-bg" style="font-weight:700;">'+(s.t1Spend>0?'$'+Math.round(s.t1Spend):'--')+'</td>'+
+      '<td class="t1-bg">'+(s.t1Installs||0)+'</td>'+
+      '<td class="t1-bg">$'+t1Cpi+'</td>'+
+      '<td class="t1-bg" style="font-weight:700;">'+(s.t1Subs||0)+'</td>'+
+      '<td class="t1-bg">'+(s.t1Purch||0)+'</td>'+
+      '<td class="t1-bg">'+(s.t1RoasCnt>0?(s.t1RoasSum/s.t1RoasCnt).toFixed(2):'--')+'</td>'+
+      '<td><div style="display:flex;align-items:center;gap:6px;">'+
+        '<span style="font-size:12px;'+(rate>0?'':'color:#ccc;')+'">'+rate+'%</span>'+
+        '<div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:'+rate+'%;background:'+(rate>50?'#27ae60':rate>20?'#f39c12':'#e74c3c')+';"></div></div>'+
+      '</div></td></tr>';
   });
   h += '</tbody>';
-  t.innerHTML = h;
+  tbl.innerHTML = h;
 })();
 
-// ─── 图表 ───
+// Charts
 (function(){
-  const labels = CATEGORIES;
-  const wwSubsData = labels.map(c=>CS[c].wwSubs);
-  const t1SubsData = labels.map(c=>CS[c].t1Subs);
-  const wwPurchData = labels.map(c=>CS[c].wwPurch);
-  const t1PurchData = labels.map(c=>CS[c].t1Purch);
-  const wwRoasData = labels.map(c=>CS[c].wwRoasCnt>0?(CS[c].wwRoasSum/CS[c].wwRoasCnt):0);
-  const t1RoasData = labels.map(c=>CS[c].t1RoasCnt>0?(CS[c].t1RoasSum/CS[c].t1RoasCnt):0);
-  const wwCovData = labels.map(c=>CS[c].wwData);
-  const t1CovData = labels.map(c=>CS[c].t1Data);
+  var labels = CATEGORIES;
+  var wwSubsData = labels.map(function(c){return CS[c].wwSubs;});
+  var t1SubsData = labels.map(function(c){return CS[c].t1Subs;});
+  var wwPurchData = labels.map(function(c){return CS[c].wwPurch;});
+  var t1PurchData = labels.map(function(c){return CS[c].t1Purch;});
+  var wwRoasData = labels.map(function(c){return CS[c].wwRoasCnt>0?(CS[c].wwRoasSum/CS[c].wwRoasCnt):0;});
+  var t1RoasData = labels.map(function(c){return CS[c].t1RoasCnt>0?(CS[c].t1RoasSum/CS[c].t1RoasCnt):0;});
+  var wwCovData = labels.map(function(c){return CS[c].wwData;});
+  var t1CovData = labels.map(function(c){return CS[c].t1Data;});
 
-  const commonOpts = {responsive:true,maintainAspectRatio:false,
+  var barOpts = {responsive:true, maintainAspectRatio:false,
     plugins:{legend:{position:'top',labels:{font:{size:12}}}},
-    scales:{x:{ticks:{font:{size:11}}},y:{beginAtZero:true}}};
+    scales:{x:{ticks:{font:{size:11}}}, y:{beginAtZero:true}}};
 
   new Chart(document.getElementById('chart-subs'), {type:'bar',
-    data:{labels,datasets:[
-      {label:'WW订阅',data:wwSubsData,backgroundColor:'rgba(102,126,234,0.8)',borderRadius:5},
-      {label:'T1订阅',data:t1SubsData,backgroundColor:'rgba(231,76,60,0.8)',borderRadius:5},
-    ]},options:JSON.parse(JSON.stringify(commonOpts))});
+    data:{labels:labels, datasets:[
+      {label:'WW订阅', data:wwSubsData, backgroundColor:'rgba(102,126,234,0.8)', borderRadius:5},
+      {label:'T1订阅', data:t1SubsData, backgroundColor:'rgba(231,76,60,0.8)', borderRadius:5}
+    ]}, options:barOpts});
 
   new Chart(document.getElementById('chart-purchases'), {type:'bar',
-    data:{labels,datasets:[
-      {label:'WW购物',data:wwPurchData,backgroundColor:'rgba(102,126,234,0.8)',borderRadius:5},
-      {label:'T1购物',data:t1PurchData,backgroundColor:'rgba(231,76,60,0.8)',borderRadius:5},
-    ]},options:JSON.parse(JSON.stringify(commonOpts))});
+    data:{labels:labels, datasets:[
+      {label:'WW购物', data:wwPurchData, backgroundColor:'rgba(102,126,234,0.8)', borderRadius:5},
+      {label:'T1购物', data:t1PurchData, backgroundColor:'rgba(231,76,60,0.8)', borderRadius:5}
+    ]}, options:barOpts});
 
+  var roasOpts = JSON.parse(JSON.stringify(barOpts));
+  roasOpts.scales.y.title = {display:true, text:'ROAS'};
   new Chart(document.getElementById('chart-roas'), {type:'bar',
-    data:{labels,datasets:[
-      {label:'WW ROAS',data:wwRoasData,backgroundColor:'rgba(102,126,234,0.8)',borderRadius:5},
-      {label:'T1 ROAS',data:t1RoasData,backgroundColor:'rgba(231,76,60,0.8)',borderRadius:5},
-    ]},options:{...JSON.parse(JSON.stringify(commonOpts)),scales:{x:{ticks:{font:{size:11}}},y:{beginAtZero:true,title:{display:true,text:'ROAS'}}}}});
+    data:{labels:labels, datasets:[
+      {label:'WW ROAS', data:wwRoasData, backgroundColor:'rgba(102,126,234,0.8)', borderRadius:5},
+      {label:'T1 ROAS', data:t1RoasData, backgroundColor:'rgba(231,76,60,0.8)', borderRadius:5}
+    ]}, options:roasOpts});
 
   new Chart(document.getElementById('chart-coverage'), {type:'bar',
-    data:{labels,datasets:[
-      {label:'WW有效素材',data:wwCovData,backgroundColor:'rgba(102,126,234,0.8)',borderRadius:5},
-      {label:'T1有效素材',data:t1CovData,backgroundColor:'rgba(231,76,60,0.8)',borderRadius:5},
-    ]},options:JSON.parse(JSON.stringify(commonOpts))});
+    data:{labels:labels, datasets:[
+      {label:'WW有效素材', data:wwCovData, backgroundColor:'rgba(102,126,234,0.8)', borderRadius:5},
+      {label:'T1有效素材', data:t1CovData, backgroundColor:'rgba(231,76,60,0.8)', borderRadius:5}
+    ]}, options:barOpts});
 })();
 
-// ─── 有数据素材详细对比表 ───
+// Detail table
 (function(){
-  const t = document.getElementById('detail-table');
-  const dataRows = CREATIVES.filter(c=>hasAnyData(c)).sort((a,b)=>{
-    const sa=(hasWWData(a)?(a.ww.subs||0):0)+(hasT1Data(a)?(a.t1.subs||0):0);
-    const sb=(hasWWData(b)?(b.ww.subs||0):0)+(hasT1Data(b)?(b.t1.subs||0):0);
+  var tbl = document.getElementById('detail-table');
+  var dataRows = CREATIVES.filter(function(c){return hasAnyData(c);}).sort(function(a,b){
+    var sa=(a.ww?((a.ww.subs||0)+(a.ww.purch||0)):0)+(a.t1?((a.t1.subs||0)+(a.t1.purch||0)):0);
+    var sb=(b.ww?((b.ww.subs||0)+(b.ww.purch||0)):0)+(b.t1?((b.t1.subs||0)+(b.t1.purch||0)):0);
     return sb-sa;
   });
 
-  let h=`<thead><tr><th>主题</th><th>分类</th>
-    <th class="ww-bg">WW CTR</th><th class="ww-bg">WW CVR</th><th class="ww-bg">WW订阅</th><th class="ww-bg">WW购物</th><th class="ww-bg">WW ROAS</th><th class="ww-bg">消耗</th>
-    <th class="t1-bg">T1 CTR</th><th class="t1-bg">T1 CVR</th><th class="t1-bg">T1订阅</th><th class="t1-bg">T1购物</th><th class="t1-bg">T1 ROAS</th>
-  </tr></thead><tbody>`;
+  var h = '<thead><tr><th>主题</th><th>分类</th>'+
+    '<th class="ww-bg">WW消耗</th><th class="ww-bg">WW CPI</th><th class="ww-bg">WW安装</th><th class="ww-bg">WW CTR</th><th class="ww-bg">WW CVR</th><th class="ww-bg">WW订阅</th><th class="ww-bg">WW购物</th><th class="ww-bg">WW ROAS</th>'+
+    '<th class="t1-bg">T1消耗</th><th class="t1-bg">T1 CPI</th><th class="t1-bg">T1安装</th><th class="t1-bg">T1 CTR</th><th class="t1-bg">T1 CVR</th><th class="t1-bg">T1订阅</th><th class="t1-bg">T1购物</th><th class="t1-bg">T1 ROAS</th>'+
+    '</tr></thead><tbody>';
 
-  dataRows.forEach((cr)=>{
-    const ww=cr.ww; const t1=cr.t1;
-    h+=`<tr>
-      <td><strong>${cr.theme}</strong></td>
-      <td><span class="tag tag-purple">${cr.cat}</span></td>
-      <td class="ww-bg">${fmtPct(ww.ctr)}</td>
-      <td class="ww-bg">${fmt(ww.cvr,'%')}</td>
-      <td class="ww-bg"><strong class="${(ww.subs||0)>=5?'highlight':''}">${fmt(ww.subs)}</strong></td>
-      <td class="ww-bg">${fmt(ww.purch)}</td>
-      <td class="ww-bg">${fmtRoas(ww.roas)}</td>
-      <td class="ww-bg">${fmtMoney(ww.spend)}</td>
-      <td class="t1-bg">${fmtPct(t1.ctr)}</td>
-      <td class="t1-bg">${fmt(t1.cvr,'%')}</td>
-      <td class="t1-bg"><strong class="${(t1.subs||0)>=5?'highlight-red':''}">${fmt(t1.subs)}</strong></td>
-      <td class="t1-bg">${fmt(t1.purch)}</td>
-      <td class="t1-bg">${fmtRoas(t1.roas)}</td>
-    </tr>`;
+  dataRows.forEach(function(cr){
+    var ww=cr.ww||{}; var t1=cr.t1||{};
+    h += '<tr>'+
+      '<td><strong>'+cr.theme+'</strong></td>'+
+      '<td><span class="tag tag-purple">'+cr.cat+'</span></td>'+
+      '<td class="ww-bg">'+fmtMoney(ww.spend)+'</td>'+
+      '<td class="ww-bg">'+fmtCpi(ww.cpi)+'</td>'+
+      '<td class="ww-bg">'+fmt(ww.installs)+'</td>'+
+      '<td class="ww-bg">'+fmtPct(ww.ctr)+'</td>'+
+      '<td class="ww-bg">'+fmt(ww.cvr,'%')+'</td>'+
+      '<td class="ww-bg"><strong class="'+((ww.subs||0)>=5?'highlight':'')+'">'+fmt(ww.subs)+'</strong></td>'+
+      '<td class="ww-bg">'+fmt(ww.purch)+'</td>'+
+      '<td class="ww-bg">'+fmtRoas(ww.roas)+'</td>'+
+      '<td class="t1-bg">'+fmtMoney(t1.spend)+'</td>'+
+      '<td class="t1-bg">'+fmtCpi(t1.cpi)+'</td>'+
+      '<td class="t1-bg">'+fmt(t1.installs)+'</td>'+
+      '<td class="t1-bg">'+fmtPct(t1.ctr)+'</td>'+
+      '<td class="t1-bg">'+fmt(t1.cvr,'%')+'</td>'+
+      '<td class="t1-bg"><strong class="'+((t1.subs||0)>=5?'highlight-red':'')+'">'+fmt(t1.subs)+'</strong></td>'+
+      '<td class="t1-bg">'+fmt(t1.purch)+'</td>'+
+      '<td class="t1-bg">'+fmtRoas(t1.roas)+'</td></tr>';
   });
-  h+='</tbody>';
-  t.innerHTML=h;
-})();
-
-// ─── 无数据素材 ───
-(function(){
-  const el = document.getElementById('retest-section');
-  const nodata = CREATIVES.filter(c=>!hasAnyData(c));
-  if (nodata.length === 0) {
-    el.innerHTML = '<div class="card" style="text-align:center;padding:30px;color:#95a5a6;">🎉 所有素材都有数据！</div>';
-    return;
-  }
-  const bycat = {};
-  CATEGORIES.forEach(c=>{ bycat[c]=[]; });
-  nodata.forEach(c=>{ if(bycat[c.cat]) bycat[c.cat].push(c); });
-
-  let h='<div class="grid-3">';
-  CATEGORIES.forEach(cat=>{
-    const items=bycat[cat];
-    if(items.length===0) return;
-    h+=`<div class="card">
-      <div class="label">${cat}</div>
-      <div class="value" style="font-size:26px;margin:6px 0;">${items.length}</div>
-      <div class="sub" style="margin-bottom:12px;">条待重测</div>
-      ${items.map(c=>`<div style="padding:5px 0;border-bottom:1px solid #f5f5f5;font-size:12px;color:#636e72;">${c.theme}</div>`).join('')}
-    </div>`;
-  });
-  h+='</div>';
-  el.innerHTML=h;
+  h += '</tbody>';
+  tbl.innerHTML = h;
 })();
 </script>
 </body>
