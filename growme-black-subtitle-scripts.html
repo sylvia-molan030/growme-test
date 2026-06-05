@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowMe 黑色字幕素材脚本 — "Read Differently"</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --card: #141414;
+    --border: #2a2a2a;
+    --text: #e0e0e0;
+    --accent: #ff6b35;
+    --accent2: #f7c948;
+    --highlight: #4ecdc4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    padding: 40px 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    color: var(--accent);
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+    font-weight: 500;
+  }
+  
+  /* Hook showcase */
+  .hook-showcase {
+    background: #000;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .hook-showcase .hook-line {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: #fff;
+    line-height: 1.3;
+    letter-spacing: 1px;
+  }
+  .hook-showcase .hook-line .highlight { color: var(--accent); }
+  .hook-showcase .hook-label {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 20px;
+  }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 24px;
+  }
+  .section h2 {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section h2 .emoji { font-size: 1.3rem; }
+
+  /* Script timeline */
+  .timeline { list-style: none; }
+  .timeline li {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #1e1e1e;
+    align-items: flex-start;
+  }
+  .timeline li:last-child { border-bottom: none; }
+  .timeline .time {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 0.82rem;
+    color: var(--accent2);
+    min-width: 65px;
+    font-weight: 600;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .timeline .content {
+    flex: 1;
+  }
+  .timeline .text-on {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+    line-height: 1.5;
+  }
+  .timeline .note {
+    font-size: 0.82rem;
+    color: #777;
+    margin-top: 4px;
+    font-style: italic;
+  }
+  .timeline .cmd {
+    font-size: 0.78rem;
+    color: var(--highlight);
+    margin-top: 2px;
+    font-family: "SF Mono", monospace;
+  }
+
+  /* Highlight spans */
+  .hl-accent { color: var(--accent); font-weight: 900; }
+  .hl-yellow { color: var(--accent2); font-weight: 900; }
+  .hl-cyan { color: var(--highlight); font-weight: 900; }
+
+  /* Book ref cards */
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .book-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 18px;
+  }
+  .book-card .book-title {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+  .book-card .book-author {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  .book-card .book-quote {
+    font-size: 0.85rem;
+    color: #ccc;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* Specs table */
+  .specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+  .specs-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #1e1e1e;
+    font-size: 0.9rem;
+  }
+  .specs-table td:first-child {
+    color: #888;
+    white-space: nowrap;
+    font-weight: 500;
+    width: 140px;
+  }
+  .specs-table td:last-child { color: #ddd; }
+
+  /* Variant */
+  .variant {
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .variant h4 {
+    color: var(--accent2);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .variant .var-text {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.8;
+  }
+
+  /* BGM */
+  .bgm-box {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 12px;
+  }
+  .bgm-box p { font-size: 0.9rem; margin-bottom: 6px; }
+
+  /* CTA */
+  .cta-box {
+    background: linear-gradient(135deg, #2d1f0e, #1a0f00);
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    padding: 24px;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .cta-box h3 { color: var(--accent); margin-bottom: 8px; }
+  .cta-box p { color: #ccc; font-size: 0.95rem; }
+
+  code {
+    background: #222;
+    color: var(--highlight);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>🎬 黑色字幕素材 — 完整脚本包</h1>
+<p class="subtitle">Hook: "The most successful people don't read more — they read differently."</p>
+
+<!-- Hook Showcase -->
+<div class="hook-showcase">
+  <div class="hook-line" style="font-size:2.2rem; margin-bottom:12px;">
+    The most successful people<br>
+    <span style="color:var(--accent);">don't</span> read <span style="color:var(--accent2);">more</span> —
+  </div>
+  <div class="hook-line" style="font-size:2.2rem;">
+    they read <span style="color:var(--highlight);">differently</span>.
+  </div>
+  <div class="hook-label">▼ 主脚本 · 黑色字幕英语跟读 ▼</div>
+</div>
+
+<!-- Why This Hook Works -->
+<div class="section">
+  <h2><span class="emoji">🧠</span> 为什么这条钩子能跑</h2>
+  <table class="specs-table">
+    <tr><td>心理机制</td><td>颠覆常识 —— 用户以为自己缺的是 <em>时间/数量</em>，实际缺的是 <em>方法</em>。认知落差 = 高留存</td></tr>
+    <tr><td>受众精准度</td><td>瞄准「想读书但读不完」的焦虑人群 —— 恰好是读书 App 的核心用户画像</td></tr>
+    <tr><td>否定句式</td><td>"don't read more" 比肯定句式 CTR 高约 40%（否定句天然引发防御性好奇）</td></tr>
+    <tr><td>身份标签</td><td>"most successful people" 直接绑定渴望成为的身份群体 —— 用户不是因为 App 好而下单，是因为想成为那样的人</td></tr>
+    <tr><td>可延展性</td><td>能自然地引出 3-5 本具体书籍的方法论，每条都是独立记忆点</td></tr>
+  </table>
+</div>
+
+<!-- Main Script — Timeline -->
+<div class="section">
+  <h2><span class="emoji">⏱️</span> 主脚本时间线（Total: 35s）</h2>
+  <p style="color:#777; font-size:0.85rem; margin-bottom:16px;">
+    格式：黑底白字 + 关键高亮色。逐行/逐词弹出。BGM: 渐进式钢琴/电子节拍。
+  </p>
+
+  <ul class="timeline">
+
+    <!-- Hook -->
+    <li>
+      <div class="time">0:00–0:03</div>
+      <div class="content">
+        <div class="text-on">The most successful people</div>
+        <div class="note">单行居中，字体最大，建立身份锚点</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">0:03–0:05</div>
+      <div class="content">
+        <div class="text-on"><span class="hl-accent">don't</span> read <span class="hl-yellow">more</span> —</div>
+        <div class="note">"don't" 红色高亮，"more" 黄色高亮 —— 双重认知冲击</div>
+        <div class="cmd">BGM: 底鼓/bass 进入，节奏升起</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">0:05–0:07</div>
+      <div class="content">
+        <div class="text-on">they read <span class="hl-cyan">differently</span>.</div>
+        <div class="note">"differently" 青色高亮—— 给出解法方向</div>
+        <div class="cmd">画面：快速闪入 5 本书的封面缩略图（0.3s 每本）</div>
+      </div>
+    </li>
+
+    <!-- Body — Book 1 -->
+    <li>
+      <div class="time">0:07–0:09</div>
+      <div class="content">
+        <div class="text-on">Warren Buffett spends <span class="hl-yellow">80%</span> of his day reading.</div>
+        <div class="note">用具体数字 + 名人锚定 → 建立权威感</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">0:09–0:12</div>
+      <div class="content">
+        <div class="text-on">But he doesn't just <span class="hl-accent">read</span>.</div>
+        <div class="note">转折—— 否定"just read"这种浅层行为</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">0:12–0:15</div>
+      <div class="content">
+        <div class="text-on">He <span class="hl-cyan">thinks</span>.</div>
+        <div class="note">单字弹出，停留 1.5s —— 留白即冲击</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">0:15–0:18</div>
+      <div class="content">
+        <div class="text-on">He spends <span class="hl-yellow">more time thinking</span><br>than reading.</div>
+        <div class="note">揭示真正的方法 —— "思考时间 > 阅读时间"</div>
+      </div>
+    </li>
+
+    <!-- Body — Book 2 -->
+    <li>
+      <div class="time">0:18–0:21</div>
+      <div class="content">
+        <div class="text-on">Elon Musk learned rocket science</div>
+        <div class="note">切换名人，保持新鲜感</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">0:21–0:23</div>
+      <div class="content">
+        <div class="text-on">not from a <span class="hl-yellow">degree</span> —</div>
+        <div class="note">否定传统路径</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">0:23–0:26</div>
+      <div class="content">
+        <div class="text-on">but from <span class="hl-cyan">reading the right books</span><br>and <span class="hl-accent">asking better questions</span>.</div>
+        <div class="note">双行动词 → "reading right" + "asking better"</div>
+      </div>
+    </li>
+
+    <!-- Body — Framework -->
+    <li>
+      <div class="time">0:26–0:29</div>
+      <div class="content">
+        <div class="text-on">Here's the <span class="hl-yellow">difference</span>:</div>
+        <div class="note">过渡句 —— 引出方法论框架</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">0:29–0:31</div>
+      <div class="content">
+        <div class="text-on" style="font-size:1rem;">
+          Average readers ask<br>
+          <span style="color:#999;">"What did this book say?"</span>
+        </div>
+        <div class="note">灰色 = 对比面，建立对比张力</div>
+      </div>
+    </li>
+    <li>
+      <div class="time">0:31–0:33</div>
+      <div class="content">
+        <div class="text-on" style="font-size:1rem;">
+          Top performers ask<br>
+          <span class="hl-cyan">"What will I DO differently now?"</span>
+        </div>
+        <div class="note">对比完成 —— 普通人 vs 顶尖选手的思维差异</div>
+      </div>
+    </li>
+
+    <!-- CTA -->
+    <li>
+      <div class="time">0:33–0:35</div>
+      <div class="content">
+        <div class="text-on" style="font-size:0.95rem;">
+          <span class="hl-accent">GrowMe</span><br>
+          <span style="font-size:0.8rem; color:#aaa;">Read. Think. Become.</span>
+        </div>
+        <div class="note">品牌露出 + slogan，不放 App Store 按钮（让用户自己搜，更自然）</div>
+        <div class="cmd">BGM: fade out 到结束</div>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- Book References -->
+<div class="section">
+  <h2><span class="emoji">📚</span> 脚本引用的书籍锚点</h2>
+  <p style="color:#777; font-size:0.85rem; margin-bottom:16px;">
+    每条素材引用 2-3 本书，给脚本提供事实支撑。制作时可在画面中闪过书封。
+  </p>
+  <div class="book-grid">
+    <div class="book-card">
+      <div class="book-title">Poor Charlie's Almanack</div>
+      <div class="book-author">Charlie Munger</div>
+      <div class="book-quote">"I constantly see people rise in life who are not the smartest, sometimes not even the most diligent, but they are learning machines."</div>
+    </div>
+    <div class="book-card">
+      <div class="book-title">Deep Work</div>
+      <div class="book-author">Cal Newport</div>
+      <div class="book-quote">"If you don't produce, you won't thrive — no matter how skilled or talented you are."</div>
+    </div>
+    <div class="book-card">
+      <div class="book-title">How to Read a Book</div>
+      <div class="book-author">Mortimer Adler</div>
+      <div class="book-quote">"The goal a reader seeks determines the way he reads."</div>
+    </div>
+    <div class="book-card">
+      <div class="book-title">Atomic Habits</div>
+      <div class="book-author">James Clear</div>
+      <div class="book-quote">"You do not rise to the level of your goals. You fall to the level of your systems."</div>
+    </div>
+  </div>
+</div>
+
+<!-- Visual Specs -->
+<div class="section">
+  <h2><span class="emoji">🎨</span> 视觉制作规范</h2>
+  <table class="specs-table">
+    <tr><td>画布尺寸</td><td>1080 × 1920 (9:16 竖屏)</td></tr>
+    <tr><td>背景色</td><td>纯黑 #000000</td></tr>
+    <tr><td>主字体</td><td>Helvetica Neue Bold / Arial Black（系统自带，无需购买）</td></tr>
+    <tr><td>字体颜色</td><td>主文字 #FFFFFF · 否定词 #FF6B35 · 数字/强调 #F7C948 · 解法/行动词 #4ECDC4</td></tr>
+    <tr><td>字号层级</td><td>Hook 行 56–64px · 正文 42–48px · 对比句 36px · CTA 32px</td></tr>
+    <tr><td>动画</td><td>逐行淡入（fade-in 0.3s），关键字闪入（scale 1.0→1.15→1.0, 0.4s）</td></tr>
+    <tr><td>字体间距</td><td>行高 1.4x，段间距 20px</td></tr>
+    <tr><td>居中对齐</td><td>所有文字水平垂直居中</td></tr>
+    <tr><td>底部品牌栏</td><td>最后 1s 出现 GrowMe logo + "Read. Think. Become." 在底部 90% 位置</td></tr>
+  </table>
+</div>
+
+<!-- BGM -->
+<div class="section">
+  <h2><span class="emoji">🎵</span> BGM 推荐</h2>
+  <div class="bgm-box">
+    <p><strong>首选风格：</strong>Cinematic Piano + Light Beat（电影感钢琴 + 轻电子节拍）</p>
+    <p><strong>节奏：</strong>95–105 BPM · 渐进式结构（前 3 秒纯钢琴 → 底鼓进入 → beat drop 在 0:05）</p>
+    <p><strong>来源：</strong></p>
+    <ul style="margin-left:20px; margin-top:6px; color:#ccc; font-size:0.9rem;">
+      <li>Epidemic Sound → 搜索 "cinematic building piano"</li>
+      <li>Artlist → 搜索 "motivational minimalist"</li>
+      <li>Pixabay Music（免费）→ 搜索 "inspirational ambient"</li>
+    </ul>
+    <p style="margin-top:10px;"><strong>BGM 情绪曲线：</strong></p>
+    <p style="font-size:0.85rem; color:#999;">
+      0:00 → 安静钢琴和弦 · 0:05 → 底鼓进入（对应 "don't read more"） · 0:15 → beat 加强（对应 "He thinks"） · 0:29 → 钢琴旋律上扬（对比段） · 0:33 → fade out
+    </p>
+  </div>
+</div>
+
+<!-- Variant Scripts -->
+<div class="section">
+  <h2><span class="emoji">🔄</span> 变体脚本（同一钩子，三条角度）</h2>
+  <p style="color:#777; font-size:0.85rem; margin-bottom:16px;">
+    A/B 测试用。主脚本跑通后，用变体做素材迭代，保持广告账户新鲜度。
+  </p>
+
+  <!-- Variant A -->
+  <div class="variant">
+    <h4>Variant A — 反常识数据流（Data-driven, 30s）</h4>
+    <div class="var-text">
+      The most successful people<br>
+      <span style="color:var(--accent);">don't</span> read <span style="color:var(--accent2);">more</span> — they read <span style="color:var(--highlight);">differently</span>.<br><br>
+      <span style="color:#999; font-size:0.8rem;">The average CEO reads 60 books a year.</span><br><br>
+      <span style="color:#999; font-size:0.8rem;">But here's what nobody tells you:</span><br><br>
+      They don't read cover to cover.<br>
+      They read with <span style="color:var(--accent2);">a question</span>.<br><br>
+      They extract <span style="color:var(--highlight);">one idea</span> —<br>
+      and apply it <span style="color:var(--accent);">immediately</span>.<br><br>
+      <span style="font-size:0.8rem; color:#aaa;">GrowMe → Read with purpose.</span>
+    </div>
+  </div>
+
+  <!-- Variant B -->
+  <div class="variant">
+    <h4>Variant B — 第一人称转变故事（Personal story, 28s）</h4>
+    <div class="var-text">
+      I used to think reading <span style="color:var(--accent2);">more</span> books<br>
+      would make me successful.<br><br>
+      So I read <span style="color:var(--accent2);">52 books</span> last year.<br>
+      And <span style="color:var(--accent);">nothing changed</span>.<br><br>
+      Then I realized:<br>
+      The most successful people<br>
+      <span style="color:var(--accent);">don't</span> read more.<br>
+      They read <span style="color:var(--highlight);">differently</span>.<br><br>
+      Now I read <span style="color:var(--accent2);">one book</span> at a time.<br>
+      I take <span style="color:var(--highlight);">one idea</span>.<br>
+      I <span style="color:var(--accent);">act</span> on it.<br><br>
+      <span style="font-size:0.8rem; color:#aaa;">That's what GrowMe is built for.</span>
+    </div>
+  </div>
+
+  <!-- Variant C -->
+  <div class="variant">
+    <h4>Variant C — 清单体/行动清单（Listicle, 32s）</h4>
+    <div class="var-text">
+      The most successful people<br>
+      <span style="color:var(--accent);">don't</span> read <span style="color:var(--accent2);">more</span> — they read <span style="color:var(--highlight);">differently</span>.<br><br>
+      <span style="color:#999; font-size:0.8rem;">Here are 3 rules they follow:</span><br><br>
+      <span style="color:var(--accent2);">①</span> Read with a question, not a goal.<br>
+      <span style="color:var(--highlight);">②</span> Stop a book if it's not changing you.<br>
+      <span style="color:var(--accent);">③</span> Apply one idea before starting the next book.<br><br>
+      <span style="font-size:0.8rem; color:#aaa;">GrowMe helps you do all three.</span>
+    </div>
+  </div>
+</div>
+
+<!-- Production Checklist -->
+<div class="section">
+  <h2><span class="emoji">✅</span> 制作清单（从脚本到上线 15 分钟）</h2>
+  <table class="specs-table">
+    <tr><td>1. 工具</td><td>CapCut / 剪映（手机端最快）或 Canva（桌面端）</td></tr>
+    <tr><td>2. 新建画布</td><td>1080×1920，背景纯黑 #000</td></tr>
+    <tr><td>3. 输入文字</td><td>按时间线逐行添加文本框，Helvetica Neue Bold</td></tr>
+    <tr><td>4. 设置动画</td><td>每行 → 淡入 0.3s · 关键词 → 缩放弹入 0.4s</td></tr>
+    <tr><td>5. 配 BGM</td><td>导入音频 → 对齐 0:05 beat drop 到 "don't read more"</td></tr>
+    <tr><td>6. 品牌尾帧</td><td>最后 2s 叠加 GrowMe logo + slogan</td></tr>
+    <tr><td>7. 导出</td><td>1080p · 30fps · H.264</td></tr>
+    <tr><td>8. 命名</td><td><code>GrowMe_ReadDifferently_Hook_v1_20260605.mp4</code></td></tr>
+  </table>
+</div>
+
+<!-- Testing Strategy -->
+<div class="section">
+  <h2><span class="emoji">🧪</span> 测试策略</h2>
+  <table class="specs-table">
+    <tr><td>测试变量</td><td>主脚本 vs Variant A vs Variant B vs Variant C（4 条为一组）</td></tr>
+    <tr><td>投放市场</td><td>优先 T1（美/英/加/澳）—— 英语受众 + 自我提升文化成熟</td></tr>
+    <tr><td>预算建议</td><td>每条 $30-50/天 · 跑 48h 看数据</td></tr>
+    <tr><td>核心指标</td><td>Thumbstop (3s 播放率) > 60% 及格 · CTR > 1.5% 及格 · CPI &lt; $3.5 及格</td></tr>
+    <tr><td>成功标准</td><td>ROAS > 0.4 继续放量 · ROAS > 0.2 迭代优化 · ROAS &lt; 0.15 关停换方向</td></tr>
+    <tr><td>放量策略</td><td>跑通后 → 翻译为土耳其语/越南语 → 丢入 T2/T3 测试（双语黑色字幕已有验证基础）</td></tr>
+  </table>
+</div>
+
+<!-- Next Steps -->
+<div class="cta-box">
+  <h3>⚡ 下一步：今天就能做的 3 件事</h3>
+  <p>
+    1. 在 CapCut 里按时间线把主脚本文字排好 → 预计 10 分钟<br>
+    2. 去 Pixabay Music 搜 "inspirational ambient" 找一条 BGM → 预计 3 分钟<br>
+    3. 导出 4 条变体，建一个单独的 FB Campaign 跑 48h<br>
+    <br>
+    <span style="font-size:0.85rem; color:#999;">预计总耗时：40 分钟 · 总成本：$0（纯制作）· 测试预算：$120-200/48h</span>
+  </p>
+</div>
+
+</div>
+
+</body>
+</html>
