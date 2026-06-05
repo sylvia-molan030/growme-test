@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowMe AI数字人讲座 — 详细落地方案</title>
+<style>
+  :root {
+    --bg: #0a0a0f; --card: #12121a; --card-hover: #181825;
+    --border: #1e1e2e; --text: #cdd6f4; --text-muted: #a6adc8;
+    --accent: #cba6f7; --accent2: #89b4fa; --accent3: #a6e3a1;
+    --accent4: #f9e2af; --accent5: #f38ba8; --accent6: #94e2d5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.75;
+  }
+  
+  .hero {
+    background: linear-gradient(135deg, #1a1025 0%, #0f1424 50%, #0a1a15 100%);
+    padding: 64px 40px 48px; text-align: center; border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-size: 2.4em; font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent6), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero .subtitle { font-size: 1.05em; color: var(--text-muted); margin-top: 8px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+
+  h2 {
+    font-size: 1.6em; font-weight: 700; margin: 48px 0 20px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  h3 { font-size: 1.15em; font-weight: 700; margin: 32px 0 14px; color: var(--accent2); }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px 28px; margin-bottom: 16px;
+    transition: background 0.2s;
+  }
+  .card:hover { background: var(--card-hover); }
+  .card h4 { font-size: 1em; color: var(--text); margin-bottom: 8px; }
+  .card p, .card li { color: var(--text-muted); font-size: 0.93em; }
+
+  .highlight {
+    background: rgba(137,180,250,0.06); border-left: 3px solid var(--accent2);
+    padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0;
+  }
+  .highlight.green { border-left-color: var(--accent3); background: rgba(166,227,161,0.06); }
+  .highlight.warn { border-left-color: var(--accent5); background: rgba(243,139,168,0.06); }
+  .highlight p { color: var(--text-muted); font-size: 0.93em; }
+  .highlight strong { color: var(--text); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  table.comparison {
+    width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9em;
+  }
+  table.comparison th {
+    text-align: left; padding: 10px 12px;
+    background: rgba(255,255,255,0.03); color: var(--text-muted);
+    font-weight: 600; border-bottom: 1px solid var(--border);
+  }
+  table.comparison td {
+    padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--text);
+  }
+  table.comparison tr:hover td { background: rgba(255,255,255,0.02); }
+  table.comparison .pick {
+    background: rgba(166,227,161,0.1) !important;
+  }
+  table.comparison .pick td { color: var(--accent3); font-weight: 600; }
+
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 0.78em; font-weight: 600; margin-right: 4px;
+  }
+  .tag-rec { background: rgba(166,227,161,0.15); color: var(--accent3); }
+  .tag-alt { background: rgba(249,226,175,0.15); color: var(--accent4); }
+  .tag-skip { background: rgba(243,139,168,0.15); color: var(--accent5); }
+
+  .step-flow {
+    display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0;
+  }
+  .step {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px; flex: 1; min-width: 160px;
+    text-align: center;
+  }
+  .step .num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(203,166,247,0.15); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85em; margin: 0 auto 10px;
+  }
+  .step p { color: var(--text-muted); font-size: 0.85em; }
+  .step strong { color: var(--text); font-size: 0.92em; }
+
+  .script-box {
+    background: linear-gradient(135deg, rgba(148,226,213,0.06), rgba(137,180,250,0.04));
+    border: 1px solid rgba(148,226,213,0.18); border-radius: 10px;
+    padding: 24px 28px; margin: 16px 0;
+  }
+  .script-box .label {
+    font-size: 0.78em; font-weight: 700; letter-spacing: 1px;
+    color: var(--accent6); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .script-box .line {
+    margin: 6px 0; padding-left: 12px; border-left: 2px solid rgba(255,255,255,0.08);
+    font-size: 0.92em;
+  }
+  .script-box .line.hook { color: var(--accent4); }
+  .script-box .line.insight { color: var(--accent2); }
+  .script-box .line.expand { color: var(--text); }
+  .script-box .line.cta { color: var(--accent3); font-weight: 600; }
+
+  .checklist-item {
+    display: flex; gap: 12px; align-items: flex-start; margin: 10px 0; padding: 12px 16px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  }
+  .checklist-item .icon {
+    width: 24px; height: 24px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8em; flex-shrink: 0; margin-top: 1px;
+  }
+  .checklist-item .icon.do { background: rgba(166,227,161,0.12); color: var(--accent3); }
+  .checklist-item .icon.dont { background: rgba(243,139,168,0.12); color: var(--accent5); }
+  .checklist-item p { color: var(--text-muted); font-size: 0.9em; }
+  .checklist-item strong { color: var(--text); }
+
+  .pie-chart { margin: 16px 0; }
+  .pie-row { display: flex; align-items: center; margin: 8px 0; gap: 10px; }
+  .pie-bar {
+    height: 8px; border-radius: 4px; min-width: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .step-flow { flex-direction: column; }
+    .hero { padding: 40px 20px 32px; }
+    .hero h1 { font-size: 1.6em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>AI 数字人讲座 / 拆书 — 完整落地方案</h1>
+  <p class="subtitle">从工具选型到第一条素材上线的全流程执行手册</p>
+</div>
+
+<div class="container">
+
+<!-- ============ 1. 为什么做 ============ -->
+<h2 id="why">🎯 一、为什么这个方向值得 All-in</h2>
+
+<div class="highlight green">
+  <p><strong>一句话核心逻辑：</strong>T1 用户买的是「更快获得知识」的幻觉——他们不是在买阅读工具，而是在买认知优势。数字人讲座就是这个幻觉的最佳载体。</p>
+</div>
+
+<div class="grid-3">
+  <div class="card">
+    <h4>🎥 视觉新颖度</h4>
+    <p>当前 Feed 里 90% 是同质化素材（字幕文字 + BGM）。一个会说话、有表情的数字人天然抓眼球，前 3 秒停留率预计比纯字幕素材高 30-50%。</p>
+  </div>
+  <div class="card">
+    <h4>🧠 内容壁垒</h4>
+    <p>AI 数字人 + 专业拆书内容 = 竞品难以复制的组合。竞品可以抄你的字幕文案，但抄不了「数字人形象 + 脚本 + 节奏设计」三位一体。</p>
+  </div>
+  <div class="card">
+    <h4>💰 成本结构</h4>
+    <p>真人出镜：拍摄 + 演员 + 后期 = $300-500/条<br>数字人：工具费 $30-50/月 + 脚本 15 分钟 = $1-2/条<br>差价 150-500 倍，且可以无限复制。</p>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h4>📊 对标验证：这个模式在别的赛道能跑通吗？</h4>
+  <p>教育 / 个人成长赛道中，数字人素材不是纯假设。Headway、Blinkist 等竞品已在测试 AI 讲解员素材。国内得到 App 的 AI 讲书也在跑。关键差异点：GrowMe 的数字人讲座可以结合 <strong>「阅读界面 + AI 讲解」</strong> 的混合视觉，比纯数字人讲话更有辨识度。</p>
+</div>
+
+
+<!-- ============ 2. 工具方案 ============ -->
+<h2 id="tools">🛠️ 二、工具选型：用什么做数字人</h2>
+
+<table class="comparison">
+  <tr>
+    <th>工具</th><th>价格</th><th>数字人质量</th><th>中文 / 英文</th><th>定制形象</th><th>适合 GrowMe？</th></tr>
+  <tr class="pick">
+    <td><strong>HeyGen</strong></td>
+    <td>$29-89/月</td>
+    <td>⭐⭐⭐⭐⭐ 最高</td>
+    <td>✅ 双语都好</td>
+    <td>✅ 可上传照片</td>
+    <td><span class="tag tag-rec">首选</span> 形象自然、口型准、英文表现力最佳</td>
+  </tr>
+  <tr>
+    <td>Synthesia</td>
+    <td>$29-89/月</td>
+    <td>⭐⭐⭐⭐</td>
+    <td>✅ 多语言</td>
+    <td>✅ 可定制</td>
+    <td><span class="tag tag-alt">备选</span> 偏企业培训风，可测试</td>
+  </tr>
+  <tr>
+    <td>D-ID</td>
+    <td>$5.99-49/月</td>
+    <td>⭐⭐⭐</td>
+    <td>✅</td>
+    <td>✅ 照片驱动</td>
+    <td><span class="tag tag-alt">备选</span> 便宜但质感一般</td>
+  </tr>
+  <tr>
+    <td>剪映数字人</td>
+    <td>免费 / 会员</td>
+    <td>⭐⭐⭐</td>
+    <td>中文更好</td>
+    <td>❌ 固定模板</td>
+    <td><span class="tag tag-skip">暂不推荐</span> 英文表现力不足</td>
+  </tr>
+  <tr>
+    <td>Elai.io</td>
+    <td>$29-99/月</td>
+    <td>⭐⭐⭐⭐</td>
+    <td>✅ 多语言</td>
+    <td>✅</td>
+    <td><span class="tag tag-alt">备选</span> 模板丰富，试错成本低</td>
+  </tr>
+</table>
+
+<div class="highlight" style="margin-top:16px">
+  <p><strong>🎯 推荐启动方案：</strong></p>
+  <p style="margin-top:8px"><strong>主力工具 = HeyGen（$29/月入门版）</strong> — 先用默认数字人形象测试内容，跑通数据后再升级到 $89 版做定制形象。</p>
+  <p style="margin-top:4px"><strong>备用工具 = D-ID</strong> — 如果 HeyGen 的消耗速度太快（月额度不够），用 D-ID 补充长视频制作。</p>
+  <p style="margin-top:4px"><strong>数字人形象策略：</strong>先选 2-3 个 HeyGen 默认英文形象（一个男性、一个女性、一个多样化），不急着定制。目标是用最快速度做出 5 条测试素材，验证数据的优先级远高于形象的完美度。</p>
+</div>
+
+
+<!-- ============ 3. 内容策略 ============ -->
+<h2 id="content">📚 三、内容策略：讲什么、怎么选书、什么角度</h2>
+
+<h3>3.1 选书逻辑 — 「三高」原则</h3>
+
+<div class="grid-3">
+  <div class="card">
+    <h4>📈 高认知度</h4>
+    <p>选 T1 市场用户大概率听说过甚至想读但没读的书。<br><em>例：Atomic Habits、The Psychology of Money</em></p>
+  </div>
+  <div class="card">
+    <h4>⚡ 高观点密度</h4>
+    <p>每本书至少能提炼 3-5 个独立观点，每个观点都能做成一条独立素材。<br><em>避免故事型小说，选非虚构/自助类</em></p>
+  </div>
+  <div class="card">
+    <h4>🎯 高行动性</h4>
+    <p>书中的观点能让观众产生「我现在就能用的」冲动。<br><em>例：The 5 Second Rule → 看完立刻想试</em></p>
+  </div>
+</div>
+
+<h3>3.2 首轮 10 本书单（按内容类型分组）</h3>
+
+<table class="comparison">
+  <tr>
+    <th>赛道</th><th>书名</th><th>作者</th><th>可拆观点数</th><th>理由</th>
+  </tr>
+  <tr>
+    <td rowspan="3" style="font-weight:700;color:var(--accent4)">🧠 思维认知</td>
+    <td>Atomic Habits</td><td>James Clear</td><td>5+</td><td>T1 最高认知度习惯书，观点极度可拆</td>
+  </tr>
+  <tr>
+    <td>Thinking, Fast and Slow</td><td>Daniel Kahneman</td><td>5+</td><td>诺贝尔奖作者，认知偏差话题永远有流量</td>
+  </tr>
+  <tr>
+    <td>The Untethered Soul</td><td>Michael Singer</td><td>3+</td><td>美国精神成长类常青书，触及深层情感</td>
+  </tr>
+  <tr>
+    <td rowspan="3" style="font-weight:700;color:var(--accent3)">💰 金钱财富</td>
+    <td>The Psychology of Money</td><td>Morgan Housel</td><td>5+</td><td>金钱心理学是已验证方向，可复跑</td>
+  </tr>
+  <tr>
+    <td>Rich Dad Poor Dad</td><td>Robert Kiyosaki</td><td>4+</td><td>争议性话题自带互动，评论区会炸</td>
+  </tr>
+  <tr>
+    <td>Die With Zero</td><td>Bill Perkins</td><td>3+</td><td>反直觉金钱观，天然钩子</td>
+  </tr>
+  <tr>
+    <td rowspan="2" style="font-weight:700;color:var(--accent6)">💬 人际关系</td>
+    <td>How to Win Friends</td><td>Dale Carnegie</td><td>5+</td><td>永不过时，每个观点都是社交货币</td>
+  </tr>
+  <tr>
+    <td>The 48 Laws of Power</td><td>Robert Greene</td><td>5+</td><td>逐条可拆，每条都是独立素材</td>
+  </tr>
+  <tr>
+    <td rowspan="2" style="font-weight:700;color:var(--accent5)">⚡ 效率执行</td>
+    <td>The 5 Second Rule</td><td>Mel Robbins</td><td>3+</td><td>一个核心观点极具行动力</td>
+  </tr>
+  <tr>
+    <td>Deep Work</td><td>Cal Newport</td><td>4+</td><td>数字时代注意力稀缺，话题正中痛点</td>
+  </tr>
+</table>
+
+<h3>3.3 三种拆书角度（每条素材选一个角度）</h3>
+
+<div class="grid-3">
+  <div class="card">
+    <h4>🔍 角度 A：反常识颠覆</h4>
+    <p>挑书中最反直觉的观点，用「你之前都做错了」的冲击力抓住注意力。</p>
+    <p style="color:var(--accent4);margin-top:8px"><em>例：Atomic Habits — "Forget goals. Focus on systems instead."</em></p>
+  </div>
+  <div class="card">
+    <h4>🧩 角度 B：可操作框架</h4>
+    <p>提炼书中一个具体的、可立刻执行的方法框架。用户看完就有收获感。</p>
+    <p style="color:var(--accent2);margin-top:8px"><em>例：Deep Work — "The 4-hour deep work protocol"</em></p>
+  </div>
+  <div class="card">
+    <h4>💥 角度 C：故事 + 观点</h4>
+    <p>用书中的一个故事 / 案例开场，再引出观点。叙事型钩子天然完播率高。</p>
+    <p style="color:var(--accent3);margin-top:8px"><em>例：Psychology of Money — "The janitor who died with $8 million"</em></p>
+  </div>
+</div>
+
+
+<!-- ============ 4. 素材公式 ============ -->
+<h2 id="formulas">🎬 四、数字人讲座素材公式 — 三条精确模板</h2>
+
+<!-- 模板 A -->
+<div class="script-box">
+  <div class="label">📐 模板 A — 反常识颠覆型（15-25 秒，适合 Reels / TikTok）</div>
+  <div class="line hook">🪝 前 3 秒 — 数字人直视镜头 + 冲击力文案覆盖画面<br>→ "The #1 productivity advice you've been told is WRONG."</div>
+  <div class="line insight" style="margin-top:8px">💡 3-8 秒 — 数字人开口讲反常识观点<br>→ "James Clear spent 10 years studying habits. His biggest finding? Goals are useless."</div>
+  <div class="line expand" style="margin-top:8px">📖 8-18 秒 — 展开 1 个核心论据 + 画面切换到书中金句卡片或 GrowMe 阅读界面<br>→ "Because goals are about the result. Systems are about the process. And here's the data..."</div>
+  <div class="line cta" style="margin-top:8px">🎯 18-22 秒 — CTA 软植入<br>→ "Read the full breakdown on GrowMe. Link in bio." — 画面上 App 图标 + 书名</div>
+</div>
+
+<!-- 模板 B -->
+<div class="script-box">
+  <div class="label">📐 模板 B — 可操作框架型（20-30 秒）</div>
+  <div class="line hook">🪝 前 3 秒 — 数字人抛出承诺<br>→ "3 steps to get more done in 4 hours than most people do in 8."</div>
+  <div class="line insight" style="margin-top:8px">💡 3-6 秒 — 简短铺垫<br>→ "Cal Newport called this 'Deep Work.' Here's how it works."</div>
+  <div class="line expand" style="margin-top:8px">📖 6-22 秒 — 三步框架逐条展示（每条 5 秒，数字人 + 文字叠加）<br>→ Step 1: Block 4 hours. No phone.<br>→ Step 2: Work on ONE thing. Not three.<br>→ Step 3: End with a shutdown ritual.</div>
+  <div class="line cta" style="margin-top:8px">🎯 22-28 秒 — CTA<br>→ "Deep Work — full summary on GrowMe."</div>
+</div>
+
+<!-- 模板 C -->
+<div class="script-box">
+  <div class="label">📐 模板 C — 故事开场型（30-40 秒，适合长视频 / YouTube Shorts）</div>
+  <div class="line hook">🪝 前 5 秒 — 数字人讲述一个简短故事<br>→ "There was a janitor who worked at a gas station. When he died, he had $8 million."</div>
+  <div class="line insight" style="margin-top:8px">💡 5-15 秒 — 展开故事细节，制造情感共鸣<br>→ "He never earned more than $30k a year. But he invested $25 every week. For 70 years."</div>
+  <div class="line expand" style="margin-top:8px">📖 15-30 秒 — 引出书中核心观点，画面切到 GrowMe 阅读界面<br>→ "Morgan Housel's point isn't about stock picking. It's about behavior."<br>→ 1-2 个金句展示</div>
+  <div class="line cta" style="margin-top:8px">🎯 30-35 秒 — CTA<br>→ "The Psychology of Money — read the key ideas on GrowMe in 15 minutes."</div>
+</div>
+
+<h3 style="margin-top:28px">🎨 视觉制作规范（统一品牌感）</h3>
+
+<div class="grid-2">
+  <div class="card">
+    <h4>数字人部分</h4>
+    <ul style="padding-left:18px;color:var(--text-muted)">
+      <li>背景：纯黑或深灰，不要花哨</li>
+      <li>数字人位置：画面中左侧或居中</li>
+      <li>数字人尺寸：占画面 40-50%</li>
+      <li>表情：平静但专注，不要太夸张</li>
+      <li>语速：130-150 wpm（比正常对话稍快，制造信息密度感）</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>文字叠加部分</h4>
+    <ul style="padding-left:18px;color:var(--text-muted)">
+      <li>字体：Sans-serif 粗体（Inter / Montserrat）</li>
+      <li>颜色：白色 / 黄色（金句高亮）</li>
+      <li>出现时机：每句话说完后 0.3 秒浮现</li>
+      <li>位置：画面右侧或底部，不与数字人重叠</li>
+      <li>书名标签：统一格式 [Book: Title by Author]</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ============ 5. 制作 SOP ============ -->
+<h2 id="sop">⚙️ 五、制作 SOP — 从选题到成品 30 分钟一条</h2>
+
+<div class="step-flow">
+  <div class="step">
+    <div class="num">1</div>
+    <strong>选题 & 拆书</strong>
+    <p>从书单中选一本 → 挑 1 个观点 → 确定用哪个模板（A/B/C）<br><em>5 分钟</em></p>
+  </div>
+  <div class="step">
+    <div class="num">2</div>
+    <strong>写脚本</strong>
+    <p>按模板填入具体内容 → 控制在 80-120 词 → 朗读测试流畅度<br><em>8 分钟</em></p>
+  </div>
+  <div class="step">
+    <div class="num">3</div>
+    <strong>生成数字人</strong>
+    <p>HeyGen 粘贴脚本 → 选形象 → 选声音 → 生成<br><em>3 分钟操作 + 5-10 分钟等待</em></p>
+  </div>
+  <div class="step">
+    <div class="num">4</div>
+    <strong>叠加文字 & 画面</strong>
+    <p>用 CapCut / Premiere 叠加字幕 → 插入金句卡片 → 加 App 名片尾<br><em>5 分钟</em></p>
+  </div>
+  <div class="step">
+    <div class="num">5</div>
+    <strong>导出 & 发布</strong>
+    <p>导出 1080p → 命名规范 → 上传 FB Ads Manager<br><em>2 分钟</em></p>
+  </div>
+</div>
+
+<div class="highlight green" style="margin-top:20px">
+  <p><strong>⚡ 效率目标：</strong>单条素材从选题到成品 30 分钟。每天可产出 5-8 条（2-3 小时集中制作）。每周 50 条素材中，数字人讲座类可占 10-15 条。</p>
+</div>
+
+<h3>脚本写作速查表（填空即用）</h3>
+
+<div class="card">
+  <h4>模板 A 脚本填空</h4>
+  <p style="font-family:monospace;font-size:0.9em;white-space:pre-wrap;color:var(--text)">
+[钩子] "The ____________ advice you've been told is WRONG."
+[观点] "[Author] spent [X] years studying [topic]. His biggest finding? ____________."
+[论证] "Because ____________. Here's what the data shows: ____________."
+[CTA] "Read the full breakdown of [Book Title] on GrowMe."
+  </p>
+</div>
+
+<div class="card">
+  <h4>模板 B 脚本填空</h4>
+  <p style="font-family:monospace;font-size:0.9em;white-space:pre-wrap;color:var(--text)">
+[钩子] "[X] steps to [achieve result] in [timeframe]."
+[铺垫] "[Author] called this '[Concept].' Here's how it works."
+[步骤1] "Step 1: ____________"
+[步骤2] "Step 2: ____________"
+[步骤3] "Step 3: ____________"
+[CTA] "[Book Title] — full summary on GrowMe."
+  </p>
+</div>
+
+
+<!-- ============ 6. 测试计划 ============ -->
+<h2 id="testing">🧪 六、第一批测试计划</h2>
+
+<h3>6.1 测试矩阵（Week 1）</h3>
+
+<table class="comparison">
+  <tr>
+    <th>变量</th><th>版本 1</th><th>版本 2</th><th>目标</th>
+  </tr>
+  <tr>
+    <td><strong>数字人形象</strong></td>
+    <td>年轻女性（亲和力）</td>
+    <td>中年男性（权威感）</td>
+    <td>看哪个形象 CPI 更低</td>
+  </tr>
+  <tr>
+    <td><strong>语速</strong></td>
+    <td>130 wpm（正常偏快）</td>
+    <td>150 wpm（快速）</td>
+    <td>看信息密度对完播率的影响</td>
+  </tr>
+  <tr>
+    <td><strong>开场方式</strong></td>
+    <td>反常识钩子（模板 A）</td>
+    <td>承诺+框架钩子（模板 B）</td>
+    <td>验证哪种钩子在数字人场景更有效</td>
+  </tr>
+  <tr>
+    <td><strong>背景</strong></td>
+    <td>纯黑背景</td>
+    <td>柔焦书房背景</td>
+    <td>看场景感是否影响 CTR</td>
+  </tr>
+</table>
+
+<h3>6.2 具体产出计划（Week 1）</h3>
+
+<table class="comparison">
+  <tr>
+    <th>Day</th><th>产出</th><th>测试变量</th>
+  </tr>
+  <tr>
+    <td><strong>Mon</strong></td>
+    <td>Atomic Habits × 2 条 + Psychology of Money × 1 条</td>
+    <td>测试模板 A vs B vs C</td>
+  </tr>
+  <tr>
+    <td><strong>Tue</strong></td>
+    <td>Deep Work × 1 条 + How to Win Friends × 1 条 + Die With Zero × 1 条</td>
+    <td>测试不同书籍赛道的 CPI 差异</td>
+  </tr>
+  <tr>
+    <td><strong>Wed</strong></td>
+    <td>前 2 天数据表现最好的 2 条 → 各做 2 个变体</td>
+    <td>测试数字人形象 + 语速变量</td>
+  </tr>
+  <tr>
+    <td><strong>Thu</strong></td>
+    <td>The 5 Second Rule × 1 + 48 Laws of Power × 1 + Untethered Soul × 1</td>
+    <td>继续扩展书单覆盖面</td>
+  </tr>
+  <tr>
+    <td><strong>Fri</strong></td>
+    <td>当周数据分析 → 决定下周重点书 + 重点模板</td>
+    <td>复盘 + 规划 Week 2</td>
+  </tr>
+</table>
+
+<h3>6.3 判定标准</h3>
+
+<div class="grid-3">
+  <div class="card" style="border-color:rgba(166,227,161,0.3)">
+    <h4 style="color:var(--accent3)">🟢 成功信号</h4>
+    <ul style="padding-left:18px;color:var(--text-muted)">
+      <li>CPI &lt; 黑色字幕素材基准</li>
+      <li>CTR &gt; 3%</li>
+      <li>完播率 &gt; 25%</li>
+      <li>评论区有「I need this book」</li>
+    </ul>
+  </div>
+  <div class="card" style="border-color:rgba(249,226,175,0.3)">
+    <h4 style="color:var(--accent4)">🟡 观望信号</h4>
+    <ul style="padding-left:18px;color:var(--text-muted)">
+      <li>CPI 与黑色字幕持平</li>
+      <li>CTR 2-3%</li>
+      <li>有互动但转化率一般</li>
+      <li>→ 继续测试，调整钩子文案</li>
+    </ul>
+  </div>
+  <div class="card" style="border-color:rgba(243,139,168,0.3)">
+    <h4 style="color:var(--accent5)">🔴 放弃信号</h4>
+    <ul style="padding-left:18px;color:var(--text-muted)">
+      <li>CPI &gt; 黑色字幕 150%</li>
+      <li>CTR &lt; 1.5%</li>
+      <li>连续 3 条 ROAS 低于 0.3</li>
+      <li>→ 暂停，分析问题再决定</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ============ 7. DO & DON'T ============ -->
+<h2 id="tips">✅ 七、Do & Don't — 最容易踩的坑</h2>
+
+<h3>✅ DO（一定要做的）</h3>
+
+<div class="checklist-item">
+  <div class="icon do">✓</div>
+  <p><strong>数字人说话必须有「停顿感」。</strong>在 HeyGen 脚本中用换行和破折号制造自然停顿。连续输出没有呼吸感的数字人一眼就假。</p>
+</div>
+<div class="checklist-item">
+  <div class="icon do">✓</div>
+  <p><strong>文字叠加必须与语音同步。</strong>每句话说完 0.3 秒后浮现文字。如果文字先出或后出超过 1 秒，用户会出戏。</p>
+</div>
+<div class="checklist-item">
+  <div class="icon do">✓</div>
+  <p><strong>前 3 秒用纯文字钩子覆盖数字人画面。</strong>数字人看起来再真，前 3 秒用户还是在刷 Feed。一个强文字钩子覆盖在数字人画面上，可以同时抓住视觉和认知注意力。</p>
+</div>
+<div class="checklist-item">
+  <div class="icon do">✓</div>
+  <p><strong>每条素材只讲一个观点。</strong>数字人不是 TED Talk——用户在刷 Feed，注意力只有 3 秒窗口。一个观点讲透 &gt; 三个观点浅讲。</p>
+</div>
+<div class="checklist-item">
+  <div class="icon do">✓</div>
+  <p><strong>CTA 必须出现在画面上而不只是语音里。</strong>很多人刷 Feed 是不开声音的。CTA 必须同时以文字形式出现在画面底部。</p>
+</div>
+
+<h3 style="margin-top:28px">❌ DON'T（千万别做的）</h3>
+
+<div class="checklist-item">
+  <div class="icon dont">✗</div>
+  <p><strong>不要让数字人做大幅度的肢体动作。</strong>HeyGen 的默认手势有时过于夸张，看起来像 AI——选择「subtle」或「minimal」的手势模式。</p>
+</div>
+<div class="checklist-item">
+  <div class="icon dont">✗</div>
+  <p><strong>不要让数字人从头讲到尾。</strong>每 5-7 秒切换一次画面——金句卡片、书籍封面、App 界面。纯数字人讲话超过 7 秒，完播率会断崖下跌。</p>
+</div>
+<div class="checklist-item">
+  <div class="icon dont">✗</div>
+  <p><strong>不要一开始就用定制形象。</strong>先用默认形象验证内容。如果内容本身不跑量，最完美的数字人形象也是白做。</p>
+</div>
+<div class="checklist-item">
+  <div class="icon dont">✗</div>
+  <p><strong>不要读长篇大论的摘要。</strong>数字人不是 Blinkist 的替代品。你的目标不是总结整本书，而是用书中的一个观点作为钩子，把用户拉进 GrowMe。</p>
+</div>
+<div class="checklist-item">
+  <div class="icon dont">✗</div>
+  <p><strong>不要跟黑色字幕素材放在同一个 Ad Set 里跑。</strong>数字人素材的受众和转化路径可能不同。单独建 Campaign / Ad Set，确保数据归因干净。</p>
+</div>
+
+
+<!-- ============ 8. 扩展路线图 ============ -->
+<h2 id="roadmap">🗺️ 八、如果跑通了，下一步怎么扩大</h2>
+
+<div class="grid-2">
+  <div class="card">
+    <h4>Phase 1（Week 1-2）验证期</h4>
+    <ul style="padding-left:18px;color:var(--text-muted)">
+      <li>10-15 条素材，覆盖 5-8 本书</li>
+      <li>单一数字人形象，单一模板</li>
+      <li>目标：找到 2-3 条 CPI 优于基准的素材</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Phase 2（Week 3-4）放大期</h4>
+    <ul style="padding-left:18px;color:var(--text-muted)">
+      <li>每周 15-20 条，覆盖 10+ 本书</li>
+      <li>引入 2-3 个数字人形象做 A/B</li>
+      <li>成功素材立刻做 3-5 个变体</li>
+      <li>目标：跑出单条 &gt; $5k 的素材</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Phase 3（Month 2+）体系化</h4>
+    <ul style="padding-left:18px;color:var(--text-muted)">
+      <li>定制专属 GrowMe 数字人形象</li>
+      <li>建立「书 → 观点 → 脚本」内容库</li>
+      <li>数字人素材占比提到 30-40%</li>
+      <li>多语言版本复制到 T2/T3 市场</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Phase 4（Month 3+）IP 化</h4>
+    <ul style="padding-left:18px;color:var(--text-muted)">
+      <li>数字人成为 GrowMe 品牌 IP</li>
+      <li>可以出现在 App 内作为 AI 讲书人</li>
+      <li>社交媒体独立账号运营数字人 IP</li>
+      <li>跨渠道素材统一使用同一数字人</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ============ 9. 成本估算 ============ -->
+<h2 id="cost">💰 九、启动成本估算</h2>
+
+<table class="comparison">
+  <tr>
+    <th>项目</th><th>工具</th><th>月费</th><th>备注</th>
+  </tr>
+  <tr>
+    <td>数字人生成</td><td>HeyGen Creator</td><td>$29</td><td>月额度够 15-20 条 30 秒素材</td>
+  </tr>
+  <tr>
+    <td>视频剪辑</td><td>CapCut Pro</td><td>$9.99</td><td>去水印 + 高级字幕</td>
+  </tr>
+  <tr>
+    <td>BGM 版权</td><td>Epidemic Sound</td><td>$14.99</td><td>可选，前期可用免版税音乐</td>
+  </tr>
+  <tr>
+    <td>脚本写作</td><td>你 + Claude/我</td><td>$0</td><td>15 分钟/条</td>
+  </tr>
+  <tr style="font-weight:700">
+    <td>合计启动</td><td></td><td><strong>≈ $54/月</strong></td><td>≈ 20 条素材的纯工具成本</td>
+  </tr>
+</table>
+
+<div class="highlight green" style="margin-top:16px">
+  <p><strong>💡 每千次展示成本对比：</strong></p>
+  <p style="margin-top:8px">真人出镜素材：$300（拍摄） + $50（后期） = $350/条<br>
+  数字人素材：$54/月 ÷ 20条 = <strong>$2.7/条</strong><br>
+  <strong>数字人素材的单条成本仅为真人素材的 0.77%。</strong>即使只有 10% 的数字人素材达到真人素材的 CPI，ROI 也是正向的。</p>
+</div>
+
+
+<!-- ============ 10. 行动清单 ============ -->
+<h2 id="checklist">📋 十、本周即可执行的操作清单</h2>
+
+<div class="card">
+  <ol style="padding-left:20px;color:var(--text-muted);line-height:2.2">
+    <li><strong>注册 HeyGen</strong>（heyGen.com → Start Free / Creator $29）</li>
+    <li><strong>选 2 个默认数字人</strong>（一个女性 + 一个男性，选自然风格的）</li>
+    <li><strong>选 3 本书</strong>（推荐：Atomic Habits, The Psychology of Money, Deep Work）</li>
+    <li><strong>从每本书中提炼 2 个观点</strong>（用模板 A 和模板 B 各写一条脚本）</li>
+    <li><strong>生成 6 条数字人视频</strong>（约 1 小时操作 + 等待）</li>
+    <li><strong>在 CapCut 中叠加文字和 CTA</strong></li>
+    <li><strong>上传 FB Ads → 单独建 Campaign → 设定 $30/天预算 → 跑 3A 测试</strong></li>
+    <li><strong>48 小时后看数据 → 决定你是加码还是调整方向</strong></li>
+  </ol>
+</div>
+
+<div class="highlight warn" style="margin-top:20px">
+  <p><strong>⚠️ Meta 广告政策提醒：</strong></p>
+  <ul style="margin:8px 0 0 18px;color:var(--text-muted)">
+    <li>目前 Meta 不强制要求 AI 生成内容标注（与 YouTube 不同），但建议在 Ad 层面保持低调</li>
+    <li>不要在素材中用「guaranteed results」「get rich」等合规敏感词</li>
+    <li>48 Laws of Power 等有争议书籍的素材，措辞需避免鼓励操纵/欺骗行为</li>
+  </ul>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
