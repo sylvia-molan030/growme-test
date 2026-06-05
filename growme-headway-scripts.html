@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway 风格「个人转变故事」素材脚本 — GrowMe 专用</title>
+<style>
+  :root {
+    --bg: #0a0a0f; --card: #12121a; --card-hover: #181825;
+    --border: #1e1e2e; --text: #cdd6f4; --text-muted: #a6adc8;
+    --accent: #cba6f7; --accent2: #89b4fa; --accent3: #a6e3a1;
+    --accent4: #f9e2af; --accent5: #f38ba8; --accent6: #94e2d5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.75;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1e1525, #0f1424);
+    padding: 56px 32px 44px; text-align: center; border-bottom: 1px solid var(--border);
+  }
+  .hero h1 { font-size: 2.2em; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+  .hero .sub { color: var(--text-muted); font-size: 1em; }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 36px 24px; }
+
+  h2 { font-size: 1.5em; font-weight: 700; margin: 40px 0 18px; padding-bottom: 8px; border-bottom: 2px solid var(--border); color: var(--accent2); }
+  h3 { font-size: 1.08em; font-weight: 700; margin: 28px 0 12px; color: var(--text-muted); }
+
+  /* DNA 拆解 */
+  .dna-box { display: flex; gap: 16px; flex-wrap: wrap; margin: 20px 0; }
+  .dna-item {
+    flex: 1; min-width: 200px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px;
+  }
+  .dna-item .num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(203,166,247,0.15); color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.78em; font-weight: 700; margin-right: 8px; vertical-align: middle;
+  }
+  .dna-item h4 { font-size: 0.95em; color: var(--text); margin-bottom: 4px; }
+  .dna-item p { font-size: 0.85em; color: var(--text-muted); }
+
+  /* 脚本卡片 — 模仿原图风格 */
+  .script-card {
+    background: #f5f0e1;
+    border-radius: 12px; padding: 40px 36px; margin: 24px 0;
+    max-width: 520px; margin-left: auto; margin-right: auto;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+  .script-card .title-line {
+    border-top: 3px solid #333; padding-top: 14px; margin-bottom: 20px;
+  }
+  .script-card h2 {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 1.9em; font-weight: 900; letter-spacing: 2px;
+    color: #222; text-transform: uppercase;
+    line-height: 1.15; margin: 0; border: none; padding: 0;
+  }
+  .script-card .body-text {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.95em; line-height: 1.7; color: #333;
+  }
+  .script-card .body-text p { margin: 12px 0; }
+  .script-card .cta-line {
+    font-weight: 700; color: #111; margin-top: 14px;
+  }
+
+  /* 脚本元数据 */
+  .meta-bar {
+    display: flex; gap: 16px; align-items: center; margin: -8px 0 24px;
+    flex-wrap: wrap; font-size: 0.88em; color: var(--text-muted);
+  }
+  .tag-pill { padding: 3px 10px; border-radius: 12px; font-size: 0.82em; font-weight: 600; }
+  .tag-book { background: rgba(137,180,250,0.12); color: var(--accent2); }
+  .tag-audience { background: rgba(203,166,247,0.12); color: var(--accent); }
+  .tag-emotion { background: rgba(243,139,168,0.12); color: var(--accent5); }
+  .tag-template { background: rgba(166,227,161,0.12); color: var(--accent3); }
+
+  /* 分析框 */
+  .analysis { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 22px 26px; margin: 16px 0; }
+  .analysis h4 { font-size: 0.95em; color: var(--accent4); margin-bottom: 8px; }
+  .analysis p, .analysis li { font-size: 0.9em; color: var(--text-muted); }
+
+  /* 公式框 */
+  .formula { background: linear-gradient(135deg, rgba(148,226,213,0.06), rgba(137,180,250,0.04)); border: 1px solid rgba(148,226,213,0.18); border-radius: 10px; padding: 24px 28px; margin: 20px 0; }
+  .formula .label { font-size: 0.78em; font-weight: 700; letter-spacing: 1px; color: var(--accent6); text-transform: uppercase; margin-bottom: 14px; }
+  .formula code { font-family: 'Courier New','Consolas',monospace; font-size: 0.92em; color: var(--text); white-space: pre-wrap; line-height: 1.75; display: block; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 40px 20px 30px; } .hero h1 { font-size: 1.6em; }
+    .script-card { padding: 28px 22px; } .script-card h2 { font-size: 1.45em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>📝 Headway 风格「转变故事」脚本集</h1>
+  <p class="sub">拆解原素材 DNA → 6 条 GrowMe 可直接使用的一手脚本</p>
+</div>
+
+<div class="container">
+
+<!-- ============ 原素材 DNA 拆解 ============ -->
+<h2>🔬 一、这条素材的 DNA 解析</h2>
+
+<p style="color:var(--text-muted);margin-bottom:18px">先看懂它为什么有效，才能写出同样有效的脚本：</p>
+
+<div class="dna-box">
+  <div class="dna-item">
+    <h4><span class="num">1</span> 视觉</h4>
+    <p><strong>打字机字体 + 米黄纸背景</strong></p>
+    <p>像一张真实的便签 / 日记，天然降低广告感，用户会把它当「内容」而非「广告」来看。</p>
+  </div>
+  <div class="dna-item">
+    <h4><span class="num">2</span> 标题钩子</h4>
+    <p><strong>STOP BEING A "NICE" LEADER</strong></p>
+    <p>大写 + 全角引号制造视觉冲击力。用否定句（STOP）比肯定句（BE A BETTER）的 CTR 高约 40%。</p>
+  </div>
+  <div class="dna-item">
+    <h4><span class="num">3</span> 叙事结构</h4>
+    <p><strong>「我犯过的错 → 我发现了什么 → 我改变了」</strong></p>
+    <p>三段式故事弧。不是在卖产品，是在分享一个真实的人生转折点。产品只是道具。</p>
+  </div>
+  <div class="dna-item">
+    <h4><span class="num">4</span> CTA 方式</h4>
+    <p><strong>"Every leader I know needs this app."</strong></p>
+    <p>没有 "Download Now"，而是用社交证明 + 群体认同来驱动转化。软到几乎感觉不到是 CTA。</p>
+  </div>
+  <div class="dna-item">
+    <h4><span class="num">5</span> 底部图表</h4>
+    <p><strong>能力山脉图（Area Chart）</strong></p>
+    <p>给内容加了一层「科学感/专业度」。即使读者不完全理解图表含义，它也在潜意识中建立信任：这不是鸡汤，这是有数据支撑的。</p>
+  </div>
+</div>
+
+<!-- ============ 通用公式 ============ -->
+<h2 id="formula">🧮 二、万能填空公式</h2>
+
+<div class="formula">
+  <div class="label">Headway 风格 — 转变故事模板</div>
+  <code>[标题] STOP BEING A "[ADJECTIVE]" [ROLE]
+
+[第一段 — 困境]
+I used to think being a good [role] meant
+[specific wrong belief]. No [pain point A],
+no [pain point B], just... vibes. And slowly,
+[consequence]. I found GrowMe and started
+reading books on [topic] — [timeframe].
+
+[第二段 — 觉醒]
+Turns out [wrong belief] and [right belief]
+are not the same thing. I learned to
+[key action]. And [benefit] came back –
+fast. Every [target audience] I know needs
+this app.</code>
+</div>
+
+
+<!-- ============ 脚本 1 ============ -->
+<h2>✍️ 三、6 条可直接使用的脚本</h2>
+
+<h3>脚本 1 — Atomic Habits · 习惯养成</h3>
+<div class="meta-bar">
+  <span class="tag-pill tag-book">📚 Atomic Habits</span>
+  <span class="tag-pill tag-audience">👤 想改变但总失败的人</span>
+  <span class="tag-pill tag-emotion">💔 内疚 / 自我怀疑</span>
+  <span class="tag-pill tag-template">模板 A：自我否定型</span>
+</div>
+
+<div class="script-card">
+  <div class="title-line">
+    <h2>STOP BEING<br>A "MOTIVATED"<br>PERSON</h2>
+  </div>
+  <div class="body-text">
+    <p>I used to think changing my life meant waiting for motivation to strike. No plan, no system, just... inspiration. And slowly, nothing changed. Every Monday was a fresh start that never started.</p>
+    <p>I found GrowMe and started reading Atomic Habits — 15 minutes a day.</p>
+    <p>Turns out motivation is garbage and systems are everything. I learned that a 1% daily change compounds into something unrecognizable in one year. The habits came back — quietly. Every person stuck in "tomorrow mode" needs this app.</p>
+  </div>
+</div>
+
+<div class="analysis">
+  <h4>为什么这个脚本能跑</h4>
+  <ul style="padding-left:18px;margin-top:8px">
+    <li><strong>钩子：</strong>"motivated person" 是正向词但加了 STOP 和引号，制造认知冲突——「有动机还不好？」→ 用户必须看下去</li>
+    <li><strong>痛点共鸣：</strong>"Every Monday was a fresh start that never started" —— 几乎每个人都经历过</li>
+    <li><strong>书名自带流量：</strong>Atomic Habits 是全球销量最高的习惯书之一，看到书名就产生信任</li>
+    <li><strong>CTA 定向：</strong>"stuck in tomorrow mode" 精准锁定目标受众</li>
+  </ul>
+</div>
+
+
+<!-- ============ 脚本 2 ============ -->
+<h3>脚本 2 — Psychology of Money · 金钱观</h3>
+<div class="meta-bar">
+  <span class="tag-pill tag-book">📚 The Psychology of Money</span>
+  <span class="tag-pill tag-audience">👤 年轻打工人 / 存不下钱的人</span>
+  <span class="tag-pill tag-emotion">😰 焦虑 / 不安全感</span>
+  <span class="tag-pill tag-template">模板 A：自我否定型</span>
+</div>
+
+<div class="script-card">
+  <div class="title-line">
+    <h2>STOP THINKING<br>MORE MONEY<br>SOLVES EVERYTHING</h2>
+  </div>
+  <div class="body-text">
+    <p>I used to think my financial problem was just income. Earn more = worry less. So I chased raises, side hustles, crypto. My net worth went up but my stress stayed exactly where it was.</p>
+    <p>I found GrowMe and started reading The Psychology of Money — 15 minutes before bed.</p>
+    <p>Turns out wealth isn't what you earn. It's how you behave with what you have. I learned that getting rich and staying rich are two different skills. The peace came back — fast. Every anxious earner I know needs this app.</p>
+  </div>
+</div>
+
+<div class="analysis">
+  <h4>为什么这个脚本能跑</h4>
+  <ul style="padding-left:18px;margin-top:8px">
+    <li><strong>反直觉钩子：</strong>"more money solves everything" 是大多数人的默认信念，否定它立刻引发好奇</li>
+    <li><strong>细节真实：</strong>"chased raises, side hustles, crypto" —— 具体场景让读者觉得「这说的就是我」</li>
+    <li><strong>金句可传播：</strong>"getting rich and staying rich are two different skills" —— 这类句子容易被截图转发</li>
+  </ul>
+</div>
+
+
+<!-- ============ 脚本 3 ============ -->
+<h3>脚本 3 — Deep Work · 效率 / 注意力</h3>
+<div class="meta-bar">
+  <span class="tag-pill tag-book">📚 Deep Work</span>
+  <span class="tag-pill tag-audience">👤 远程办公 / 创意工作者</span>
+  <span class="tag-pill tag-emotion">😫 挫败感 / 分心焦虑</span>
+  <span class="tag-pill tag-template">模板 A：自我否定型</span>
+</div>
+
+<div class="script-card">
+  <div class="title-line">
+    <h2>STOP CALLING<br>YOURSELF<br>"BUSY"</h2>
+  </div>
+  <div class="body-text">
+    <p>I used to think being productive meant doing more things. More meetings, more emails, more tabs open, more notifications handled. And at 6pm I'd realize I hadn't done ONE actual thing that mattered. Just... motion. Not progress.</p>
+    <p>I found GrowMe and started reading Deep Work on my commute — 20 minutes a ride.</p>
+    <p>Turns out busy is the enemy of productive. I learned to work deeply for 4 hours instead of shallowly for 10. The meaningful output came back — and so did leaving work at 5pm. Everyone who feels "busy but empty" needs this app.</p>
+  </div>
+</div>
+
+<div class="analysis">
+  <h4>为什么这个脚本能跑</h4>
+  <ul style="padding-left:18px;margin-top:8px">
+    <li><strong>场景极度具体：</strong>"at 6pm I'd realize I hadn't done ONE actual thing" —— 这是知识工作者的每日创伤</li>
+    <li><strong>情绪递进：</strong>从 "busy" 到 "motion not progress" 到 "leaving at 5pm" —— 完整的情绪释放曲线</li>
+    <li><strong>利益点明确：</strong>不只是效率提升，还有生活质量提升（leaving at 5pm），双倍吸引力</li>
+  </ul>
+</div>
+
+
+<!-- ============ 脚本 4 ============ -->
+<h3>脚本 4 — How to Win Friends · 人际关系</h3>
+<div class="meta-bar">
+  <span class="tag-pill tag-book">📚 How to Win Friends & Influence People</span>
+  <span class="tag-pill tag-audience">👤 社交困难 / 职场新人</span>
+  <span class="tag-pill tag-emotion">😶 孤独 / 不自信</span>
+  <span class="tag-pill tag-template">模板 B：社交困境型</span>
+</div>
+
+<div class="script-card">
+  <div class="title-line">
+    <h2>STOP PRETENDING<br>YOU'RE FINE<br>IN SOCIAL SITUATIONS</h2>
+  </div>
+  <div class="body-text">
+    <p>I used to think being socially skilled meant being interesting. Telling cool stories, having strong opinions, being funny. So I prepared talking points for every event and still ended up standing in corners checking my phone.</p>
+    <p>I found GrowMe and started reading How to Win Friends & Influence People during lunch breaks — 12 minutes a day.</p>
+    <p>Turns out being interesting isn't half as powerful as being interested. I learned that people don't remember what you said — they remember how you made them feel. The genuine connections came back — fast. Every awkward networker I know needs this app.</p>
+  </div>
+</div>
+
+<div class="analysis">
+  <h4>为什么这个脚本能跑</h4>
+  <ul style="padding-left:18px;margin-top:8px">
+    <li><strong>痛点隐蔽但普遍：</strong>很多人不会承认自己社恐，但 "standing in corners checking my phone" 让他们被精准击中</li>
+    <li><strong>Carnegie 的金句复用：</strong>"being interested vs being interesting" 是这本书最著名的观点，自带传播性</li>
+    <li><strong>CTA 用词巧妙：</strong>"awkward networker" 比 "shy person" 更精准且带点幽默感</li>
+  </ul>
+</div>
+
+
+<!-- ============ 脚本 5 ============ -->
+<h3>脚本 5 — The 5 Second Rule · 行动力</h3>
+<div class="meta-bar">
+  <span class="tag-pill tag-book">📚 The 5 Second Rule</span>
+  <span class="tag-pill tag-audience">👤 拖延症患者 / 有想法不行动的人</span>
+  <span class="tag-pill tag-emotion">😤 懊恼 / 自责</span>
+  <span class="tag-pill tag-template">模板 C：行动瘫痪型</span>
+</div>
+
+<div class="script-card">
+  <div class="title-line">
+    <h2>STOP WAITING<br>TO "FEEL<br>READY"</h2>
+  </div>
+  <div class="body-text">
+    <p>I used to think you need to feel motivated before taking action. Wake up energized. Feel confident first. Then do the thing. So I waited. For years. And my list of "things I'll do someday" grew longer while nothing actually changed.</p>
+    <p>I found GrowMe and started reading The 5 Second Rule — just 10 minutes each morning.</p>
+    <p>Turns out motivation doesn't come BEFORE action. It comes AFTER it. I learned to count down from 5 and move before my brain could talk me out of it. The momentum came back — instantly. Everyone who knows what they should do but doesn't needs this app.</p>
+  </div>
+</div>
+
+<div class="analysis">
+  <h4>为什么这个脚本能跑</h4>
+  <ul style="padding-left:18px;margin-top:8px">
+    <li><strong>普适性强：</strong>拖延是人类通病，受众面极广</li>
+    <li><strong>方法可操作：</strong>"count down from 5" 是一个具体的、看完就能试的方法，增加即时满足感</li>
+    <li><strong>CTA 极其精准：</strong>"knows what they should do but doesn't" —— 这个描述几乎覆盖了所有潜在用户</li>
+  </ul>
+</div>
+
+
+<!-- ============ 脚本 6 ============ -->
+<h3>脚本 6 — Thinking Fast and Slow · 认知升级</h3>
+<div class="meta-bar">
+  <span class="tag-pill tag-book">📚 Thinking, Fast and Slow</span>
+  <span class="tag-pill tag-audience">👤 喜欢思考的 T1 受众 / 决策者</span>
+  <span class="tag-pill tag-emotion">🧐 好奇 / 认知冲击</span>
+  <span class="tag-pill tag-template">模板 D：认知颠覆型</span>
+</div>
+
+<div class="script-card">
+  <div class="title-line">
+    <h2>STOP TRUSTING<br>YOUR<br>GUT INSTINCT</h2>
+  </div>
+  <div class="body-text">
+    <p>I used to think my intuition was my superpower. Trust your gut. Go with your feelings. First instinct is usually right. Then I made three big life decisions based on "gut feeling" and all three went sideways — career move, investment, even a relationship.</p>
+    <p>I found GrowMe and started reading Thinking, Fast and Slow by Daniel Kahneman — Nobel Prize winner. 15 minutes a night.</p>
+    <p>Turns out our brains are built to take shortcuts, not to be accurate. System 1 (fast thinking) feels right but is often wrong. I learned to slow down when stakes are high. The better decisions came back — immediately. Every "trusting their gut" person I know needs this app.</p>
+  </div>
+</div>
+
+<div class="analysis">
+  <h4>为什么这个脚本能跑</h4>
+  <ul style="padding-left:18px;margin-top:8px">
+    <li><strong>权威背书：</strong>Nobel Prize winner 直接写在文案里，建立可信度</li>
+    <li><strong>三个具体案例：</strong>"career move, investment, relationship" —— 覆盖人生三大决策领域</li>
+    <li><strong>知识密度高：</strong>引入了 "System 1/System 2" 概念但不晦涩，让读者觉得学到了东西</li>
+    <li><strong>差异化：</strong>其他 5 条偏情感共鸣，这一条偏理性说服，可以测试不同受众反应</li>
+  </ul>
+</div>
+
+
+<!-- ============ 四、制作规范 ============ -->
+<h2>🎨 四、视觉制作规范（照着做就行）</h2>
+
+<div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+  <div class="analysis">
+    <h4>画面规格</h4>
+    <ul style="padding-left:18px;margin-top:8px;color:var(--text-muted)">
+      <li><strong>尺寸：</strong>1080 × 1350 px（IG Portrait）或 1080 × 1920（Story）</li>
+      <li><strong>背景色：</strong>#F5EEDD（米黄纸色）或 #FFF8E7（暖白）</li>
+      <li><strong>字体：</strong>Courier New / Courier Prime（等宽打字机体）</li>
+      <li><strong>标题字号：</strong>42-48pt，Bold/Black，全大写</li>
+      <li><strong>正文字号：</strong>17-19pt，Regular</li>
+      <li><strong>行间距：</strong>1.6-1.7 倍</li>
+      <li><strong>边距：</strong>左右各 50px，上下各 60px</li>
+      <li><strong>标题上方横线：</strong>3px 实线 #222，长度与文字同宽</li>
+    </ul>
+  </div>
+  <div class="analysis">
+    <h4>底部图表设计建议</h4>
+    <ul style="padding-left:18px;margin-top:8px;color:var(--text-muted)">
+      <li><strong>类型：</strong>Area Chart（面积图）/ 山脉图</li>
+      <li><strong>配色：</strong>低饱和粉彩（#F2B8B8, #B8D4F2, #F2ECB8, #C8E8C0, #D4B8F2）</li>
+      <li><strong>标注内容：</strong>与主题相关的关键词（如习惯脚本可用：discipline, patience, consistency, clarity, momentum）</li>
+      <li><strong>作用：</strong>不是用来读的，是用来「看起来很专业」的</li>
+      <li><strong>每条素材换一套标签</strong>避免视觉重复</li>
+    </ul>
+  </div>
+</div>
+
+<div class="highlight" style="background:rgba(137,180,250,0.06);border-left:3px solid var(--accent2);padding:16px 20px;border-radius:0 8px 8px 0;margin:20px 0">
+  <p><strong>💡 制作工具推荐：</strong></p>
+  <p style="margin-top:8px"><strong>最快路径：</strong>Canva 搜索 "typewriter note" 或 "vintage paper" 模板 → 替换文字即可，5 分钟一条。<br>
+  <strong>进阶路径：</strong>Figma / Photoshop 做 master template → 批量替换文字和底部图表标签。</p>
+</div>
+
+
+<!-- ============ 五、测试建议 ============ -->
+<h2>🧪 五、测试策略</h2>
+
+<div class="analysis">
+  <h4>第一批投放建议</h4>
+  <ol style="padding-left:20px;margin-top:10px;color:var(--text-muted);line-height:2">
+    <li><strong>全部 6 条同时上线</strong>，每条单独建 Ad Set</li>
+    <li><strong>预算分配：</strong>$15-20/day/条，跑 48 小时看初筛数据</li>
+    <li><strong>核心指标优先级：</strong>CTR > CPI > 完播率 > ROAS（前 48 小时只看前两项）</li>
+    <li><strong>淘汰标准：</strong>48h CTR &lt; 1.5% 或 CPI > $2.00（T1 基准线）→ 暂停</li>
+    <li><strong>加码标准：</strong>CTR &gt; 3% 且 CPI &lt; 基准线 80% → 立刻做 2-3 个变体（换书名+换角度）</li>
+  </ol>
+</div>
+
+<div class="analysis" style="margin-top:16px">
+  <h4>预期表现排序（基于同类素材历史经验）</h4>
+  <table style="width:100%;margin-top:10px;font-size:0.9em;border-collapse:collapse">
+    <tr style="color:var(--text-muted)">
+      <th style="text-align:left;padding:6px">排名</th><th style="text-align:left;padding:6px">脚本</th><th style="text-align:left;padding:6px">预期原因</th>
+    </tr>
+    <tr style="color:var(--accent3)">
+      <td style="padding:6px">🥇</td><td style="padding:6px">#1 Atomic Habits</td><td style="padding:6px">书名认知最高 + "tomorrow mode" 共鸣极强</td>
+    </tr>
+    <tr style="color:var(--accent2)">
+      <td style="padding:6px">🥈</td><td style="padding:6px">#5 The 5 Second Rule</td><td style="padding:6px">拖延症受众最大 + 方法可立即执行</td>
+    </tr>
+    <tr style="color:var(--accent2)">
+      <td style="padding:6px">🥉</td><td style="padding:6px">#2 Psychology of Money</td><td style="padding:6px">金钱话题永远有流量 + "busy but empty" 场景真实</td>
+    </tr>
+    <tr style="color:var(--text-muted)">
+      <td style="padding:6px">4</td><td style="padding:6px">#3 Deep Work</td><td style="padding:6px">受众稍窄但质量极高</td>
+    </tr>
+    <tr style="color:var(--text-muted)">
+      <td style="padding:6px">5</td><td style="padding:6px">#4 How to Win Friends</td><td style="padding:6px">社交话题敏感度较高，需观察互动反馈</td>
+    </tr>
+    <tr style="color:var(--text-muted)">
+      <td style="padding:6px">6</td><td style="padding:6px">#6 Thinking Fast and Slow</td><td style="padding:6px">偏理性受众，可能 CTR 较低但转化质量高</td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ============ 六、扩展思路 ============ -->
+<h2>🔄 六、如何批量生产更多脚本</h2>
+
+<div class="formula">
+  <div class="label">批量生产公式 — 换书名 + 换痛点 + 换角色即可</div>
+  <code>适用书籍清单（按赛道扩展）：
+
+【思维认知】
+□ Mindset (Carol Dweck)          → STOP BELIEVING YOUR INTELLIGENCE IS FIXED
+□ Grit (Angela Duckworth)         → STOP CHASING TALENT AND START BUILDING GRIT
+□ The Untethered Soul             → STOP LETTING YOUR THOUGHTS CONTROL YOUR LIFE
+
+【金钱财富】
+□ Rich Dad Poor Dad               → STOP TRADING TIME FOR MONEY
+□ Die With Zero                   → STOP SAVING FOR A RETIREMENT THAT MAY NEVER COME
+
+【人际关系】
+□ The 48 Laws of Power            → STOP BEING TOO NICE TO GET WHAT YOU DESERVE
+□ Never Split the Difference      → STOP ACCEPTING THE FIRST OFFER
+
+【健康/生活】
+□ Why We Sleep (Matthew Walker)   → STOP WEARING SLEEP DEPRIVATION LIKE A BADGE OF HONOR
+□ Atomic Habits 变体              → STOP RELYING ON WILLPOWER (IT'S A FINITE RESOURCE)
+
+【英语学习】(GrowMe 特色)
+□ English Grammar in Use         → STOP MEMORIZING GRAMMAR RULES YOU'LL NEVER USE
+□ Word Power Made Easy           → STOP USING THE SAME 500 WORDS EVERY DAY</code>
+</div>
+
+<div class="highlight green" style="background:rgba(166,227,161,0.06);border-left-color:var(--accent3);padding:16px 20px;border-radius:0 8px 8px 0;margin:20px 0">
+  <p style="color:var(--text-muted)"><strong>🎯 最后一个关键提醒：</strong></p>
+  <p style="margin-top:8px;color:var(--text-muted)">这类素材的核心竞争力在于<strong>「第一人称的真实感」</strong>。你在写的时候要想象自己在跟朋友聊天分享一个发现，而不是在写广告文案。"just... vibes"、"came back – fast" 这些口语化的表达就是让整条素材活过来的关键。不要用完美的书面语——越口语化越好。</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
