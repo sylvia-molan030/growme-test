@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowMe 本周素材文案 · 0608</title>
+<style>
+  :root {
+    --bg: #FAF9F6;
+    --card: #FFFFFF;
+    --border: #E8E5E0;
+    --accent1: #1A1A1A;
+    --accent2: #2563EB;
+    --accent3: #059669;
+    --accent4: #D97706;
+    --accent5: #7C3AED;
+    --accent6: #DC2626;
+    --tag-bg: #F3F4F6;
+    --muted: #6B7280;
+    --highlight: #FEF3C7;
+    --radius: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--accent1); line-height: 1.7; }
+  
+  .header {
+    background: linear-gradient(135deg, #1A1A1A 0%, #2C2C2C 100%);
+    color: #fff;
+    padding: 48px 32px 36px;
+    text-align: center;
+  }
+  .header h1 { font-size: 2em; font-weight: 700; letter-spacing: -0.5px; }
+  .header p { margin-top: 10px; color: rgba(255,255,255,0.65); font-size: 0.95em; }
+  .header .week-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 0.85em;
+    margin-top: 12px;
+  }
+  
+  .nav {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav a {
+    text-decoration: none;
+    color: var(--muted);
+    padding: 16px 18px;
+    font-size: 0.88em;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav a:hover { color: var(--accent1); }
+  
+  .main { max-width: 980px; margin: 0 auto; padding: 40px 24px 80px; }
+  
+  .section {
+    margin-bottom: 64px;
+    scroll-margin-top: 70px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-number {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.1em;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .section-header h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+  }
+  .section-subtitle {
+    font-size: 0.88em;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-weight: 700;
+    font-size: 1.0em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.78em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .tag.hot { background: #FEF2F2; color: #DC2626; }
+  .tag.new { background: #ECFDF5; color: #059669; }
+  .tag.ww { background: #EFF6FF; color: #2563EB; }
+  .tag.t1 { background: #F5F3FF; color: #7C3AED; }
+  
+  /* 脚本展示 */
+  .script-block {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  .script-line {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 8px;
+    font-size: 0.92em;
+  }
+  .script-time {
+    color: var(--muted);
+    font-size: 0.82em;
+    font-family: 'Courier New', monospace;
+    min-width: 60px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .script-text {
+    line-height: 1.6;
+  }
+  .script-text strong { color: var(--accent2); }
+  .script-text .caption {
+    display: inline-block;
+    background: #1A1A1A;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95em;
+    letter-spacing: 0.3px;
+  }
+  .script-text .caption.highlight { background: #FBBF24; color: #1A1A1A; }
+  
+  .tip-box {
+    background: var(--highlight);
+    border-left: 4px solid #F59E0B;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9em;
+    margin-top: 14px;
+  }
+  .tip-box strong { color: #92400E; }
+  
+  .visual-spec {
+    background: #F9FAFB;
+    border: 1px dashed #D1D5DB;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 0.88em;
+    color: #374151;
+  }
+  .visual-spec h4 {
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .spec-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+    align-items: center;
+  }
+  .spec-key { font-weight: 600; min-width: 80px; color: #111; }
+  .spec-val { color: #374151; }
+  .color-dot {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    border: 1px solid #E5E7EB;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+  
+  .scripts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  @media (max-width: 700px) {
+    .scripts-grid { grid-template-columns: 1fr; }
+  }
+  
+  /* 黑色字幕模拟 */
+  .black-caption-preview {
+    background: #000;
+    border-radius: 10px;
+    padding: 24px 20px;
+    text-align: center;
+    font-family: 'Arial Black', 'Helvetica Neue', sans-serif;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 900;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    margin-top: 16px;
+  }
+  .black-caption-preview .hl { color: #FBBF24; }
+  
+  /* 牛皮纸预览 */
+  .kraft-preview {
+    background: #F5EEDD;
+    border-radius: 10px;
+    padding: 24px 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95em;
+    line-height: 1.8;
+    margin-top: 16px;
+    color: #2C1810;
+  }
+  .kraft-preview .title { font-size: 1.15em; font-weight: 900; letter-spacing: 0.5px; margin-bottom: 12px; }
+  
+  /* 数字人 */
+  .avatar-preview {
+    background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%);
+    border-radius: 10px;
+    padding: 24px 22px;
+    color: #E0E7FF;
+    margin-top: 16px;
+    font-size: 0.92em;
+    line-height: 1.7;
+  }
+  .avatar-preview .over-title {
+    font-size: 1.1em;
+    font-weight: 800;
+    color: #FBBF24;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  
+  /* 分割线 */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 20px 0;
+  }
+  
+  /* P0/P1标签 */
+  .priority {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .priority.p0 { background: #FEE2E2; color: #991B1B; }
+  .priority.p1 { background: #FEF3C7; color: #92400E; }
+  .priority.p2 { background: #F3F4F6; color: #374151; }
+  
+  .note { font-size: 0.86em; color: var(--muted); margin-top: 10px; }
+  
+  /* 使用建议汇总 */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin-top: 16px;
+  }
+  .summary-table th {
+    background: #F3F4F6;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid var(--border);
+  }
+  .summary-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .summary-table tr:last-child td { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📋 本周素材文案 & 风格指南</h1>
+  <p>五大测试方向 · 每方向 2-3 条完整脚本</p>
+  <div class="week-badge">Week 0608 · GrowMe T1 + WW</div>
+</div>
+
+<nav class="nav">
+  <a href="#ugc">① 社交证明 UGC</a>
+  <a href="#mood">② 情绪/氛围</a>
+  <a href="#interactive">③ 互动/参与</a>
+  <a href="#black">④ 黑色字幕升级</a>
+  <a href="#avatar">⑤ AI 数字人</a>
+  <a href="#summary">📊 汇总建议</a>
+</nav>
+
+<div class="main">
+
+<!-- ================================================================ -->
+<!-- SECTION 1: 社交证明 UGC -->
+<!-- ================================================================ -->
+<section class="section" id="ugc">
+  <div class="section-header">
+    <div class="section-number" style="background:#2563EB;">1</div>
+    <div>
+      <h2>社交证明 / UGC 型素材</h2>
+      <div class="section-subtitle">核心逻辑：别人的推荐 > 品牌自吹 · 降低决策门槛 · 唤起从众心理</div>
+    </div>
+  </div>
+
+  <!-- 策略说明 -->
+  <div class="card">
+    <div class="card-title">🎯 核心策略</div>
+    <p style="font-size:0.93em;">UGC 素材最大的价值是<strong>消除广告感</strong>。用户相信「像他们一样的人」说的话，远超品牌宣传。关键是内容要真实、具体、有细节——笼统的「这个 App 很好用」没用，但「我连续 31 天，从 0 读完了 9 本书」就有说服力。</p>
+    <div class="tip-box">
+      <strong>制作建议：</strong>如果没有真实用户视频，可以用 <strong>文字截图模拟</strong>（类似评论区截图样式）+ 真实感配音 + 打字声音效，比直接配音更有可信度。
+    </div>
+  </div>
+
+  <!-- 脚本 1 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 UGC-A</span>
+      <span class="tag hot">推荐首测</span>
+      <span class="tag ww">WW</span>
+      <span class="priority p0">P0</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">形式：评论截图模拟 · 时长：25-30s · 书目：Atomic Habits</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:04</span>
+        <span class="script-text">
+          <span class="caption">📱 Comment in GrowMe</span><br>
+          屏幕出现一条「评论截图」弹出动画 — 头像 + 用户名（John M.）+ 五星 + 评论内容弹入
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:04–0:12</span>
+        <span class="script-text">
+          <strong>评论文案（填满屏幕）：</strong><br>
+          <span class="caption">★★★★★</span><br>
+          "I read 1 book per year for 20 years.<br>
+          Then I started using GrowMe.<br>
+          <strong>12 books in 90 days.</strong><br>
+          And I actually remember what I read."
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:12–0:18</span>
+        <span class="script-text">
+          第二条评论「滑入」— 不同头像，名字 Sarah K.<br>
+          "Every chapter summary takes 8 minutes. I do it on my commute.<br>
+          <strong>My team thinks I've read everything this year.</strong> I kind of have."
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:18–0:25</span>
+        <span class="script-text">
+          第三条评论入场（或切换到 App 界面）<br>
+          "I used to buy books and never open them.<br>
+          Now I finish one every week on my lunch break."<br>
+          底部品牌标识淡入
+        </span>
+      </div>
+    </div>
+
+    <div class="visual-spec">
+      <h4>视觉规范</h4>
+      <div class="spec-row"><span class="spec-key">背景色</span><span class="spec-val"><span class="color-dot" style="background:#F8FAFC;"></span>#F8FAFC（App 界面白）或 #1C1C1E（夜间模式）</span></div>
+      <div class="spec-row"><span class="spec-key">评论卡片</span><span class="spec-val">圆角 12px、轻阴影、头像圆形、五星金色 #F59E0B</span></div>
+      <div class="spec-row"><span class="spec-key">动画</span><span class="spec-val">从右下角弹入，0.3s ease-out；每条停留 3-4s 再淡出</span></div>
+      <div class="spec-row"><span class="spec-key">字体</span><span class="spec-val">SF Pro / Inter，正文 16px，加粗关键数字</span></div>
+      <div class="spec-row"><span class="spec-key">配乐</span><span class="spec-val">轻松温暖的钢琴 lo-fi，音量低于对白 -12dB</span></div>
+    </div>
+    <p class="note">💡 关键数字加粗加色处理（如「12 books in 90 days」加黄色高亮），这是视觉焦点，决定 Thumbstop</p>
+  </div>
+
+  <!-- 脚本 2 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 UGC-B</span>
+      <span class="tag t1">T1</span>
+      <span class="priority p1">P1</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">形式：真人口播 + 屏幕录像 · 时长：20-25s · 风格：Casual vlog 感</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:03</span>
+        <span class="script-text">
+          <span class="caption">口播开场</span>（随意坐姿，不对镜头说话，像自言自语）<br>
+          "Okay so I just finished my <strong>31-day reading streak</strong> and I need to talk about it—"
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:03–0:12</span>
+        <span class="script-text">
+          切至手机屏幕录制（GrowMe App 里的 streak 界面）<br>
+          "I've never done this before. I've tried like five reading apps. <br>
+          The thing is — this one sends me a 7-minute chapter every morning. <br>
+          <strong>Seven minutes.</strong> I can do seven minutes."
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:12–0:20</span>
+        <span class="script-text">
+          回到人物镜头<br>
+          "I've read more books in the last month than in the last three years combined.<br>
+          And the wild part? <strong>I actually remember the ideas.</strong>"
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:20–0:25</span>
+        <span class="script-text">
+          App 下载页淡入，无 VO，只有背景音乐
+        </span>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>制作捷径：</strong>没有真人也可以用 HeyGen 数字人做「随意口播」风格，把脚本输入，选一个「坐在书桌前随意聊天」场景，与上面 AI 数字人讲座方向形成对比测试。
+    </div>
+  </div>
+
+  <!-- 脚本 3 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 UGC-C</span>
+      <span class="tag ww">WW</span>
+      <span class="priority p1">P1</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">形式：「数字 + 对话截图」混排 · 时长：20s · 书目：不绑定书目</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:04</span>
+        <span class="script-text">
+          黑底大字弹出：<br>
+          <span class="caption">People who read 20+ books a year have 1 thing in common.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:04–0:10</span>
+        <span class="script-text">
+          出现「真实对话截图」模拟 — 两个用户在聊天：<br>
+          A: "How do you read so much?"<br>
+          B: "I don't sit down and read. I do 8-min summaries every morning."<br>
+          A: "What app?"<br>
+          B: "GrowMe. Try the free trial."
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:10–0:18</span>
+        <span class="script-text">
+          转场至 App 界面截图 + 数字统计页（用户阅读数据）<br>
+          字幕叠加：<span class="caption">2.3M readers. 47 languages.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:18–0:20</span>
+        <span class="script-text">
+          品牌收尾，CTA：「Start your 7-day free trial」
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- SECTION 2: 情绪/氛围型 -->
+<!-- ================================================================ -->
+<section class="section" id="mood">
+  <div class="section-header">
+    <div class="section-number" style="background:#059669;">2</div>
+    <div>
+      <h2>情绪 / 氛围型素材</h2>
+      <div class="section-subtitle">核心逻辑：触发情感共鸣 → 让用户感到「这说的就是我」→ 引发分享欲和订阅欲</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 核心策略</div>
+    <p style="font-size:0.93em;">这类素材<strong>不卖功能，卖感受</strong>。画面要干净唯美，文字要诗意克制，音乐是灵魂。目标是让用户在刷到的那 3 秒停下来，不是因为有用，而是因为「美」或「对」。</p>
+    <p style="font-size:0.93em; margin-top:10px;">适合用于 <strong>再营销受众</strong>（已经看过功能型素材的用户）或者周末/深夜时段投放。</p>
+  </div>
+
+  <!-- 脚本 1 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 MOOD-A</span>
+      <span class="tag hot">推荐首测</span>
+      <span class="tag t1">T1</span>
+      <span class="priority p0">P0</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">形式：文字 + 氛围视频（咖啡厅 / 清晨窗边）· 时长：20s · 主题：慢下来的读书时光</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">画面</span>
+        <span class="script-text">
+          清晨光线从窗户斜射进来，一杯咖啡，旁边是翻开的书（B-roll 氛围素材，无人）。手机放在桌边，GrowMe 界面开着。
+        </span>
+      </div>
+      <hr class="divider">
+      <div class="script-line">
+        <span class="script-time">0:00–0:05</span>
+        <span class="script-text">
+          文字逐行淡入（白色，细体，居中）：<br>
+          <em>"You don't need 3 hours to grow."</em>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:05–0:10</span>
+        <span class="script-text">
+          <em>"You need 8 minutes."</em><br>
+          （停顿，让用户反应）
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:10–0:16</span>
+        <span class="script-text">
+          <em>"Every morning. One idea. One book. One step forward."</em>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:16–0:20</span>
+        <span class="script-text">
+          GrowMe logo 淡入，无 CTA 文字（让品牌跟氛围融合，不硬销）
+        </span>
+      </div>
+    </div>
+
+    <div class="visual-spec">
+      <h4>视觉规范</h4>
+      <div class="spec-row"><span class="spec-key">画面基调</span><span class="spec-val">暖黄色调，低饱和度，胶片感（+轻微颗粒感）</span></div>
+      <div class="spec-row"><span class="spec-key">字体</span><span class="spec-val">细体 serif（如 Playfair Display Light / Cormorant Garamond）白色或米白 #FAF8F5</span></div>
+      <div class="spec-row"><span class="spec-key">音乐</span><span class="spec-val">轻柔钢琴 + 自然环境音（鸟叫/咖啡机声），无人声，情绪：平静而向上</span></div>
+      <div class="spec-row"><span class="spec-key">字幕动画</span><span class="spec-val">逐字淡入，间隔 0.8s，每行停留 2s，不要打字机效果（太快，破坏氛围）</span></div>
+      <div class="spec-row"><span class="spec-key">素材来源</span><span class="spec-val">Pexels / Unsplash 搜索 "morning coffee reading" "cozy reading" 免费使用</span></div>
+    </div>
+  </div>
+
+  <!-- 脚本 2 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 MOOD-B</span>
+      <span class="tag ww">WW</span>
+      <span class="priority p1">P1</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">形式：成长焦虑情绪 → 解放感转折 · 时长：25s · 纯文字 + 抽象动效</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:06</span>
+        <span class="script-text">
+          灰色背景，文字密集弹出（营造焦虑感，字体杂乱方向）：<br>
+          <span class="caption">「57 books on my reading list」</span><br>
+          <span class="caption">「haven't opened one in months」</span><br>
+          <span class="caption">「people keep recommending books I'll never read」</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:06–0:09</span>
+        <span class="script-text">
+          画面变暗，所有文字消散，一段沉默（1.5s 空白）
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:09–0:17</span>
+        <span class="script-text">
+          转场至干净米白背景，单行居中，serif 细体，逐字出现：<br>
+          <em>"What if reading took 8 minutes?"</em>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:17–0:22</span>
+        <span class="script-text">
+          <em>"One idea. Every morning. At your own pace."</em>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:22–0:25</span>
+        <span class="script-text">
+          GrowMe App 界面截图（书单丰富、进度满满）淡入，底部轻描品牌
+        </span>
+      </div>
+    </div>
+
+    <p class="note">🎯 核心心理触点：先放大痛苦（读不完的书单焦虑），再用「8分钟」作为解药。这是情绪类最标准的弧线。</p>
+  </div>
+
+  <!-- 脚本 3 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 MOOD-C</span>
+      <span class="tag new">夜间投放</span>
+      <span class="tag ww">WW</span>
+      <span class="priority p2">P2</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">形式：深夜氛围 · 时长：18s · 目标：触发睡前浏览场景的用户</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:18</span>
+        <span class="script-text">
+          深色背景，满天星空（或床头灯微光），文字逐行缓慢出现：<br><br>
+          <em>"11PM."</em><br>
+          <em>"Still on your phone."</em><br>
+          <em>"What if you spent the next 8 minutes</em><br>
+          <em>finishing a book chapter instead?"</em><br><br>
+          GrowMe 图标 + 「Free Trial」
+        </span>
+      </div>
+    </div>
+    <div class="tip-box">
+      <strong>投放建议：</strong>这条素材设置投放时段 21:00–02:00，专门捕捉「深夜刷手机、有轻微自责感」的用户群体。
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- SECTION 3: 互动/参与型 -->
+<!-- ================================================================ -->
+<section class="section" id="interactive">
+  <div class="section-header">
+    <div class="section-number" style="background:#D97706;">3</div>
+    <div>
+      <h2>互动 / 参与型素材</h2>
+      <div class="section-subtitle">核心逻辑：引发评论 → 算法推流 → 降低 CPM · 用问题/挑战/投票制造参与感</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 核心策略</div>
+    <p style="font-size:0.93em;">互动型素材的 KPI 不是 CTR，而是<strong>评论率和分享率</strong>。FB 算法把这两个指标权重拉高——一条评论数 50+ 的素材，CPM 可以比普通素材低 30-40%。方法是在素材里直接提问，让用户忍不住回答。</p>
+  </div>
+
+  <!-- 脚本 1 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 INT-A「书单测试」</span>
+      <span class="tag hot">推荐首测</span>
+      <span class="tag ww">WW</span>
+      <span class="priority p0">P0</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">形式：黑底文字 + 投票感 · 时长：20s · 评论引导：书名</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:05</span>
+        <span class="script-text">
+          <span class="caption">EVERYONE says you should read these 3 books.</span><br>
+          Have you actually read them?
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:05–0:13</span>
+        <span class="script-text">
+          三本书名逐一出现，每本旁边有「✅ Read it」/「📚 On my list」/「😅 Nope」的选项<br>
+          1. <strong>Atomic Habits</strong> — James Clear<br>
+          2. <strong>The Psychology of Money</strong> — Morgan Housel<br>
+          3. <strong>Thinking, Fast and Slow</strong> — Kahneman
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:13–0:18</span>
+        <span class="script-text">
+          大字出现：<span class="caption">Drop your score in the comments 👇</span><br>
+          （如：「0/3 📚 still on the list」）
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:18–0:20</span>
+        <span class="script-text">
+          副文字：「Read the key ideas from all 3 in GrowMe. 8 mins each.」+ 品牌尾帧
+        </span>
+      </div>
+    </div>
+
+    <p class="note">💬 <strong>为什么能拿到评论：</strong>「投票/打分」类问题是互联网评论率最高的格式。用户报分数如写「2/3, can't get through Kahneman」几乎是本能反应。</p>
+  </div>
+
+  <!-- 脚本 2 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 INT-B「观点投票」</span>
+      <span class="tag t1">T1</span>
+      <span class="priority p1">P1</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">形式：争议性问题 · 时长：18s · 目的：制造阵营对立，引爆评论区</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:05</span>
+        <span class="script-text">
+          <span class="caption" style="background:#DC2626;">Controversial opinion:</span><br>
+          <span class="caption" style="font-size:1.05em;">Reading book summaries is MORE valuable than reading full books.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:05–0:12</span>
+        <span class="script-text">
+          两列对比出现（屏幕左右分割）：<br>
+          <strong>AGREE ✅</strong> — You get 20x more ideas in the same time<br>
+          <strong>DISAGREE ❌</strong> — You miss the depth and context<br>
+          <br>
+          大字：<span class="caption">WHICH SIDE ARE YOU ON?</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:12–0:18</span>
+        <span class="script-text">
+          「Comment your take 👇」<br>
+          品牌出现，小字：「We built GrowMe for Team Agree.」
+        </span>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>注意：</strong>这类争议型素材评论量会很高，要准备好内容审核——会有人发长评争论。这是好事，算法喜欢高互动，但如果评论负面占比高要及时关掉。
+    </div>
+  </div>
+
+  <!-- 脚本 3 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 INT-C「完成挑战」</span>
+      <span class="tag ww">WW</span>
+      <span class="priority p1">P1</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">形式：挑战发起 · 时长：22s · 借力「21天读书挑战」热度</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:04</span>
+        <span class="script-text">
+          <span class="caption">I just completed the 21-day reading challenge.</span><br>
+          <span class="caption" style="background:#059669;">Here's what I finished 👇</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:04–0:14</span>
+        <span class="script-text">
+          快速滚动出现书名列表（3-4 本），旁边有 GrowMe 进度标：<br>
+          ✅ Atomic Habits · 3 days<br>
+          ✅ The Subtle Art · 4 days<br>
+          ✅ Deep Work · 5 days<br>
+          ✅ Sapiens · 9 days
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:14–0:20</span>
+        <span class="script-text">
+          <span class="caption">Who wants to join the next 21-day challenge?</span><br>
+          Comment「📚」and I'll DM you the list
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:20–0:22</span>
+        <span class="script-text">品牌尾帧，GrowMe 界面展示</span>
+      </div>
+    </div>
+    <p class="note">💡「Comment 📚 and I'll DM you」是 FB 互动率最高的经典格式，即使 DM 不可行，评论量也会飙升。</p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- SECTION 4: 黑色字幕升级版 -->
+<!-- ================================================================ -->
+<section class="section" id="black">
+  <div class="section-header">
+    <div class="section-number" style="background:#1A1A1A;">4</div>
+    <div>
+      <h2>黑色字幕系列升级</h2>
+      <div class="section-subtitle">在已验证的 ROAS 2.0+ 基础上提升——更强钩子 · 新书目 · 新赛道</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 升级策略</div>
+    <p style="font-size:0.93em;">黑色字幕系列是目前验证过的最稳定公式。「升级」不是改变风格，而是：<br>①  <strong>更强的钩子变体</strong>（原来的「激励型」→ 加入「认知颠覆型」）<br>② <strong>扩展到新书目</strong>（沟通能力方向 + 财富思维方向）<br>③ <strong>尝试双语混排</strong>（为 T2/T3 市场预热）</p>
+  </div>
+
+  <!-- 脚本 1 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 BLACK-A「认知颠覆型钩子」</span>
+      <span class="tag hot">P0 首测</span>
+      <span class="tag t1">T1</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">书目：Poor Charlie's Almanack · 时长：35s · 主题：颠覆「努力」认知</p>
+
+    <div class="black-caption-preview">
+      The most successful people<br>
+      don't work harder than you.<br>
+      <span class="hl">They think differently than you.</span>
+    </div>
+
+    <div class="script-block" style="margin-top:16px;">
+      <div class="script-line">
+        <span class="script-time">0:00–0:06</span>
+        <span class="script-text"><span class="caption">The most successful people don't work harder than you.</span><br>
+        <span class="caption highlight">They think differently than you.</span><br>
+        （黑底，第一行白字，第二行黄字高亮）</span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:06–0:12</span>
+        <span class="script-text">
+          <span class="caption">Charlie Munger read 500+ pages a day for decades.</span><br>
+          <span class="caption">Not to become smarter.</span><br>
+          <span class="caption highlight">To collect mental models.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:12–0:20</span>
+        <span class="script-text">
+          <span class="caption">Mental models = the tools your brain uses</span><br>
+          <span class="caption">to solve problems, spot opportunities,</span><br>
+          <span class="caption highlight">and avoid being wrong.</span><br>
+          （停顿 0.5s）
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:20–0:28</span>
+        <span class="script-text">
+          <span class="caption">He had a checklist of 100 models.</span><br>
+          <span class="caption">Inversion. Circle of Competence. Lollapalooza Effect.</span><br>
+          <span class="caption highlight">You can learn them all in 8 minutes.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:28–0:35</span>
+        <span class="script-text">
+          <span class="caption">GrowMe summarized Poor Charlie's Almanack for you.</span><br>
+          <span class="caption">8 minutes. Free this week.</span><br>
+          品牌尾帧
+        </span>
+      </div>
+    </div>
+
+    <div class="visual-spec">
+      <h4>黑色字幕视觉规范（沿用已验证参数）</h4>
+      <div class="spec-row"><span class="spec-key">背景</span><span class="spec-val"><span class="color-dot" style="background:#000;border-color:#555;"></span>#000000 纯黑</span></div>
+      <div class="spec-row"><span class="spec-key">主字色</span><span class="spec-val"><span class="color-dot" style="background:#fff;"></span>#FFFFFF 白色，Arial Black / Impact</span></div>
+      <div class="spec-row"><span class="spec-key">高亮色</span><span class="spec-val"><span class="color-dot" style="background:#FBBF24;"></span>#FBBF24 黄金色，用于关键概念词</span></div>
+      <div class="spec-row"><span class="spec-key">字号</span><span class="spec-val">主字 52-58px（9:16竖版），高亮字放大至 62px</span></div>
+      <div class="spec-row"><span class="spec-key">节奏</span><span class="spec-val">每屏停留 2-3s，字幕出现用「快速弹入」而非淡入（节奏感更强）</span></div>
+      <div class="spec-row"><span class="spec-key">配乐</span><span class="spec-val">低沉节奏感 beat，带轻微张力感（情绪：思考 / 紧迫感）</span></div>
+    </div>
+  </div>
+
+  <!-- 脚本 2 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 BLACK-B「沟通能力方向」</span>
+      <span class="tag new">新书目</span>
+      <span class="tag ww">WW</span>
+      <span class="priority p0">P0</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">书目：How to Win Friends & Influence People · 时长：30s</p>
+
+    <div class="black-caption-preview">
+      Most people think charisma<br>
+      is something you're born with.<br>
+      <span class="hl">Dale Carnegie proved it's a skill.</span>
+    </div>
+
+    <div class="script-block" style="margin-top:16px;">
+      <div class="script-line">
+        <span class="script-time">0:00–0:05</span>
+        <span class="script-text">
+          <span class="caption">Most people think charisma is something you're born with.</span><br>
+          <span class="caption highlight">Dale Carnegie proved it's a skill.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:05–0:13</span>
+        <span class="script-text">
+          <span class="caption">His 6-word rule for every conversation:</span><br>
+          <span class="caption highlight">"Make the other person feel important."</span><br>
+          <span class="caption">Not with compliments. With genuine interest.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:13–0:22</span>
+        <span class="script-text">
+          <span class="caption">Most people listen to reply.</span><br>
+          <span class="caption">Top communicators listen to understand.</span><br>
+          <span class="caption highlight">The difference shows up in every negotiation,</span><br>
+          <span class="caption highlight">every pitch, every relationship.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:22–0:30</span>
+        <span class="script-text">
+          <span class="caption">Carnegie's full framework: 8 minutes in GrowMe.</span><br>
+          <span class="caption highlight">Free trial. No commitment.</span><br>
+          品牌尾帧
+        </span>
+      </div>
+    </div>
+    <p class="note">📊 依据：沟通能力方向在 0601 周首测 WW CPI $0.82，数据正面，值得用黑色字幕公式快速扩大测试量。</p>
+  </div>
+
+  <!-- 脚本 3 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 BLACK-C「Read Differently 升级版」</span>
+      <span class="tag t1">T1</span>
+      <span class="priority p1">P1</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">基于上周验证的钩子，做高强度对比版本 · 时长：30s</p>
+
+    <div class="black-caption-preview">
+      You've been reading wrong<br>
+      your entire life.<br>
+      <span class="hl">Here's what the top 1% do differently.</span>
+    </div>
+
+    <div class="script-block" style="margin-top:16px;">
+      <div class="script-line">
+        <span class="script-time">0:00–0:05</span>
+        <span class="script-text">
+          <span class="caption">You've been reading wrong your entire life.</span><br>
+          <span class="caption highlight">Here's what the top 1% do differently.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:05–0:12</span>
+        <span class="script-text">
+          <span class="caption">Average readers: read word by word.</span><br>
+          <span class="caption">Result: forget 90% within a week.</span><br>
+          <span class="caption highlight">Top readers: extract the core idea. Build on it.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:12–0:20</span>
+        <span class="script-text">
+          <span class="caption">Buffett doesn't read for information.</span><br>
+          <span class="caption highlight">He reads to update his mental model of the world.</span><br>
+          <span class="caption">1 chapter. 1 update. 500x compounding over 60 years.</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:20–0:30</span>
+        <span class="script-text">
+          <span class="caption">GrowMe does this for you.</span><br>
+          <span class="caption highlight">8 minutes. The right ideas. Already extracted.</span><br>
+          品牌收尾
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- SECTION 5: AI 数字人讲座 -->
+<!-- ================================================================ -->
+<section class="section" id="avatar">
+  <div class="section-header">
+    <div class="section-number" style="background:#7C3AED;">5</div>
+    <div>
+      <h2>AI 数字人讲座 / 拆书</h2>
+      <div class="section-subtitle">新方向首批 · 验证内容 > 验证形式 · 工具：HeyGen Creator ($29/月)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 本周重点：内容先行，形式后打磨</div>
+    <p style="font-size:0.93em;">这周数字人素材的核心目标是<strong>验证「讲座感内容」在 FB 能不能跑通</strong>，不是验证哪个数字人长得好看。所以先用简单的站立数字人 + 白板背景快速出内容，等拿到数据信号再升级。</p>
+    <p style="font-size:0.93em; margin-top:8px;">3 条素材，覆盖 3 种不同的讲解风格，对比哪种受众接受度更高。</p>
+  </div>
+
+  <!-- 脚本 1 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 AVA-A「反常识颠覆型」</span>
+      <span class="tag hot">推荐首测</span>
+      <span class="tag t1">T1</span>
+      <span class="priority p0">P0</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">书目：The Psychology of Money · 时长：40-45s · 讲解风格：站立，手势自然，直视镜头</p>
+
+    <div class="avatar-preview">
+      <div class="over-title">📌 [文字叠加钩子 0-3s] — 大字覆盖数字人画面</div>
+      "WHY EARNING MORE MONEY<br>WON'T MAKE YOU RICH"
+    </div>
+
+    <div class="script-block" style="margin-top:16px;">
+      <div class="script-line">
+        <span class="script-time">0:00–0:03</span>
+        <span class="script-text">
+          <strong>画面顶部大字叠加（双重注意力捕获）：</strong><br>
+          <span class="caption">WHY EARNING MORE MONEY WON'T MAKE YOU RICH</span><br>
+          数字人同步开口说：「This will change how you think about money.」
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:03–0:15</span>
+        <span class="script-text">
+          「Morgan Housel spent 20 years studying the wealthiest people in America.<br>
+          His conclusion shocked everyone—<br>
+          <strong>The biggest predictor of wealth isn't income. It's behavior.</strong><br>
+          Specifically: your ability to not spend money you could spend.」<br>
+          （右侧或白板上出现文字标注：<em>"Behavior > Income"</em>）
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:15–0:28</span>
+        <span class="script-text">
+          「Here's the paradox he found:<br>
+          The doctor earning $300k a year, spending $280k — has LESS financial security<br>
+          than the teacher earning $60k, saving $20k for 30 years.<br>
+          <strong>Compound interest doesn't care about your salary. It cares about your time.</strong>」
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:28–0:38</span>
+        <span class="script-text">
+          「The book is called The Psychology of Money.<br>
+          I read the full summary on GrowMe. Took me 8 minutes.<br>
+          <strong>It's the most important financial book I've read this year.</strong>」<br>
+          手势指向屏幕一侧 → App 界面出现
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:38–0:43</span>
+        <span class="script-text">
+          「Link in bio. Free trial. Read it today.」<br>
+          品牌尾帧
+        </span>
+      </div>
+    </div>
+
+    <div class="visual-spec">
+      <h4>AI 数字人制作规范（HeyGen）</h4>
+      <div class="spec-row"><span class="spec-key">背景</span><span class="spec-val">白色或淡灰渐变，简洁书架虚化 —— 不要过度设计，内容是主角</span></div>
+      <div class="spec-row"><span class="spec-key">字幕叠加</span><span class="spec-val">前 3s 覆盖大字（Arial Black / Impact，黑底白字或黄底黑字），后续正常字幕</span></div>
+      <div class="spec-row"><span class="spec-key">数字人</span><span class="spec-val">HeyGen 默认英文男性/女性形象均可，着装：casual but put-together（不要西装，也不要睡衣）</span></div>
+      <div class="spec-row"><span class="spec-key">B-roll 插入</span><span class="spec-val">在关键概念处（如「compound interest」）切入 3s 的相关图表/数字动画，提升信息密度</span></div>
+      <div class="spec-row"><span class="spec-key">字体（字幕）</span><span class="spec-val">CapCut 自动字幕，加粗，关键词单独高亮黄色，大小 45-50px</span></div>
+      <div class="spec-row"><span class="spec-key">时长</span><span class="spec-val">40-50s 最佳，不超过 60s（FB 前 15s 是关键，30s 以后完播率陡降）</span></div>
+    </div>
+  </div>
+
+  <!-- 脚本 2 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 AVA-B「框架工具型」</span>
+      <span class="tag ww">WW</span>
+      <span class="priority p1">P1</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">书目：Atomic Habits · 时长：35s · 风格：用 3 个步骤讲清一个核心模型</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:03</span>
+        <span class="script-text">
+          叠加大字：<span class="caption">THE 4-STEP HABIT LOOP NOBODY TALKS ABOUT</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:03–0:08</span>
+        <span class="script-text">「James Clear spent years researching why habits stick and why they don't.<br>
+        He found 4 laws. Miss one — the habit dies.」</span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:08–0:25</span>
+        <span class="script-text">
+          逐条出现（右侧白板 or 字幕）：<br>
+          「<strong>Law 1: Make it obvious.</strong> Design your environment.」<br>
+          「<strong>Law 2: Make it attractive.</strong> Stack it with something you love.」<br>
+          「<strong>Law 3: Make it easy.</strong> Start with 2 minutes.」<br>
+          「<strong>Law 4: Make it satisfying.</strong> Track your streak.」
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:25–0:35</span>
+        <span class="script-text">「The full breakdown is in GrowMe. 8 minutes. It's free this week.<br>
+        This framework will change every habit you try to build.」<br>
+        App 界面出现，品牌收尾</span>
+      </div>
+    </div>
+    <p class="note">💡 框架型内容比故事型更适合「List + Checklist」视觉设计，做右侧弹出卡片效果，信息密度更高，工具感更强。</p>
+  </div>
+
+  <!-- 脚本 3 -->
+  <div class="card">
+    <div class="card-title">
+      <span>脚本 AVA-C「故事切入型」</span>
+      <span class="tag t1">T1</span>
+      <span class="priority p2">P2</span>
+    </div>
+    <p style="font-size:0.9em; color:var(--muted);">书目：Deep Work · 时长：40s · 风格：从一个真实故事开场，引出核心观点</p>
+
+    <div class="script-block">
+      <div class="script-line">
+        <span class="script-time">0:00–0:04</span>
+        <span class="script-text">
+          叠加大字：<span class="caption">WHY BUSY PEOPLE NEVER DO THEIR BEST WORK</span>
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:04–0:16</span>
+        <span class="script-text">
+          「Carl Jung — the famous psychologist —<br>
+          built a stone tower in the Swiss countryside just to think.<br>
+          No electricity. No visitors. No distractions.<br>
+          <strong>Some of his most groundbreaking theories came from those sessions.</strong>」
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:16–0:28</span>
+        <span class="script-text">
+          「Cal Newport calls this: Deep Work.<br>
+          The ability to focus without distraction on a cognitively demanding task.<br>
+          It's becoming rare. And therefore — incredibly valuable.」
+        </span>
+      </div>
+      <div class="script-line">
+        <span class="script-time">0:28–0:40</span>
+        <span class="script-text">
+          「His 4-hour rule: most world-class work happens in 4 hours of deep focus per day.<br>
+          Not 10 hours of shallow busy-work.<br>
+          <strong>If you're always reachable, you'll never do your best work.</strong>」<br>
+          「Read Deep Work on GrowMe. 8 minutes.」
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- SECTION 6: 汇总建议 -->
+<!-- ================================================================ -->
+<section class="section" id="summary">
+  <div class="section-header">
+    <div class="section-number" style="background:#374151;">6</div>
+    <div>
+      <h2>本周制作汇总 & 投放建议</h2>
+      <div class="section-subtitle">P0 优先跑，P1 次轮跟进，P2 资源充足时制作</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>方向</th>
+          <th>脚本</th>
+          <th>优先级</th>
+          <th>市场</th>
+          <th>制作难度</th>
+          <th>关键指标</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>黑色字幕</td>
+          <td>BLACK-B 沟通能力</td>
+          <td><span class="priority p0">P0</span></td>
+          <td>WW</td>
+          <td>⭐ 低</td>
+          <td>CPI 对标 $0.82</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>黑色字幕</td>
+          <td>BLACK-A Munger 思维模型</td>
+          <td><span class="priority p0">P0</span></td>
+          <td>T1</td>
+          <td>⭐ 低</td>
+          <td>CTR > 1.5%</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>互动/参与</td>
+          <td>INT-A 书单测试</td>
+          <td><span class="priority p0">P0</span></td>
+          <td>WW</td>
+          <td>⭐ 低</td>
+          <td>评论率 > 0.5%</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>AI 数字人</td>
+          <td>AVA-A 反常识颠覆</td>
+          <td><span class="priority p0">P0</span></td>
+          <td>T1</td>
+          <td>⭐⭐ 中</td>
+          <td>Thumbstop > 40%</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>社交证明</td>
+          <td>UGC-A 评论截图</td>
+          <td><span class="priority p0">P0</span></td>
+          <td>WW</td>
+          <td>⭐ 低</td>
+          <td>CTR > 1.2%</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>情绪/氛围</td>
+          <td>MOOD-A 清晨氛围</td>
+          <td><span class="priority p0">P0</span></td>
+          <td>T1</td>
+          <td>⭐ 低</td>
+          <td>CPM 对比，看是否低于平均</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>黑色字幕</td>
+          <td>BLACK-C Read Differently 升级</td>
+          <td><span class="priority p1">P1</span></td>
+          <td>T1</td>
+          <td>⭐ 低</td>
+          <td>与上周版本对比 CTR</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>互动/参与</td>
+          <td>INT-B 观点投票</td>
+          <td><span class="priority p1">P1</span></td>
+          <td>T1</td>
+          <td>⭐ 低</td>
+          <td>评论率 + CPM</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>AI 数字人</td>
+          <td>AVA-B 框架工具</td>
+          <td><span class="priority p1">P1</span></td>
+          <td>WW</td>
+          <td>⭐⭐ 中</td>
+          <td>对比 AVA-A 完播率</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>社交证明</td>
+          <td>UGC-B 真人口播感</td>
+          <td><span class="priority p1">P1</span></td>
+          <td>T1</td>
+          <td>⭐⭐ 中</td>
+          <td>转化率 vs UGC-A</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>情绪/氛围</td>
+          <td>MOOD-B 焦虑→解放</td>
+          <td><span class="priority p1">P1</span></td>
+          <td>WW</td>
+          <td>⭐ 低</td>
+          <td>看高光完播率</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>互动/参与</td>
+          <td>INT-C 21天挑战</td>
+          <td><span class="priority p2">P2</span></td>
+          <td>WW</td>
+          <td>⭐ 低</td>
+          <td>评论量</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>AI 数字人</td>
+          <td>AVA-C 故事切入</td>
+          <td><span class="priority p2">P2</span></td>
+          <td>T1</td>
+          <td>⭐⭐ 中</td>
+          <td>对比 AVA-A/B 完播</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>情绪/氛围</td>
+          <td>MOOD-C 深夜投放</td>
+          <td><span class="priority p2">P2</span></td>
+          <td>WW</td>
+          <td>⭐ 低</td>
+          <td>分时段 CTR 对比</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <div class="card-title">📌 本周执行节奏建议</div>
+    <div style="font-size:0.93em; line-height:2;">
+      <strong>周一–周二：</strong> P0 素材全部制作完成并上传（共 6 条），独立 Campaign 测试，每条 $20–30/天 <br>
+      <strong>周三：</strong> 看前 48h 数据——Thumbstop > 45% 或 CPI < $1.2 的进入加量清单<br>
+      <strong>周四–周五：</strong> P1 素材制作 + 对表现好的 P0 素材做变体（换钩子 or 换书目）<br>
+      <strong>周末：</strong> P2 素材制作 + 整理一周数据，对比五个方向的 CPI / CTR / 评论率，写进下周计划
+    </div>
+    <div class="tip-box" style="margin-top:16px;">
+      <strong>本周最值得期待的对比：</strong>黑色字幕 BLACK-B（沟通能力新赛道）vs. 既有学习类公式——如果沟通类 CPI ≤ $0.90，说明可以快速铺量形成第二条盈利主线。
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div style="text-align:center; padding:24px; color:#9CA3AF; font-size:0.82em; border-top:1px solid #E8E5E0;">
+  GrowMe 素材文案 · Week 0608 · 共 14 条脚本覆盖 5 个方向
+</div>
+
+</body>
+</html>
