@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atomic Habits 数字人素材脚本 + 制作指南</title>
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --accent: #f5a623;
+    --accent2: #7c5cbf;
+    --accent3: #4ecdc4;
+    --text: #e8e8e8;
+    --text-muted: #999;
+    --border: #2a2a2a;
+    --hl-bg: #1e1e1e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+  h1 { font-size: 2em; margin-bottom: 8px; color: var(--accent); }
+  .subtitle { color: var(--text-muted); margin-bottom: 40px; font-size: 0.95em; }
+  h2 { font-size: 1.35em; color: var(--accent2); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 1.1em; color: var(--accent3); margin: 24px 0 10px; }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+  .highlight {
+    background: var(--hl-bg);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    margin: 16px 0;
+  }
+  .script-timeline {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.9em;
+  }
+  .script-timeline th {
+    background: var(--accent2);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .script-timeline td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .script-timeline tr:hover td { background: #222; }
+  .time-col { width: 96px; color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .action-col { width: 140px; color: var(--accent3); }
+  .text-col blockquote {
+    margin: 0;
+    padding: 6px 10px;
+    background: #252525;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .step-box {
+    counter-increment: step;
+    margin: 12px 0;
+    padding: 14px 18px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+  .step-box::before {
+    content: "Step " counter(step);
+    display: block;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.8em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .variant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .variant-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+  }
+  .variant-card h4 {
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .tag-t1 { background: #3a1f5c; color: #b88de0; }
+  .tag-ww { background: #1f3a5c; color: #8db8e0; }
+  .tag-p0 { background: #3a1f1f; color: #e0888d; }
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { margin: 6px 0; }
+  code {
+    background: #252525;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+  .cost-table { margin-top: 10px; }
+  .cost-table td { padding: 6px 14px 6px 0; }
+  .emoji-bullet { margin-right: 6px; }
+</style>
+</head>
+<body>
+
+<h1>🤖 Atomic Habits — AI 数字人素材脚本 + 制作指南</h1>
+<p class="subtitle">30 分钟从脚本到成品 | HeyGen + CapCut 流水线 | T1 主力素材</p>
+
+<!-- ================================================================== -->
+<h2>🎬 主脚本：反常识颠覆型（模板 A）</h2>
+
+<div class="card">
+  <p style="margin-bottom:14px"><strong>数字人：</strong>商务休闲男/女（Liam 或 Ava），深色背景 | <strong>配乐：</strong>轻钢琴，匀速 | <strong>总时长：</strong>35 秒</p>
+
+  <table class="script-timeline">
+    <tr>
+      <th>时间</th>
+      <th>数字人动作</th>
+      <th>屏幕文字叠加</th>
+      <th>配音原文</th>
+    </tr>
+    <tr>
+      <td class="time-col">0:00–0:05</td>
+      <td class="action-col">正视镜头，稍作停顿</td>
+      <td class="text-col"><blockquote>You don't have a motivation problem.</blockquote></td>
+      <td>You don't have a motivation problem. You have a system problem.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:05–0:12</td>
+      <td class="action-col">轻微侧头，像在对话</td>
+      <td class="text-col"><blockquote>James Clear read 1 page a day. Just ONE.</blockquote></td>
+      <td>James Clear didn't write Atomic Habits because he was disciplined. He wrote it because he figured out that reading <strong style="color:var(--accent)">one page a day</strong> beats reading nothing every time.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:12–0:20</td>
+      <td class="action-col">手势配合，稍微加快语速</td>
+      <td class="text-col"><blockquote>1% better every day = 37x better in a year.</blockquote></td>
+      <td>The math is stupid simple. Improve <strong style="color:var(--accent)">1% a day</strong>, and in one year you're <strong style="color:var(--accent)">37 times better</strong>. But most people never start—because they're waiting to feel ready.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:20–0:28</td>
+      <td class="action-col">放慢，靠近镜头</td>
+      <td class="text-col"><blockquote>The app that makes 1% stupidly easy.</blockquote></td>
+      <td>That's why we built <strong style="color:var(--accent)">GrowMe</strong>. Not to motivate you—motivation is unreliable. But to give you a system where 1% is stupidly easy. <strong style="color:var(--accent)">5-minute audio</strong>. One idea. Every day.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:28–0:35</td>
+      <td class="action-col">微笑，自然结尾</td>
+      <td class="text-col"><blockquote>GrowMe — 1% better every day.</blockquote></td>
+      <td>Stop trying to be motivated. Start being 1% better. Tap the link to try it—your future self will thank you.</td>
+    </tr>
+  </table>
+
+  <div class="highlight" style="margin-top:16px">
+    <strong>🎨 文字颜色规范：</strong>主文字白色 | 数字/关键词用<strong style="color:var(--accent)">黄色高亮</strong>（1% / 37x / 5-minute）| <strong>字体：</strong>Montserrat Bold | <strong>位置：</strong>屏幕中下部，不遮挡数字人面部
+  </div>
+</div>
+
+<!-- ================================================================== -->
+<h2>🛠️ 制作 SOP（HeyGen + CapCut 流水线）</h2>
+
+<div class="card">
+  <div class="step-box" style="counter-reset:step 0">
+    <h3>注册 / 登录 HeyGen</h3>
+    <p>前往 <a href="https://www.heygen.com" target="_blank" style="color:var(--accent3)">heygen.com</a> → 注册 Creator 版（$29/月）→ 点击 <strong>Create Video</strong></p>
+  </div>
+
+  <div class="step-box">
+    <h3>选数字人 + 粘贴脚本</h3>
+    <ul>
+      <li>数字人：推荐 <strong>Liam</strong>（男，沉稳自信）或 <strong>Ava</strong>（女，温暖可信）</li>
+      <li>背景：深色渐变，保持简洁</li>
+      <li>把上面 5 段配音原文<strong>逐段粘贴</strong>进文本框</li>
+      <li>Voice Settings：选 <strong>Confident / Warm</strong> 风格，Speed 调至 <strong>0.95x</strong></li>
+      <li>可选：勾选 "Add Captions" 让 HeyGen 自动生成字幕（省掉 CapCut 手动加字）</li>
+    </ul>
+  </div>
+
+  <div class="step-box">
+    <h3>生成视频（约 3-5 分钟）</h3>
+    <p>点击 <strong>Generate</strong> → 等待渲染 → 下载 <strong>MP4</strong> 文件</p>
+  </div>
+
+  <div class="step-box">
+    <h3>进入 CapCut 精修</h3>
+    <ul>
+      <li>导入 MP4 → 按时间线逐段加<strong>文字叠加层</strong></li>
+      <li>字体：<strong>Montserrat Bold</strong>（英文），字号根据屏幕适配</li>
+      <li>文字出现时机：和配音<strong>同时弹出</strong>，停留 2-3 秒后淡出</li>
+      <li>如果不想要自动字幕，可在 CapCut 中手动添加更精确的文字动画</li>
+    </ul>
+  </div>
+
+  <div class="step-box">
+    <h3>配乐 + 导出</h3>
+    <ul>
+      <li>CapCut 音频库 → 搜 <strong>soft piano / inspiring corporate</strong></li>
+      <li>音量调至 <strong>15%</strong>（不能盖过人声）</li>
+      <li>导出规格：<strong>1080×1920，30fps，MP4</strong></li>
+      <li>总时长控制在 <strong>32-38 秒</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================================================================== -->
+<h2>🔀 同书 3 条变体（A/B 测试用）</h2>
+
+<div class="variant-grid">
+  <div class="variant-card">
+    <h4>A. 反常识颠覆 <span class="tag tag-t1">T1</span> <span class="tag tag-p0">P0</span></h4>
+    <p><strong>钩子：</strong>"You don't have a motivation problem."</p>
+    <p><strong>卖点：</strong>1% 日改进 + 37 倍复利 + 5 分钟系统</p>
+    <p><strong>语气：</strong>挑战型，否定现有认知</p>
+  </div>
+  <div class="variant-card">
+    <h4>B. 可操作框架型 <span class="tag tag-ww">WW</span></h4>
+    <p><strong>钩子：</strong>"3 rules from Atomic Habits that actually work"</p>
+    <p><strong>卖点：</strong>Make it Obvious → Make it Easy → Never Miss Twice</p>
+    <p><strong>语气：</strong>教学型，清单式输出</p>
+  </div>
+  <div class="variant-card">
+    <h4>C. 个人转变故事 <span class="tag tag-t1">T1</span> <span class="tag tag-ww">WW</span></h4>
+    <p><strong>钩子：</strong>"I tried the 1% rule for 30 days"</p>
+    <p><strong>卖点：</strong>真实感受 + 可量化改变 + GrowMe 工具辅助</p>
+    <p><strong>语气：</strong>日记型，第一人称代入</p>
+  </div>
+</div>
+
+<!-- ================================================================== -->
+<h2>📋 制作检查清单（导出前确认）</h2>
+
+<div class="card">
+  <ul>
+    <li>☐ 视频总长 32-38 秒，不超过 40s</li>
+    <li>☐ 前 3 秒有强文字钩子（"You don't have a motivation problem" 已在画面上）</li>
+    <li>☐ 数字人表情自然，Speed 0.95x 不急促</li>
+    <li>☐ 关键词黄色高亮：1%、37x、5-minute、GrowMe、1 page</li>
+    <li>☐ 文字始终不遮挡数字人脸部</li>
+    <li>☐ BGM 音量 15%，无刺耳或突然变化</li>
+    <li>☐ 结尾有品牌露出（GrowMe — 1% better every day）</li>
+    <li>☐ 分辨率 1080×1920（9:16 竖屏），30fps</li>
+  </ul>
+</div>
+
+<!-- ================================================================== -->
+<h2>💰 成本估算</h2>
+
+<table class="cost-table" style="margin-top:10px">
+  <tr><td><strong>HeyGen Creator 版月费</strong></td><td>$29 / 月（15-20 条 30s 视频）</td></tr>
+  <tr><td><strong>CapCut Pro（可选）</strong></td><td>$9.99 / 月</td></tr>
+  <tr><td><strong>单条素材成本</strong></td><td>≈$2.5 — $3.0</td></tr>
+  <tr><td><strong>制作时间</strong></td><td>≈30 分钟 / 条</td></tr>
+</table>
+
+<div class="highlight" style="margin-top:16px">
+  <strong>⚡ 对比：</strong>真人拍摄 + 后期 ≈$350/条 → 数字人 ≈$3/条，成本仅为 0.85%。先用默认形象验证内容，跑出数据后再升级定制形象。
+</div>
+
+<!-- ================================================================== -->
+<h2>🔗 相关文档</h2>
+
+<ul>
+  <li><a href="https://sylvia-molan030.github.io/growme-test/growme-ai-avatar-guide.html" target="_blank" style="color:var(--accent3)">AI 数字人完整落地方案（10 大模块）</a></li>
+  <li><a href="https://sylvia-molan030.github.io/growme-test/growme-creative-methodology.html" target="_blank" style="color:var(--accent3)">GrowMe 素材方法论（四合一）</a></li>
+  <li><a href="https://sylvia-molan030.github.io/growme-test/growme-weekly-scripts-0608.html" target="_blank" style="color:var(--accent3)">0608 周五大方向素材文案包</a></li>
+</ul>
+
+<p style="margin-top:32px; color:var(--text-muted); font-size:0.85em">Generated: 2026-06-11 | GrowMe Creative Lab</p>
+
+</body>
+</html>
