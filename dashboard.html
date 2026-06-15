@@ -464,9 +464,9 @@ function renderFullDetailTable(wk) {
   const thead = document.getElementById('week-detail-thead');
   const tbody = document.getElementById('week-detail-tbody');
 
-  // For 0601: show individual creatives with name, hook_rate, hold_rate, designer, running_status
-  if (wk === '0601') {
-    const raw = DATA.raw_detail['0601'] || [];
+  // For 0601/0608: show individual creatives with name, hook_rate, hold_rate, designer, running_status
+  if (wk === '0601' || wk === '0608') {
+    const raw = DATA.raw_detail[wk] || [];
     thead.innerHTML = '<tr>'+
       '<th>#</th><th>素材全名</th><th>设计师</th><th>区域</th><th>分类</th><th>主题</th>'+
       '<th>消耗</th><th>CPI</th><th>安装</th><th>CTR</th>'+
@@ -555,7 +555,7 @@ function renderDetailRow(c, i) {
 // ═══ Search Filter ═══
 function applyAllFilters() {
   const tbody = document.getElementById('week-detail-tbody');
-  const raw = tbody._raw_data || DATA.raw_detail['0601'] || [];
+  const raw = tbody._raw_data || DATA.raw_detail[currentWk] || [];
   if (raw.length === 0) return;
 
   // Search query
@@ -811,7 +811,7 @@ function renderVault(wk, tier) {
   if (tier) currentVaultTier = tier;
   document.getElementById('sec-vault-title').style.display = '';
   document.getElementById('vault-tabs').parentElement.style.display = '';
-  const vault = DATA.asset_vault[wk] || DATA.asset_vault['0601'] || {};
+  const vault = DATA.asset_vault[wk] || {};
   const items = vault[currentVaultTier] || [];
   // Update active tab
   document.querySelectorAll('.vault-tab').forEach(t => t.classList.remove('active'));
