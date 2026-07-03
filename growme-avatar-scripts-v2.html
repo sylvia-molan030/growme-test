@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowMe 数字人脚本 V2 — 知识捷径 × 身份跃迁</title>
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --accent: #f5a623;
+    --accent2: #7c5cbf;
+    --accent3: #4ecdc4;
+    --text: #e8e8e8;
+    --text-muted: #999;
+    --border: #2a2a2a;
+    --hl-bg: #1e1e1e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+  h1 { font-size: 2em; margin-bottom: 6px; color: var(--accent); }
+  .subtitle { color: var(--text-muted); margin-bottom: 8px; font-size: 0.95em; }
+  .strategy-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 14px;
+    font-size: 0.82em;
+    font-weight: 700;
+    margin-right: 10px;
+    margin-bottom: 6px;
+  }
+  .tag-core { background: #3a1f1f; color: #f5a623; border: 1px solid #5a2f2f; }
+  .tag-mech { background: #1f3a1f; color: #4ecdc4; border: 1px solid #2f5a2f; }
+  h2 { font-size: 1.35em; color: var(--accent2); margin: 44px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 1.1em; color: var(--accent3); margin: 24px 0 10px; }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+  .highlight {
+    background: var(--hl-bg);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    margin: 16px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.9em;
+  }
+  th {
+    background: var(--accent2);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:hover td { background: #222; }
+  .time-col { width: 90px; color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .text-col blockquote {
+    margin: 0;
+    padding: 6px 10px;
+    background: #252525;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .script-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 600;
+  }
+  .badge-t1 { background: #3a1f5c; color: #b88de0; }
+  .badge-ww { background: #1f3a5c; color: #8db8e0; }
+  .badge-p0 { background: #3a1f1f; color: #e0888d; }
+  .badge-p1 { background: #2a2a1f; color: #d0d088; }
+  .angle-label {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 700;
+    background: #252525;
+    color: var(--accent3);
+    margin-bottom: 12px;
+  }
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { margin: 6px 0; }
+  .footer-note { margin-top: 40px; color: var(--text-muted); font-size: 0.85em; }
+  .footer-note a { color: var(--accent3); }
+</style>
+</head>
+<body>
+
+<h1>🎯 GrowMe 数字人脚本 V2</h1>
+<p class="subtitle">核心公式：知识捷径 + 身份跃迁 | 7 条脚本 · 30s 级 · HeyGen 就绪</p>
+
+<div style="margin-bottom:28px">
+  <span class="strategy-tag tag-core">❌ 不卖「阅读」→ ✅ 卖「毫不费力的知识获得感」</span>
+  <span class="strategy-tag tag-mech">❌ 不卖「书」→ ✅ 卖「低门槛的身份跃迁捷径」</span>
+</div>
+
+<!-- ================================================================== -->
+<h2>🧠 策略总览</h2>
+
+<div class="card">
+  <p>以下 7 条脚本全部围绕两个核心锚点设计：</p>
+  <ol>
+    <li><strong>知识捷径：</strong>用户不需要觉得自己在「学习」——只需要觉得自己「知道了别人不知道的东西」。8 分钟、睡觉前、路上听——都是降低认知负担的信号。</li>
+    <li><strong>身份跃迁：</strong>知识不只是知识——在社交场合你的观点让你变成「那个人」。脚本的核心钩子全部是「你和他们之间，只差 8 分钟」。</li>
+  </ol>
+</div>
+
+<!-- ================================================================== -->
+<h2>📋 7 条脚本</h2>
+
+<!-- SCRIPT 1 -->
+<div class="card" id="s1">
+  <p class="angle-label">角度：知识捷径 — 作弊码</p>
+  <div class="script-meta">
+    <span class="badge badge-t1">T1 主力</span>
+    <span class="badge badge-p0">P0</span>
+    <span>⏱ 30s</span>
+    <span>🎭 自信 / 直白</span>
+  </div>
+  <h3>#1 « No One Needs to Know It Only Took 8 Minutes »</h3>
+
+  <table>
+    <tr><th width="80">时间</th><th width="200">屏幕文字叠加</th><th>配音原文</th></tr>
+    <tr>
+      <td class="time-col">0:00–0:05</td>
+      <td class="text-col"><blockquote>No one needs to know it only took 8 minutes.</blockquote></td>
+      <td>No one needs to know it only took 8 minutes. When you drop a psychology insight at dinner, when you reference a book in a meeting — no one asks how long it took you to learn it.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:05–0:14</td>
+      <td class="text-col"><blockquote>They just see someone who knows things.</blockquote></td>
+      <td>They just see someone who knows things. You don't need to read 300 pages. You don't need a degree. You just need the right idea, at the right moment.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:14–0:22</td>
+      <td class="text-col"><blockquote>8 minutes. One book. One idea. That's the whole system.</blockquote></td>
+      <td>That's what GrowMe does. 8 minutes. One book. One powerful idea. Before sleep, during your commute, whenever you have a gap. That's the whole system.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:22–0:30</td>
+      <td class="text-col"><blockquote>GrowMe — Be the person who knows things.</blockquote></td>
+      <td>You don't need to read more. You just need a shortcut that works. GrowMe. Try it tonight — and see who notices.</td>
+    </tr>
+  </table>
+
+  <div class="highlight"><strong>🎯 打什么：</strong>"阅读量=知识量"的假象 → 巧妙获取知识也是能力。身份锚定在「the person who knows things」。</div>
+</div>
+
+<!-- SCRIPT 2 -->
+<div class="card" id="s2">
+  <p class="angle-label">角度：身份跃迁 — 社交货币</p>
+  <div class="script-meta">
+    <span class="badge badge-t1">T1 主力</span>
+    <span class="badge badge-p0">P0</span>
+    <span>⏱ 30s</span>
+    <span>🎭 对话感 / 像在聊天</span>
+  </div>
+  <h3>#2 « The Difference Between You and 'That Person' »</h3>
+
+  <table>
+    <tr><th width="80">时间</th><th width="200">屏幕文字叠加</th><th>配音原文</th></tr>
+    <tr>
+      <td class="time-col">0:00–0:06</td>
+      <td class="text-col"><blockquote>You know that person — the one everyone listens to.</blockquote></td>
+      <td>You know that person. The one at the dinner party everyone listens to. The one who always has a fresh perspective. The one who seems to know something about everything.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:06–0:14</td>
+      <td class="text-col"><blockquote>They're not smarter. They're not better educated. They just got there first.</blockquote></td>
+      <td>Here's what you don't see: they're not smarter than you. They're not better educated. They just got there first. They found a shortcut you haven't found yet.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:14–0:24</td>
+      <td class="text-col"><blockquote>8 minutes a day = one book's best idea. While everyone else scrolls.</blockquote></td>
+      <td>GrowMe gives you that shortcut. 8 minutes a day — one book, distilled to its single best idea. While everyone else is scrolling, you're quietly becoming the most interesting person in the room.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:24–0:30</td>
+      <td class="text-col"><blockquote>GrowMe — Be that person. Starting tonight.</blockquote></td>
+      <td>You don't need to change who you are. You just need a better input. GrowMe. Be that person. Starting tonight.</td>
+    </tr>
+  </table>
+
+  <div class="highlight"><strong>🎯 打什么：</strong>社交焦虑 → 「他们不比你聪明，只是比你早知道」。身份跃迁的关键是「变成那个人」的路径已经给了你。</div>
+</div>
+
+<!-- SCRIPT 3 -->
+<div class="card" id="s3">
+  <p class="angle-label">角度：知识捷径 — 效率对比</p>
+  <div class="script-meta">
+    <span class="badge badge-t1">T1</span>
+    <span class="badge badge-ww">WW</span>
+    <span class="badge badge-p0">P0</span>
+    <span>⏱ 30s</span>
+    <span>🎭 直接 / 略带挑战</span>
+  </div>
+  <h3>#3 « 300 Pages vs. 8 Minutes — Same Knowledge »</h3>
+
+  <table>
+    <tr><th width="80">时间</th><th width="200">屏幕文字叠加</th><th>配音原文</th></tr>
+    <tr>
+      <td class="time-col">0:00–0:04</td>
+      <td class="text-col"><blockquote>300 pages vs. 8 minutes. Same knowledge.</blockquote></td>
+      <td>300 pages. Or 8 minutes. Same knowledge. The only question is — which one fits your life?</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:04–0:12</td>
+      <td class="text-col"><blockquote>Not everyone has 10 hours for a book. Everyone has 8 minutes before sleep.</blockquote></td>
+      <td>Not everyone has 10 hours to finish a book. But everyone has 8 minutes before sleep. The people you admire — they didn't read more than you. They just consumed knowledge more efficiently.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:12–0:22</td>
+      <td class="text-col"><blockquote>GrowMe distills the best idea from a bestselling book into 8 minutes of audio.</blockquote></td>
+      <td>GrowMe takes a bestselling book, finds the one idea that changes everything, and gives it to you in 8 minutes of calm audio. No reading. No studying. Just listening.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:22–0:30</td>
+      <td class="text-col"><blockquote>Same knowledge. 8 minutes. GrowMe.</blockquote></td>
+      <td>300 pages. Or 8 minutes. Same knowledge. Choose the one that actually happens. GrowMe.</td>
+    </tr>
+  </table>
+
+  <div class="highlight"><strong>🎯 打什么：</strong>时间贫乏的现代人 → 「读书要 10 小时但我没有」被转化成「8 分钟我有」。核心是消除罪恶感而非增加焦虑。</div>
+</div>
+
+<!-- SCRIPT 4 -->
+<div class="card" id="s4">
+  <p class="angle-label">角度：身份跃迁 — 睡前仪式</p>
+  <div class="script-meta">
+    <span class="badge badge-t1">T1</span>
+    <span class="badge badge-ww">WW P0</span>
+    <span class="badge badge-p0">P0</span>
+    <span>⏱ 30s</span>
+    <span>🎭 平静 / 共感</span>
+  </div>
+  <h3>#4 « While Everyone Else Is Scrolling, You're Leveling Up »</h3>
+
+  <table>
+    <tr><th width="80">时间</th><th width="200">屏幕文字叠加</th><th>配音原文</th></tr>
+    <tr>
+      <td class="time-col">0:00–0:05</td>
+      <td class="text-col"><blockquote>Right now, millions of people are scrolling. You could be leveling up.</blockquote></td>
+      <td>Right now, millions of people are lying in bed, scrolling through nothing. And you could be doing the same. Or — you could be leveling up.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:05–0:14</td>
+      <td class="text-col"><blockquote>8 minutes before sleep = a smarter tomorrow. Without trying.</blockquote></td>
+      <td>8 minutes before sleep. One book. One idea that stays with you. Rain sounds. A calm voice. No effort. No studying. No pressure. Just a smarter tomorrow — without trying.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:14–0:23</td>
+      <td class="text-col"><blockquote>In one month: 30 books. 30 big ideas. Zero extra time.</blockquote></td>
+      <td>That's the math: in one month, you've absorbed the best ideas from 30 books. In one year — 365. And you never carved out extra time. You just replaced scrolling with growing.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:23–0:30</td>
+      <td class="text-col"><blockquote>GrowMe — Replace scrolling. Start growing.</blockquote></td>
+      <td>The gap between who you are and who you want to be — is 8 minutes a night. GrowMe. Replace scrolling. Start growing. Tonight.</td>
+    </tr>
+  </table>
+
+  <div class="highlight"><strong>🎯 打什么：</strong>睡前刷手机的内疚感 → 不是戒掉手机，而是用更好的内容替换。30 本书/月的数字制造了巨大的进度感知。</div>
+</div>
+
+<!-- SCRIPT 5 -->
+<div class="card" id="s5">
+  <p class="angle-label">角度：身份跃迁 — 职场竞争</p>
+  <div class="script-meta">
+    <span class="badge badge-t1">T1</span>
+    <span class="badge badge-ww">WW</span>
+    <span class="badge badge-p1">P1</span>
+    <span>⏱ 30s</span>
+    <span>🎭 权威 / 略快语速</span>
+  </div>
+  <h3>#5 « The Person Who Gets Promoted Doesn't Work Harder — They Know More »</h3>
+
+  <table>
+    <tr><th width="80">时间</th><th width="200">屏幕文字叠加</th><th>配音原文</th></tr>
+    <tr>
+      <td class="time-col">0:00–0:05</td>
+      <td class="text-col"><blockquote>The person who gets promoted doesn't work harder. They know more.</blockquote></td>
+      <td>The person who gets promoted — they don't work harder than you. They don't have better credentials. They just know more. And they know how to use it.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:05–0:14</td>
+      <td class="text-col"><blockquote>Most people stop learning after school. The ones who don't — they win.</blockquote></td>
+      <td>Most people stop learning the day they leave school. The ones who don't — they win every conversation, every meeting, every opportunity. They didn't read 500 books. They just never stopped absorbing.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:14–0:23</td>
+      <td class="text-col"><blockquote>8 minutes a day. That's your edge.</blockquote></td>
+      <td>GrowMe makes this effortless. 8 minutes a day — one powerful idea from a book that matters. Psychology. Money. Leadership. Communication. The knowledge that separates you from the crowd.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:23–0:30</td>
+      <td class="text-col"><blockquote>GrowMe — Your unfair advantage. 8 minutes a day.</blockquote></td>
+      <td>Your unfair advantage is simpler than you think. 8 minutes a day. GrowMe. Start tonight — and watch what changes in 30 days.</td>
+    </tr>
+  </table>
+
+  <div class="highlight"><strong>🎯 打什么：</strong>职场焦虑 → 「不是更努力而是知道更多」。身份跃迁的终极承诺：升职、被看见、被听见。</div>
+</div>
+
+<!-- SCRIPT 6 -->
+<div class="card" id="s6">
+  <p class="angle-label">角度：知识捷径 — 反向选择</p>
+  <div class="script-meta">
+    <span class="badge badge-t1">T1</span>
+    <span class="badge badge-ww">WW</span>
+    <span class="badge badge-p1">P1</span>
+    <span>⏱ 30s</span>
+    <span>🎭 反问 / 略带讽刺</span>
+  </div>
+  <h3>#6 « You've Scrolled Past 4,000 Videos This Year. How Many Books? »</h3>
+
+  <table>
+    <tr><th width="80">时间</th><th width="200">屏幕文字叠加</th><th>配音原文</th></tr>
+    <tr>
+      <td class="time-col">0:00–0:05</td>
+      <td class="text-col"><blockquote>4,000 videos scrolled. 0 books finished.</blockquote></td>
+      <td>The average person scrolls past 4,000 short videos this year. And finishes zero books. Not because they're lazy. Because books feel like a mountain. Videos feel like a staircase.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:05–0:14</td>
+      <td class="text-col"><blockquote>What if a book felt like a staircase?</blockquote></td>
+      <td>So we asked: what if a book felt like a staircase? 8 minutes. One step. One idea. Rain sounds. A calm voice. Before you know it, you've climbed 30 books in a month.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:14–0:24</td>
+      <td class="text-col"><blockquote>Not reading. Not studying. Just listening. And becoming sharper.</blockquote></td>
+      <td>No reading. No studying. No guilt. Just listening — and becoming a little sharper every night. The knowledge seeps in while you're relaxing. That's the magic of GrowMe.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:24–0:30</td>
+      <td class="text-col"><blockquote>Next year: more books than videos. GrowMe.</blockquote></td>
+      <td>Next year, let the number be different. More books than videos. More ideas than distractions. GrowMe. The staircase starts tonight.</td>
+    </tr>
+  </table>
+
+  <div class="highlight"><strong>🎯 打什么：</strong>数据震撼 + 重新定义 → 4000 vs 0 的对比制造了尖锐的自我审视，然后用「书本也可以像短视频一样容易」转化这个情绪。</div>
+</div>
+
+<!-- SCRIPT 7 -->
+<div class="card" id="s7">
+  <p class="angle-label">角度：身份跃迁 — 自我认知重构</p>
+  <div class="script-meta">
+    <span class="badge badge-t1">T1</span>
+    <span class="badge badge-p1">P1</span>
+    <span>⏱ 30s</span>
+    <span>🎭 温暖 / 赋能</span>
+  </div>
+  <h3>#7 « The Version of You 30 Days From Now — What Does She Know? »</h3>
+
+  <table>
+    <tr><th width="80">时间</th><th width="200">屏幕文字叠加</th><th>配音原文</th></tr>
+    <tr>
+      <td class="time-col">0:00–0:05</td>
+      <td class="text-col"><blockquote>The version of you 30 days from now — what does she know?</blockquote></td>
+      <td>The version of you 30 days from now. What does she know that you don't know yet? What can she say at a dinner party that you can't say today?</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:05–0:14</td>
+      <td class="text-col"><blockquote>She's read 30 books. She just didn't realize it.</blockquote></td>
+      <td>Here's the secret: she's absorbed 30 books. 30 powerful ideas. And she never sat down to "study." She just listened — 8 minutes a night, before sleep, rain sounds, a calm voice. It didn't feel like work. It felt like unwinding.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:14–0:23</td>
+      <td class="text-col"><blockquote>That version of you is 8 minutes away. Every night.</blockquote></td>
+      <td>That version of you — the one who speaks with more confidence, who has a fresh perspective on everything, who people actually listen to — she's 8 minutes away. Every night. GrowMe makes the path invisible. The results are not.</td>
+    </tr>
+    <tr>
+      <td class="time-col">0:23–0:30</td>
+      <td class="text-col"><blockquote>Meet her in 30 days. GrowMe.</blockquote></td>
+      <td>30 days from now, you'll meet her. And she'll thank you for starting tonight. GrowMe.</td>
+    </tr>
+  </table>
+
+  <div class="highlight"><strong>🎯 打什么：</strong>未来自我投射 → 不是「你应该读书」而是「30 天后的你已经读完了」。时间穿越感制造了强大的行动驱动力。最适合女性受众。</div>
+</div>
+
+<!-- ================================================================== -->
+<h2>📊 7 条脚本速查总表</h2>
+
+<table>
+  <tr><th>#</th><th>钩子</th><th>核心角度</th><th>打什么心理</th><th>市场</th><th>优先级</th></tr>
+  <tr>
+    <td>1</td>
+    <td>"No one needs to know it only took 8 minutes"</td>
+    <td>作弊码</td>
+    <td>知识≠努力，捷径有理</td>
+    <td>T1</td>
+    <td><span class="badge badge-p0">P0</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>"The difference between you and that person"</td>
+    <td>社交货币</td>
+    <td>他们不比我聪明，只是先知道</td>
+    <td>T1</td>
+    <td><span class="badge badge-p0">P0</span></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>"300 pages vs. 8 minutes — same knowledge"</td>
+    <td>效率对比</td>
+    <td>时间贫乏的现代人</td>
+    <td>T1+WW</td>
+    <td><span class="badge badge-p0">P0</span></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>"While everyone else is scrolling, you're leveling up"</td>
+    <td>睡前仪式</td>
+    <td>刷手机内疚 → 替换而非戒除</td>
+    <td>T1+WW</td>
+    <td><span class="badge badge-p0">P0</span></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>"The person who gets promoted doesn't work harder"</td>
+    <td>职场竞争</td>
+    <td>升职 = 知道更多而非更努力</td>
+    <td>T1+WW</td>
+    <td><span class="badge badge-p1">P1</span></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>"4,000 videos scrolled. 0 books finished."</td>
+    <td>反向选择</td>
+    <td>数据震撼 + 重新定义书本</td>
+    <td>T1+WW</td>
+    <td><span class="badge badge-p1">P1</span></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>"The version of you 30 days from now"</td>
+    <td>未来自我</td>
+    <td>时间投射 → 不是「应该」而是「已经」</td>
+    <td>T1</td>
+    <td><span class="badge badge-p1">P1</span></td>
+  </tr>
+</table>
+
+<!-- ================================================================== -->
+<h2>🎬 制作规范（统一）</h2>
+
+<div class="card">
+  <table>
+    <tr><td><strong>数字人形象</strong></td><td>Liam / Ava（默认）+ 深色背景。不要花哨——知识类素材信誉感 > 视觉冲击</td></tr>
+    <tr><td><strong>语速</strong></td><td>HeyGen Speed 0.95x — 稍慢显得更可信。不要急促</td></tr>
+    <tr><td><strong>屏幕文字</strong></td><td>白色 Montserrat Bold，关键词黄色高亮。每次出现停留 2-3s 后淡出</td></tr>
+    <tr><td><strong>文字位置</strong></td><td>屏幕中下部，绝不遮挡数字人脸部。单行最多 8 个单词</td></tr>
+    <tr><td><strong>配乐</strong></td><td>轻钢琴 / 氛围电子 — CapCut 音量 15%。不要打击乐，不要节奏变化</td></tr>
+    <tr><td><strong>分辨率</strong></td><td>1080×1920 (9:16 竖屏) · 30fps · MP4</td></tr>
+    <tr><td><strong>时长</strong></td><td>每条严格 28-32 秒。超出 35s 剪掉</td></tr>
+    <tr><td><strong>CTA 尾帧</strong></td><td>每条最后 2s 显示 "GrowMe" logo + "Try tonight." 不做按钮动画</td></tr>
+  </table>
+</div>
+
+<!-- ================================================================== -->
+<h2>⚡ 本周测试策略</h2>
+
+<div class="highlight">
+  <p><strong>P0 优先跑：</strong>#1 作弊码 + #2 社交货币 + #3 效率对比 + #4 睡前仪式 → 四条一组进 T1，48h 后看数据。</p>
+  <p style="margin-top:8px"><strong>P1 观察：</strong>#5 职场竞争 + #6 反向选择 + #7 未来自我 → 如果 P0 方向验证通过，第二周加测。</p>
+  <p style="margin-top:8px"><strong>关键假设：</strong>「知识捷径」角度的 CTR 会高于传统「阅读有益」角度约 1.5-2x；「身份跃迁」角度的 CVR 会高于信息型素材。</p>
+</div>
+
+<div class="footer-note">
+  <p>GrowMe Creative Lab · 2026-07-03 · 基于已验证的核心公式</p>
+  <p style="margin-top:8px">
+    <a href="https://sylvia-molan030.github.io/growme-test/growme-creative-methodology.html">📊 素材方法论</a> ·
+    <a href="https://sylvia-molan030.github.io/growme-test/growme-atomic-habits-avatar.html">🤖 Atomic Habits 脚本</a> ·
+    <a href="https://sylvia-molan030.github.io/growme-test/growme-ai-avatar-guide.html">📖 数字人完整指南</a>
+  </p>
+</div>
+
+</body>
+</html>
