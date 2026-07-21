@@ -204,6 +204,7 @@
   .badge-spend { background: rgba(249,226,175,0.15); color: var(--yellow); }
   .badge-cpi { background: rgba(137,180,250,0.15); color: var(--accent2); }
   .badge-potential { background: rgba(203,166,247,0.15); color: var(--accent); }
+  .badge-hot { background: rgba(243,139,168,0.15); color: var(--accent5); }
 
   /* Tables */
   .data-table {
@@ -244,6 +245,11 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
   }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
 
   /* Highlight box */
   .highlight {
@@ -256,6 +262,10 @@
   .highlight.warn {
     background: rgba(243,139,168,0.08);
     border-left-color: var(--accent5);
+  }
+  .highlight.success {
+    background: rgba(166,227,161,0.08);
+    border-left-color: var(--green);
   }
   .highlight p { color: var(--text-muted); font-size: 0.92em; }
   .highlight strong { color: var(--text); }
@@ -298,6 +308,13 @@
     flex-shrink: 0;
     margin-top: 2px;
   }
+  .action-item .check.done {
+    background: rgba(166,227,161,0.2);
+  }
+  .action-item .check.testing {
+    background: rgba(249,226,175,0.12);
+    color: var(--yellow);
+  }
   .action-item .action-content h4 {
     font-size: 0.98em;
     color: var(--text);
@@ -320,9 +337,105 @@
   .priority-p1 { background: rgba(249,226,175,0.2); color: var(--yellow); }
   .priority-p2 { background: rgba(137,180,250,0.2); color: var(--accent2); }
 
+  /* Status tag */
+  .status-tag {
+    font-size: 0.72em;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 6px;
+  }
+  .status-validated { background: rgba(166,227,161,0.2); color: var(--green); }
+  .status-testing { background: rgba(249,226,175,0.2); color: var(--yellow); }
+  .status-failed { background: rgba(243,139,168,0.2); color: var(--accent5); }
+  .status-new { background: rgba(203,166,247,0.2); color: var(--accent); }
+
+  /* Mini stat card */
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .stat-value {
+    font-size: 1.8em;
+    font-weight: 800;
+    color: var(--accent2);
+    margin-bottom: 4px;
+  }
+  .stat-card .stat-label {
+    font-size: 0.82em;
+    color: var(--text-muted);
+  }
+  .stat-card .stat-sub {
+    font-size: 0.75em;
+    color: var(--accent4);
+    margin-top: 4px;
+  }
+
+  /* Creative analysis card */
+  .creative-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .creative-card .creative-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .creative-card .creative-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(203,166,247,0.15);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9em;
+    flex-shrink: 0;
+  }
+  .creative-card h3 {
+    font-size: 1.1em;
+    color: var(--text);
+    margin: 0;
+  }
+  .creative-card .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .creative-card .tag {
+    font-size: 0.78em;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+  }
+  .creative-card .analysis-section {
+    margin-top: 14px;
+  }
+  .creative-card .analysis-section h4 {
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin-bottom: 6px;
+  }
+  .creative-card .analysis-section p,
+  .creative-card .analysis-section li {
+    font-size: 0.88em;
+    color: var(--text-muted);
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
     .hero { padding: 48px 20px 36px; }
     .hero h1 { font-size: 1.8em; }
     .container { padding: 24px 16px; }
@@ -340,11 +453,11 @@
 <!-- ============ HERO ============ -->
 <div class="hero">
   <h1>GrowMe 素材方法论</h1>
-  <p class="subtitle">2025.8 — 2026.5 三阶段素材复盘 · 公式提炼 · 潜力分析 · 下一步规划</p>
+  <p class="subtitle">2025.8 — 2026.7 四阶段素材复盘 · 公式提炼 · 优秀素材拆解 · 潜力分析 · 下一步规划</p>
   <div class="meta">
-    <span>📅 2026.06.05</span>
-    <span>📊 覆盖 3 阶段 / 12+ 素材方向</span>
-    <span>💰 参考跑量数据</span>
+    <span>📅 2026.07.21 更新</span>
+    <span>📊 4 阶段 / 8 套公式 / 全库 2688 素材 + 周测榜</span>
+    <span>🎬 3 条优秀素材深度拆解 · FX×ZT 人群矩阵</span>
   </div>
 </div>
 
@@ -354,10 +467,11 @@
 <div class="toc">
   <h3>📑 目录</h3>
   <ol>
-    <li><a href="#s1">Part 1：体系化素材方法论文档 — 三阶段复盘与规律总结</a></li>
+    <li><a href="#s1">Part 1：体系化素材方法论文档 — 四阶段复盘与规律总结</a></li>
     <li><a href="#s2">Part 2：可复用的素材公式与模板 — 从成功素材中抽象通用结构</a></li>
-    <li><a href="#s3">Part 3：未开发的潜力方向 — 现有方法论之外的 Blue Ocean</a></li>
-    <li><a href="#s4">Part 4：下阶段选题与测试规划 — T1 &amp; T2/T3 双轨作战计划</a></li>
+    <li><a href="#s3">Part 3：优秀素材深度拆解 — 三条标杆素材的逆向工程</a></li>
+    <li><a href="#s4">Part 4：未开发的潜力方向 — 现有方法论之外的 Blue Ocean</a></li>
+    <li><a href="#s5">Part 5：下阶段选题与测试规划 — 基于实测数据的调整方案</a></li>
   </ol>
 </div>
 
@@ -366,34 +480,39 @@
      ================================================================== -->
 <h2 class="sec-title" id="s1">
   <span class="icon">📊</span> Part 1：体系化素材方法论文档
-  <span class="num">三阶段复盘与规律总结</span>
+  <span class="num">四阶段复盘与规律总结</span>
 </h2>
 
 <div class="highlight">
-  <p><strong>核心发现：</strong>GrowMe 的素材进化路径是从「广撒网试错」→「找到核心差异化打法」→「多语言复制突破」的三阶段跃迁。每个阶段都在上一阶段的基础上实现了认知升级和效率提升。</p>
+  <p><strong>核心发现：</strong>GrowMe 的素材进化路径是从「广撒网试错」→「找到核心差异化打法」→「多语言复制突破」→「数据驱动深化」的四阶段跃迁。每个阶段都在上一阶段的基础上实现了认知升级和效率提升。</p>
 </div>
 
-<!-- 三阶段概览 -->
-<div class="grid-3">
+<!-- 四阶段概览 -->
+<div class="grid-4" style="margin-bottom:28px">
   <div class="card">
     <h3>🔍 阶段一：探索期</h3>
     <p><span class="badge badge-cpi">2025.8-11</span></p>
-    <p style="margin-top:10px">图片素材为主，4 条赛道并行测试：微读书、工具功能向、硬核知识、女性 Self-care。目标是找到「什么方向能跑通」。</p>
+    <p style="margin-top:10px">图片素材为主，4 条赛道并行测试。历史最高单条消耗 $16,314。确立「图片测方向→视频做放大」工作流。</p>
   </div>
   <div class="card">
     <h3>⚡ 阶段二：突破期</h3>
     <p><span class="badge badge-spend">2025.12-2026.2</span></p>
-    <p style="margin-top:10px">确立差异化打法。黑色字幕英语跟读突破 10w 美金跑量。原生感读书笔记、名著听书形成三大支柱。</p>
+    <p style="margin-top:10px">黑色字幕英语跟读突破 10w 美金跑量。原生感读书笔记、名著听书形成三大支柱。</p>
   </div>
   <div class="card">
     <h3>🌍 阶段三：扩张期</h3>
     <p><span class="badge badge-roi">2026.3-5</span></p>
-    <p style="margin-top:10px">双语素材打破 T2/T3 市场。慢速英语长视频 ROAS 达 0.8-0.9。方法论从「单点爆发」走向「可复制体系」。</p>
+    <p style="margin-top:10px">双语素材打破 T2/T3 市场。慢速英语长视频 ROAS 达 0.8-0.9。牛皮纸打字机风格单条贡献 68% 消耗。</p>
+  </div>
+  <div class="card">
+    <h3>📈 阶段四：深化期</h3>
+    <p><span class="badge badge-hot">2026.6-7</span></p>
+    <p style="margin-top:10px">主题多元化 + 0629 起切 FX 人群命名。阅读习惯单条 $6k+；Professionals×growth / EnglishLearners×learning 成新主战场。</p>
   </div>
 </div>
 
 <!-- 详细时间线 -->
-<h3 style="margin-top:40px; color:var(--accent2); font-size:1.1em;">⏳ 三阶段进化详情</h3>
+<h3 style="margin-top:40px; color:var(--accent2); font-size:1.1em;">⏳ 四阶段进化详情</h3>
 
 <div class="timeline">
 
@@ -405,11 +524,12 @@
       <p><strong>核心策略：</strong>以图片素材为主力，低门槛快速验证方向，控制测试成本。</p>
       <p style="margin-top:8px"><strong>跑通的 4 条赛道：</strong></p>
       <ul style="margin:8px 0 0 18px; color:var(--text-muted)">
-        <li>🏆 <strong>微读书 / 高效读书</strong> — 图片 CPI 低，跑通了基础模型，是最早验证成功的赛道</li>
-        <li>🎧 <strong>工具功能向（Scan / 听书）</strong> — 开车听书场景 CPC 好，但 ROAS 不足</li>
-        <li>📚 <strong>硬核知识内容</strong> — 金钱心理学、结构图、书单类，可复跑性强</li>
+        <li>🏆 <strong>微读书 / 高效读书</strong> — 图片 CPI 低，跑通了基础模型，是最早验证成功的赛道。历史最高单条消耗 <span class="badge badge-spend">$16,314</span> 665 订阅</li>
+        <li>🎧 <strong>工具功能向（Scan / 听书）</strong> — 开车听书场景 CPC 好（CPI $0.78），但 ROAS 不足</li>
+        <li>📚 <strong>硬核知识内容</strong> — 金钱心理学、结构图、书单类，可复跑性强。高 CTR 图片达 13.15%</li>
         <li>🌸 <strong>女性 Self-care</strong> — 自律 / 疗愈类，情感共鸣方向</li>
       </ul>
+      <p style="margin-top:8px"><strong>历史高 CTR 内容洞察：</strong>现代人「疏离感」主题（剪刀手爱德华/小丑/马男波杰克）、圣经式安慰、高价值女性、原谅自己 — 这些内容体现了用户从「理解自己→治愈自己→重塑自我」的精神需求链路。</p>
       <p style="margin-top:8px"><strong>关键认知：</strong>这个阶段最重要的收获不是哪条素材跑得好，而是确立了「图片测方向 → 视频做放大」的基本工作流。</p>
     </div>
   </div>
@@ -460,41 +580,217 @@
       <ul style="margin:8px 0 0 18px; color:var(--text-muted)">
         <li><strong>B1 双语素材</strong>（土耳其语 / 越南语）— 证明核心创意可以跨语言迁移</li>
         <li><strong>3 分钟慢速英语长视频</strong> — <span class="badge badge-roi">ROAS 0.8-0.9</span>，当前最高 ROI 段位</li>
+        <li><strong>牛皮纸/打字机风格素材</strong> — 单条贡献 68% 消耗，WW CPI $0.78、97 订阅，学习大类 ROAS 2.63</li>
         <li>素材制作从「创意驱动」走向「模板化多语言生产」</li>
       </ul>
       <p style="margin-top:8px"><strong>关键认知：</strong>慢速英语长视频的高 ROAS 揭示了一个重要规律 — <em>对于 T2/T3 市场用户，「能听懂」比「被激励」更重要</em>。这里的用户核心痛点是语言门槛而非动力问题。</p>
     </div>
   </div>
 
+  <!-- Phase 4 -->
+  <div class="timeline-item">
+    <div class="phase-label">Phase 4</div>
+    <h4>深化期（2026.6 — 2026.7）— 人群矩阵 + 主题深化 + 数据闭环</h4>
+    <div class="desc">
+      <p><strong>核心策略：</strong>从「视觉格式创新」转向「内容主题深化 + 人群定向」。0629 起素材命名切到 FX 八大人群（Professionals / Students / Readers / SelfGrowth / EnglishLearners / FinanceSeekers / Overthinkers / Women），用交叉魔方做方向取舍。</p>
+      <p style="margin-top:8px"><strong>关键突破：</strong></p>
+      <ul style="margin:8px 0 0 18px; color:var(--text-muted)">
+        <li><strong>阅读习惯类素材爆发</strong> — "阅读是最简单能提高英语的办法" 单条 <span class="badge badge-spend">$6,097</span> <span class="badge badge-roi">ROAS 0.88</span> 438 订阅，0524 周最强素材</li>
+        <li><strong>情绪疗愈方向验证</strong> — "积极的思想" $1,203 / 31 购物 / ROAS 0.64；"自信" $1,187 / 25 购物 / ROAS 0.43</li>
+        <li><strong>社交焦虑/公开表达方向</strong> — "开口表达时感到害怕" ROAS 0.62；"公开演讲中学到的技巧" $1,010 / 24 购物</li>
+        <li><strong>新 schema 可放量信号</strong> — Professionals×growth（0706 单条 52 购物 / ROAS≈0.7）；EnglishLearners×learning 量最大（14/93 出单）；Students×learning / SelfGrowth×lifelessons 持续有信号</li>
+        <li><strong>反焦虑 PAS 标杆拆解</strong> — 米色纸质 + 衬线提词器滚动成为近月主力壳（与 BI 中 niupizhi / page 系列一致）</li>
+        <li><strong>AI 数字人方向首测</strong> — $232 消耗 / 4 购物 / ROAS 0.35，表现低于预期，需迭代</li>
+      </ul>
+      <p style="margin-top:8px"><strong>关键认知：</strong>阶段四验证了两件事 — ① 素材从「英语学习工具」升维到「个人成长陪伴」；② 必须用 FX×ZT 收窄矩阵，否则会陷入「广铺低转化」（如 selfimprovement 全系 71 条仅约 9.9% 出单）。</p>
+    </div>
+  </div>
+
 </div>
 
-<!-- 近期数据验证 -->
-<h3 style="margin-top:32px; color:var(--accent3); font-size:1.05em;">📈 近期数据验证（0528—0601 周，两周 112 条素材）</h3>
+<!-- 全库 BI -->
+<h3 style="margin-top:40px; color:var(--accent2); font-size:1.1em;">🗄 全库 BI 快照（截止约 2026-07-20）</h3>
 
-<div class="grid-2" style="margin-top:16px;">
-  <div class="card">
-    <h3>0528 周</h3>
-    <table class="data-table">
-      <tr><th>指标</th><th>WW</th><th>T1</th></tr>
-      <tr><td>消耗</td><td><span class="badge badge-spend">$1,835</span></td><td><span class="badge badge-spend">$1,365</span></td></tr>
-      <tr><td>CPI</td><td>$0.99</td><td>$1.46</td></tr>
-      <tr><td>ROAS</td><td><span class="badge badge-roi">2.08</span></td><td>0.63</td></tr>
-    </table>
-    <p style="margin-top:10px"><strong>亮点：</strong>牛皮纸/打字机风格素材单条贡献 68% 消耗，WW CPI $0.78、97 订阅；学习大类 ROAS 2.63 为唯一持续盈利方向</p>
+<div class="highlight success">
+  <p><strong>数据来源：</strong><a href="https://grow-me-database.vercel.app/" style="color:var(--accent2)">grow-me-database.vercel.app</a> · 账户内成效全量。简单均值 ROAS 0.62；消耗加权约 0.38（大盘被历史长跑素材拉低）。</p>
+</div>
+
+<div class="grid-4" style="margin:20px 0">
+  <div class="stat-card">
+    <div class="stat-value">2,688</div>
+    <div class="stat-label">素材总数</div>
+    <div class="stat-sub">唯一素材 ID</div>
   </div>
-  <div class="card">
-    <h3>0601 周</h3>
-    <table class="data-table">
-      <tr><th>指标</th><th>WW</th><th>T1</th></tr>
-      <tr><td>消耗</td><td>$570</td><td>$465</td></tr>
-      <tr><td>CPI</td><td>$1.24</td><td>$1.68</td></tr>
-      <tr><td>ROAS</td><td><span class="badge badge-roi">1.47</span></td><td><span class="badge badge-roi">0.77</span></td></tr>
-    </table>
-    <p style="margin-top:10px"><strong>新方向：</strong>沟通能力类首批测试 WW CPI $0.82，首周即跑出订阅转化，算法集中度极高——前 5 条素材占 90%+ 消耗</p>
+  <div class="stat-card">
+    <div class="stat-value">14.58%</div>
+    <div class="stat-label">素材出单率</div>
+    <div class="stat-sub">392 / 2688 出单</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">10,014</div>
+    <div class="stat-label">总出单量</div>
+    <div class="stat-sub">≥2 单素材率 10.6%</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">0.62</div>
+    <div class="stat-label">平均 ROAS</div>
+    <div class="stat-sub">加权约 0.38</div>
   </div>
 </div>
-<div class="highlight" style="margin-top:16px;">
-  <p><strong>关键信号：</strong>两周数据进一步验证了阶段三的核心逻辑——算法会自动将支出集中在表现最好的 3-5 条素材上。当前学习/人生感悟/沟通能力三个分类持续产出，而自律成长/名言/心理疗愈/成长焦虑四个方向近两周零转化，建议暂停观望。</p>
+
+<table class="data-table">
+  <tr>
+    <th>FX×ZT（0629+ 新命名，n≥5 优先）</th><th>出单率</th><th>出单/总数</th><th>解读</th>
+  </tr>
+  <tr>
+    <td><strong>Students × learning</strong></td>
+    <td class="tier-s">28.6%</td>
+    <td>4/14</td>
+    <td>可持续加码</td>
+  </tr>
+  <tr>
+    <td><strong>Professionals × growth</strong></td>
+    <td class="tier-a">25%</td>
+    <td>2/8</td>
+    <td>量好 + ROAS≈0.66，0706 周头牌</td>
+  </tr>
+  <tr>
+    <td><strong>SelfGrowth × lifelessons</strong></td>
+    <td class="tier-a">23.5%</td>
+    <td>4/17</td>
+    <td>有信号，适合人生感悟壳</td>
+  </tr>
+  <tr>
+    <td><strong>SelfGrowth × habits / Readers × selfimprovement</strong></td>
+    <td class="tier-a">33%</td>
+    <td>2/6</td>
+    <td>小盘高率，可加深测</td>
+  </tr>
+  <tr>
+    <td><strong>EnglishLearners × learning</strong></td>
+    <td class="tier-b">15.1%</td>
+    <td>14/93</td>
+    <td>量王但率偏低 — 收紧钩子/壳，勿继续盲目扩量</td>
+  </tr>
+  <tr>
+    <td><strong>Professionals / SelfGrowth × selfimprovement</strong></td>
+    <td class="tier-c">0%</td>
+    <td>0/12 · 0/12</td>
+    <td>建议暂停铺量</td>
+  </tr>
+  <tr>
+    <td><strong>Women × womenempowerment 等 0% 集群</strong></td>
+    <td class="tier-c">0%</td>
+    <td>多组 n≥5</td>
+    <td>discipline / emotionalhealth / communication 等同批叫停复盘</td>
+  </tr>
+</table>
+
+<div class="highlight warn">
+  <p><strong>炮灰与效率：</strong>约 645 条（24%）0 单且 spend≥$30，浪费约 $52k。设计师后缀上 gy 贡献量最大；jql 出单率较高；fj 加权 ROAS 偏弱 — 产能应向验证方向与高效设计师倾斜。</p>
+</div>
+
+<!-- 近期周度数据 -->
+<h3 style="margin-top:40px; color:var(--accent2); font-size:1.1em;">📈 近期周度数据验证（0524 — 0713 周）</h3>
+
+<div class="highlight success">
+  <p><strong>数据来源：</strong>飞书「ShutEye/Me+/GrowMe素材测试」周榜 + BI 周报。0524–0628 以周测好素材为主；0706/0713 补全上新测出率。</p>
+</div>
+
+<table class="data-table">
+  <tr>
+    <th>周次</th><th>TOP 素材主题</th><th>消耗</th><th>购物/订阅</th><th>ROAS</th><th>关键信号</th>
+  </tr>
+  <tr>
+    <td><strong>0524-0601</strong></td>
+    <td>阅读是最简单能提高英语的办法</td>
+    <td>$6,097</td>
+    <td>438 订阅 / 266 购物</td>
+    <td class="tier-s"><strong>0.88</strong></td>
+    <td>阅读习惯类素材爆发，单条贡献大部分消耗</td>
+  </tr>
+  <tr>
+    <td><strong>0608-0613</strong></td>
+    <td>你必须比害怕被羞耻更害怕浪费你的生命</td>
+    <td>$1,227</td>
+    <td>24 购物</td>
+    <td class="tier-b">0.36</td>
+    <td>人生感悟类素材起量，AI 数字人首测 ROAS 0.35</td>
+  </tr>
+  <tr>
+    <td><strong>0615-0620</strong></td>
+    <td>积极的思想</td>
+    <td>$1,203</td>
+    <td>31 购物</td>
+    <td class="tier-a">0.64</td>
+    <td>情绪疗愈方向 ROAS 回升，公开演讲方向首测</td>
+  </tr>
+  <tr>
+    <td><strong>0623-0628</strong></td>
+    <td>阅读是学习英语最好的办法</td>
+    <td>$662</td>
+    <td>16 购物</td>
+    <td class="tier-a">0.51</td>
+    <td>阅读类稳定产出，责任感/梦想主题新测</td>
+  </tr>
+  <tr>
+    <td><strong>0629-0703</strong></td>
+    <td>对于年纪焦虑/落后时代人的建议</td>
+    <td>$268</td>
+    <td>5 购物</td>
+    <td class="tier-a">0.52</td>
+    <td>消耗收缩但 ROAS 稳定；FX 人群命名切换周</td>
+  </tr>
+  <tr>
+    <td><strong>0706-0711</strong></td>
+    <td>Professionals × Growth 等新 schema 头牌</td>
+    <td>~$11.3k（上新周）</td>
+    <td>出单素材 34 / 出单量 168</td>
+    <td class="tier-a">avg 0.52</td>
+    <td>上新出单率 <strong>17.2%</strong>；Growth 单条 52 购物 / ROAS≈0.7</td>
+  </tr>
+  <tr>
+    <td><strong>0713-0717</strong></td>
+    <td>上新周整体偏弱</td>
+    <td>~$3.0k（上新周）</td>
+    <td>出单素材 13 / 出单量 23</td>
+    <td class="tier-b">avg 0.42</td>
+    <td>上新出单率跌至 <strong>8.2%</strong> — 需追问预算 vs 方向 vs 产能</td>
+  </tr>
+</table>
+
+<div class="grid-4" style="margin:20px 0">
+  <div class="stat-card">
+    <div class="stat-value">0.88</div>
+    <div class="stat-label">最高单条 ROAS</div>
+    <div class="stat-sub">阅读习惯类（0524 周）</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">$6,097</div>
+    <div class="stat-label">最高单条消耗</div>
+    <div class="stat-sub">438 订阅 / 266 购物</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">17.2%</div>
+    <div class="stat-label">0706 周上新出单率</div>
+    <div class="stat-sub">198 条上新 · 近月高点</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">8.2%</div>
+    <div class="stat-label">0713 周上新出单率</div>
+    <div class="stat-sub">需立刻复盘下滑原因</div>
+  </div>
+</div>
+
+<div class="highlight">
+  <p><strong>趋势洞察：</strong></p>
+  <ul style="margin:8px 0 0 18px; color:var(--text-muted)">
+    <li><strong>阅读习惯类是稳定跑量主力</strong> — 「阅读→英语提升」因果链仍是用户最买单的核心叙事；反焦虑 PAS + 纸质提词器是当前最优壳</li>
+    <li><strong>情绪/心理类主题 ROAS 更稳</strong> — 积极思想 / 开口恐惧 / 梦想 等 ROAS 常优于纯人生鸡汤大消耗素材</li>
+    <li><strong>0629 后人群体系统化</strong> — 应用 FX×ZT 交叉表做停投与加码，避免「主题好听但 0% 出单」的集群浪费</li>
+    <li><strong>0713 周骤降是红色信号</strong> — 出单率从 17.2%→8.2%，需区分预算收缩与创意质量下滑</li>
+    <li><strong>AI 数字人方向需重新设计</strong> — 首测 ROAS 0.35，问题更可能在叙事框架而非「要不要做数字人」</li>
+  </ul>
 </div>
 
 <!-- 总结规律 -->
@@ -505,7 +801,7 @@
     <h3>规律 1：市场分层 × 内容分层</h3>
     <table class="data-table">
       <tr><th>市场</th><th>核心卖点</th><th>素材策略</th></tr>
-      <tr><td><strong>T1（美英）</strong></td><td>认知升级 / 效率</td><td>黑色字幕、AI 讲座、影子跟读、名著、理财</td></tr>
+      <tr><td><strong>T1（美英）</strong></td><td>认知升级 / 效率</td><td>黑色字幕、名著、阅读习惯、情绪疗愈、社交焦虑</td></tr>
       <tr><td><strong>T2/T3（土/越/东南亚）</strong></td><td>低门槛 / 安全感</td><td>双语功能演示、等级挑战系列、慢速英语</td></tr>
     </table>
   </div>
@@ -516,17 +812,19 @@
     <p><span class="badge badge-roi">三级</span> <strong>模板化多语言复制</strong> → 成功打法的跨市场扩张</p>
   </div>
   <div class="card">
-    <h3>规律 3：内容类型与用户动机的匹配</h3>
-    <p style="margin-bottom:8px"><strong>动机 = 成长渴望</strong> → 黑色字幕、自我激励英语</p>
+    <h3>规律 3：内容类型与用户动机的匹配（已更新）</h3>
+    <p style="margin-bottom:8px"><strong>动机 = 成长渴望</strong> → 黑色字幕、自我激励英语、阅读习惯</p>
     <p style="margin-bottom:8px"><strong>动机 = 知识焦虑</strong> → 金钱心理学、书单、硬核拆书</p>
     <p style="margin-bottom:8px"><strong>动机 = 语言恐惧</strong> → 慢速英语、双语功能、等级挑战</p>
-    <p><strong>动机 = 逃避无聊</strong> → 名著听书、开车听书</p>
+    <p style="margin-bottom:8px"><strong>动机 = 情绪疗愈</strong> → 积极思想、自信建立、原谅自己 <span class="status-tag status-new">Phase 4 新增</span></p>
+    <p><strong>动机 = 社交焦虑</strong> → 公开演讲、开口表达、害怕被评判 <span class="status-tag status-new">Phase 4 新增</span></p>
   </div>
   <div class="card">
     <h3>规律 4：视觉风格与信任建立</h3>
     <p style="margin-bottom:6px"><strong>黑色极简 = 高级感 / 专业性</strong> → T1 市场有效</p>
+    <p style="margin-bottom:6px"><strong>牛皮纸/打字机 = 文学感 / 可信度</strong> → 消除广告感 <span class="status-tag status-validated">已验证</span></p>
     <p style="margin-bottom:6px"><strong>原生 UGC 感 = 可信 / 不商业</strong> → 降低防御心理</p>
-    <p style="margin-bottom:6px"><strong>第一视角 = 代入感 / 沉浸</strong> → 提高 CTR</p>
+    <p style="margin-bottom:6px"><strong>治愈系自然风光 = 情绪价值 / 停留</strong> → 降低防备心理 <span class="status-tag status-validated">已验证</span></p>
     <p><strong>功能性演示 = 安全感 / 低门槛</strong> → T2/T3 市场有效</p>
   </div>
 </div>
@@ -629,7 +927,7 @@
 
 <!-- 公式 6 -->
 <div class="formula-box">
-  <div class="formula-title">📝 公式六：牛皮纸/打字机转变故事（近两周最强：单条 68% 消耗占比）</div>
+  <div class="formula-title">📝 公式六：牛皮纸/打字机转变故事（近两月最强：单条 68% 消耗占比 / ROAS 2.08）</div>
   <div class="formula-body">
     <em>[身份锚定 0-3s]</em> 大字标题抛出否定型身份陈述<br>
     &nbsp;&nbsp;→ "STOP BEING A NICE LEADER" / "STOP TRUSTING YOUR GUT INSTINCT"<br>
@@ -644,64 +942,252 @@
   </p>
 </div>
 
+<!-- 公式 7 -->
+<div class="formula-box">
+  <div class="formula-title">🌿 公式七：反焦虑慢英语 + 治愈系风光（优秀素材验证：高完播潜力）</div>
+  <div class="formula-body">
+    <em>[美景引入 0-3s]</em> 高饱和度自然风光（雪山/湖泊/田园），提出反焦虑主张<br>
+    &nbsp;&nbsp;→ "English is a habit, not knowledge" / "You don't need to be perfect"<br>
+    <em>[干货+共鸣 3-25s]</em> 短字幕白字黑边居中，句子极短（B1-A2 水平），画面每 3-5s 切换<br>
+    &nbsp;&nbsp;→ 给出具体行动指南（每天听/自言自语/用英语思考日常），引入影子跟读等专业方法<br>
+    <em>[升华 25-30s]</em> 将学英语类比为"去健身房"，强调坚持而非完美<br>
+    <em>[CTA 30-35s]</em> 顺理成章引出 GrowMe App
+  </div>
+  <p style="margin-top:14px; font-size:0.85em; color:var(--text-muted)">
+    <strong>关键设计：</strong>知行合一 — 视频本身的文案就是最简单的英语，用户轻松看懂全篇，"无痛阅读"体验直接证明观点有效性<br>
+    <strong>核心优势：</strong>美景 Hook + 简单语言 Retention + 实用方法 Value + 自然 CTA Conversion，视觉吸引力远超纯文字<br>
+    <strong>适用市场：</strong>T1 优先，T2/T3 可做慢速变体
+  </p>
+</div>
+
+<!-- 公式 8 -->
+<div class="formula-box">
+  <div class="formula-title">📜 公式八：反焦虑 PAS 阅读挑战（牛皮纸 + 提词器滚动）<span class="status-tag status-validated" style="margin-left:8px">近月主力壳</span></div>
+  <div class="formula-body">
+    <em>[痛点 Problem 0-8s]</em> 选书太难、死磕每个词、疲惫放弃 — 点出阅读失败的真实原因<br>
+    <em>[共鸣 Agitation 9-12s]</em> "我也曾这样"，建立人设与信任<br>
+    <em>[方案 Solution 13-29s]</em> 读简单文本、短句、不追求全懂、每天一点 — 培养 familiarity 而非炫耀词汇<br>
+    <em>[金句 Advice 30-56s]</em> Keep it simple / Read a little every day / Just be consistent<br>
+    <em>[CTA 57-58s]</em> 切高饱和品牌紫收尾 + GrowMe 下载
+  </div>
+  <p style="margin-top:14px; font-size:0.85em; color:var(--text-muted)">
+    <strong>视觉规范：</strong>米色/浅褐纹理纸张 + 衬线打字机体；字幕提词器式自下而上滚动（控节奏、提完播）；结尾突然切品牌紫形成反差<br>
+    <strong>与公式六的区别：</strong>六是「STOP + 转变故事」短钩；八是「PAS 长叙事 + 阅读方法论」— 更贴 EnglishLearners / Readers，BI 中 niupizhi / page / Learning 系列同构<br>
+    <strong>适用 FX：</strong>EnglishLearners · Readers · Students · SelfGrowth（habits / learning）
+  </p>
+</div>
+
 <!-- 公式汇总表 -->
-<h3 style="margin-top:40px; color:var(--accent2); font-size:1.1em;">📋 六套公式对比总表</h3>
+<h3 style="margin-top:40px; color:var(--accent2); font-size:1.1em;">📋 八套公式对比总表</h3>
 
 <table class="data-table">
   <tr>
-    <th>公式</th><th>钩子类型</th><th>时长</th><th>最佳 ROAS</th><th>最佳市场</th><th>制作难度</th>
+    <th>公式</th><th>钩子类型</th><th>时长</th><th>最佳 ROAS</th><th>最佳市场</th><th>制作难度</th><th>验证状态</th>
   </tr>
   <tr>
-    <td>黑色字幕激励</td><td>挑战 / 共鸣</td><td>15-20s</td><td>0.5</td><td>T1 通用</td><td>⭐ 低</td>
+    <td>黑色字幕激励</td><td>挑战 / 共鸣</td><td>15-20s</td><td>0.5</td><td>T1 通用</td><td>⭐ 低</td><td class="tier-s">已验证</td>
   </tr>
   <tr>
-    <td>第一视角笔记</td><td>沉浸 / 代入</td><td>15-20s</td><td>—</td><td>T1 为主</td><td>⭐⭐ 中</td>
+    <td>第一视角笔记</td><td>沉浸 / 代入</td><td>15-20s</td><td>—</td><td>T1 为主</td><td>⭐⭐ 中</td><td class="tier-a">已验证</td>
   </tr>
   <tr>
-    <td>名著听书</td><td>故事 / 悬念</td><td>25-30s</td><td>0.48</td><td>T1 为主</td><td>⭐⭐ 中</td>
+    <td>名著听书</td><td>故事 / 悬念</td><td>25-30s</td><td>0.48</td><td>T1 为主</td><td>⭐⭐ 中</td><td class="tier-s">已验证</td>
   </tr>
   <tr>
-    <td>慢速英语</td><td>成就 / 安全</td><td>30-35s</td><td><strong>0.9</strong></td><td><strong>T2/T3</strong></td><td>⭐ 低</td>
+    <td>慢速英语</td><td>成就 / 安全</td><td>30-35s</td><td><strong>0.9</strong></td><td><strong>T2/T3</strong></td><td>⭐ 低</td><td class="tier-s">已验证</td>
   </tr>
   <tr>
-    <td>知识书单</td><td>好奇心 / FOMO</td><td>15-20s</td><td>—</td><td>T1 通用</td><td>⭐ 低</td>
+    <td>知识书单</td><td>好奇心 / FOMO</td><td>15-20s</td><td>—</td><td>T1 通用</td><td>⭐ 低</td><td class="tier-a">已验证</td>
   </tr>
   <tr>
-    <td>牛皮纸转变故事</td><td>否定 / 故事</td><td>15-20s</td><td><strong>2.08</strong></td><td><strong>WW</strong></td><td>⭐ 低</td>
+    <td>牛皮纸转变故事</td><td>否定 / 故事</td><td>15-20s</td><td><strong>2.08</strong></td><td><strong>WW</strong></td><td>⭐ 低</td><td class="tier-s">已验证</td>
+  </tr>
+  <tr>
+    <td>反焦虑慢英语+风光</td><td>治愈 / 反焦虑</td><td>30-35s</td><td>—</td><td>T1 优先</td><td>⭐⭐ 中</td><td class="tier-a">优秀素材验证</td>
+  </tr>
+  <tr>
+    <td><strong>PAS 提词器阅读挑战</strong></td><td>反焦虑 / 方法论</td><td>45-60s</td><td>≈0.5–0.9</td><td><strong>EN / WW</strong></td><td>⭐ 低</td><td class="tier-s">近月主力</td>
   </tr>
 </table>
 
 
 <!-- ==================================================================
-     PART 3：未开发的潜力方向
+     PART 3：优秀素材深度拆解
      ================================================================== -->
 <h2 class="sec-title" id="s3">
-  <span class="icon">🔮</span> Part 3：未开发的潜力方向
-  <span class="num">现有方法论之外的 Blue Ocean</span>
+  <span class="icon">🎬</span> Part 3：优秀素材深度拆解
+  <span class="num">三条标杆素材的逆向工程</span>
 </h2>
 
 <div class="highlight">
-  <p><strong>分析逻辑：</strong>基于已验证的四类用户动机（成长渴望 / 知识焦虑 / 语言恐惧 / 逃避无聊），结合 GrowMe 的产品能力（阅读、听书、AI 讲解、笔记），找出尚未被充分测试的内容方向。</p>
+  <p><strong>分析来源：</strong>飞书「GrowMe好素材分享」文档。以下三条素材代表了当前 GrowMe 素材制作的最高水准，涵盖不同视觉风格和叙事结构。</p>
 </div>
 
-<h3 style="margin-top:32px; color:var(--accent4); font-size:1.05em;">🌊 方向一：AI 数字人讲座 / 拆书</h3>
-<div class="card">
-  <h3>为什么是 Blue Ocean？</h3>
-  <p>文档中提到的「AI 数字人讲座」是 T1 未来规划方向，但目前尚未大规模测试。这个方向有几个独特优势：</p>
-  <ul style="margin:12px 0 0 18px; color:var(--text-muted)">
-    <li><strong>内容壁垒高：</strong>AI 数字人 + 书籍解读的组合，竞品难以快速复制</li>
-    <li><strong>T1 市场匹配：</strong>美英用户对 TED Talk / MasterClass 式的知识讲座接受度高</li>
-    <li><strong>长视频红利：</strong>30-60 秒的数字人讲解可以在 Reels / TikTok 上跑，完播率关键在于内容密度</li>
-    <li><strong>降本增效：</strong>AI 生成数字人比真人拍摄成本低，且可以快速多语言化</li>
-  </ul>
-  <p style="margin-top:12px"><strong>建议测试方向：</strong></p>
+<!-- Creative 1 -->
+<div class="creative-card">
+  <div class="creative-header">
+    <div class="creative-num">01</div>
+    <h3>反焦虑英语阅读学习法 — 牛皮纸+提词器滚动</h3>
+  </div>
+  <div class="tag-row">
+    <span class="tag">视觉：米色纹理纸张 + 衬线体</span>
+    <span class="tag">节奏：提词器式滚动</span>
+    <span class="tag">文案难度：B1-A2</span>
+    <span class="tag">叙事：PAS 模型变体</span>
+  </div>
+  <div class="analysis-section">
+    <h4>核心主题</h4>
+    <p>阅读不是为了炫耀词汇量，而是为了培养语感（familiarity）。反对"死磕难词"，提倡"简单、持续、不完美"的阅读习惯。</p>
+  </div>
+  <div class="analysis-section">
+    <h4>叙事结构（PAS 模型）</h4>
+    <ul style="margin:6px 0 0 18px">
+      <li><strong>痛点 (0-8s)：</strong>选书太难、试图理解每个词、导致疲惫放弃</li>
+      <li><strong>共鸣 (9-12s)：</strong>"我也曾这样"，拉近与观众距离</li>
+      <li><strong>解决方案 (13-29s)：</strong>读简单文本、短句、不追求全懂、坚持读</li>
+      <li><strong>金句 (30-56s)：</strong>"Keep it simple, Read a little every day, Just be consistent"</li>
+      <li><strong>CTA (57-58s)：</strong>展示 GrowMe App</li>
+    </ul>
+  </div>
+  <div class="analysis-section">
+    <h4>为什么有效</h4>
+    <ul style="margin:6px 0 0 18px">
+      <li><strong>情绪价值：</strong>反复强调"You don't need to be perfect"，缓解同辈压力和完美主义焦虑</li>
+      <li><strong>低认知负荷：</strong>文案本身就是 B1-A2 水平的简单英语 — 用简单英语告诉你"读简单英语有效"，身教大于言传</li>
+      <li><strong>提词器设计：</strong>从下往上缓慢滚动，强制控制阅读节奏，利用"想知道下一句"心理提高完播率</li>
+      <li><strong>方法论实用：</strong>Short stories, Easy sentences, Read a little every day — 具体可执行，让用户觉得"我也能做到"</li>
+    </ul>
+  </div>
+  <div class="analysis-section">
+    <h4>目标人群</h4>
+    <p>B1-B2 英语学习者（核心）、有阅读挫败感的人、碎片化学习/习惯养成者、自我提升爱好者</p>
+  </div>
+</div>
+
+<!-- Creative 2 -->
+<div class="creative-card">
+  <div class="creative-header">
+    <div class="creative-num">02</div>
+    <h3>英语是习惯不是知识 — 治愈系风光+慢英语</h3>
+  </div>
+  <div class="tag-row">
+    <span class="tag">视觉：雪山/湖泊/田园 高饱和</span>
+    <span class="tag">节奏：3-5s 快剪辑</span>
+    <span class="tag">文案难度：B1</span>
+    <span class="tag">叙事：破冰→干货→升华→CTA</span>
+  </div>
+  <div class="analysis-section">
+    <h4>核心主题</h4>
+    <p>主打"慢英语（Slow English）"，反对死记硬背和完美主义，强调英语是日常习惯而非知识储备。</p>
+  </div>
+  <div class="analysis-section">
+    <h4>叙事结构</h4>
+    <ul style="margin:6px 0 0 18px">
+      <li><strong>破冰：</strong>用美景引入，提出"英语不仅是语法，更是习惯"</li>
+      <li><strong>干货（5步法）：</strong>每天听、自言自语、用英语思考日常、少量多次背词、不怕犯错</li>
+      <li><strong>进阶升华：</strong>引入"影子跟读（Shadowing）"，将学英语类比为"去健身房"</li>
+      <li><strong>CTA：</strong>顺理成章引出 GrowMe App</li>
+    </ul>
+  </div>
+  <div class="analysis-section">
+    <h4>为什么有效</h4>
+    <ul style="margin:6px 0 0 18px">
+      <li><strong>反焦虑情绪价值：</strong>"不用全懂"、"简单句也可以"、"错误是老师" — 缓解开口焦虑和语法焦虑</li>
+      <li><strong>知行合一：</strong>视频文案本身就是最简单的英语，用户轻松看懂全篇，"无痛阅读"体验直接证明观点</li>
+      <li><strong>干货密度高：</strong>不仅有鸡汤，还给出影子跟读、英语思维等具体专业方法</li>
+      <li><strong>视觉吸引力强：</strong>高饱和度绿色和蓝色风光降低防备心理，快剪辑防止风景视频的视觉疲劳</li>
+    </ul>
+  </div>
+  <div class="analysis-section">
+    <h4>适用场景</h4>
+    <p>相比纯文字素材，视觉吸引力更强，更适合 TikTok、Instagram Reels 等以视觉为主的平台投放。高完播率潜力素材。</p>
+  </div>
+</div>
+
+<!-- Creative 3 -->
+<div class="creative-card">
+  <div class="creative-header">
+    <div class="creative-num">03</div>
+    <h3>建立自信 — 深夜海面+黑白极简跟读</h3>
+  </div>
+  <div class="tag-row">
+    <span class="tag">视觉：夜晚海面+月光倒影</span>
+    <span class="tag">排版：纯黑+纯白无衬线</span>
+    <span class="tag">文案难度：B1</span>
+    <span class="tag">系列标识："Speak fast and clear"</span>
+  </div>
+  <div class="analysis-section">
+    <h4>核心主题</h4>
+    <p>不直接教英语技巧，而是通过探讨自信，帮助学习者克服"怕犯错、怕不完美"的心理障碍。</p>
+  </div>
+  <div class="analysis-section">
+    <h4>叙事结构（情感递进）</h4>
+    <ul style="margin:6px 0 0 18px">
+      <li><strong>定义与澄清：</strong>自信不是天生完美，而是在困难和恐惧中依然相信自己</li>
+      <li><strong>直击痛点：</strong>人们常因"与他人比较"而感到渺小</li>
+      <li><strong>解法与行动：</strong>自信是后天逐步建立的（step by step），鼓励大胆开口、勇于犯错</li>
+      <li><strong>情感升华：</strong>"You've got this"温暖收尾</li>
+    </ul>
+  </div>
+  <div class="analysis-section">
+    <h4>为什么有效</h4>
+    <ul style="margin:6px 0 0 18px">
+      <li><strong>情绪价值极高：</strong>将"学英语"升维到"个人成长"和"心理按摩"，正能量内容易引发共鸣和传播</li>
+      <li><strong>巧妙化解学习焦虑：</strong>"It's not about being perfect"和"Make mistakes"精准击中不敢开口的痛点</li>
+      <li><strong>优质跟读素材：</strong>排比句多（even when... even when...）、词汇简单，本身是完美的影子跟读范本</li>
+      <li><strong>深夜氛围设计：</strong>暗色背景营造安静、适合自我对话的氛围，匹配深夜刷手机的用户场景</li>
+    </ul>
+  </div>
+  <div class="analysis-section">
+    <h4>目标人群</h4>
+    <p>缺乏自信的英语学习者（"哑巴英语"人群）、自我提升/情感类受众、喜欢"金句/语录"的用户</p>
+  </div>
+</div>
+
+<!-- 三条素材的共同模式 -->
+<div class="highlight success">
+  <p><strong>三条优秀素材的共同模式：</strong></p>
   <ul style="margin:8px 0 0 18px; color:var(--text-muted)">
-    <li>用数字人讲解「本书 3 个最颠覆的观点」— 信息密度型</li>
-    <li>数字人做「1 分钟读完一本书」— 速读型</li>
-    <li>数字人 + 书本动画 + 金句弹幕 — 混合视觉型</li>
+    <li><strong>反焦虑是核心情绪引擎</strong> — 三条素材全部以"You don't need to be perfect"为核心情绪，缓解用户的学习焦虑</li>
+    <li><strong>知行合一的文案设计</strong> — 文案本身就是 B1-A2 水平的简单英语，用户在看视频时就体验了"无痛阅读"</li>
+    <li><strong>情绪价值 > 功能展示</strong> — 没有一条素材在推销 App 功能，全在卖"成为更好的自己"的信念</li>
+    <li><strong>CTA 自然不突兀</strong> — App 出现在情绪最高点，是"顺理成章"而非"硬塞"</li>
   </ul>
 </div>
 
+
+<!-- ==================================================================
+     PART 4：未开发的潜力方向
+     ================================================================== -->
+<h2 class="sec-title" id="s4">
+  <span class="icon">🔮</span> Part 4：未开发的潜力方向
+  <span class="num">现有方法论之外的 Blue Ocean（含实测反馈）</span>
+</h2>
+
+<div class="highlight">
+  <p><strong>分析逻辑：</strong>基于已验证的用户动机（成长渴望 / 知识焦虑 / 语言恐惧 / 情绪疗愈 / 社交焦虑），结合 GrowMe 的产品能力，找出尚未被充分测试或已初步验证的内容方向。</p>
+</div>
+
+<!-- Direction 1 - Updated with test results -->
+<h3 style="margin-top:32px; color:var(--accent4); font-size:1.05em;">🌊 方向一：AI 数字人讲座 / 拆书 <span class="status-tag status-testing">已首测 · 需迭代</span></h3>
+<div class="card">
+  <h3>首测数据 & 迭代方向</h3>
+  <p><strong>0608 周首测数据：</strong>$232.75 消耗 / 4 购物 / ROAS 0.35 — 表现低于平均。</p>
+  <p style="margin-top:10px"><strong>问题诊断：</strong></p>
+  <ul style="margin:8px 0 0 18px; color:var(--text-muted)">
+    <li>数字人可信度可能不足，用户一眼识破 AI 生成感</li>
+    <li>内容密度可能不够 — "3个颠覆观点"的框架太学术，缺少情感钩子</li>
+    <li>缺乏"朋友聊天"的语气，可能偏向"老师讲课"</li>
+  </ul>
+  <p style="margin-top:10px"><strong>迭代建议：</strong></p>
+  <ul style="margin:8px 0 0 18px; color:var(--text-muted)">
+    <li>放弃"3个观点"学术框架，改用"1个改变我人生的故事"叙事</li>
+    <li>数字人 + 书本动画 + 金句弹幕混合视觉，降低纯数字人的违和感</li>
+    <li>必须检查 Meta 的 AI 生成内容政策，确保合规标注</li>
+  </ul>
+</div>
+
+<!-- Direction 2 -->
 <h3 style="margin-top:32px; color:var(--accent4); font-size:1.05em;">🌊 方向二：社交证明型 UGC（用户蜕变故事）</h3>
 <div class="card">
   <h3>为什么是 Blue Ocean？</h3>
@@ -719,6 +1205,7 @@
   </ul>
 </div>
 
+<!-- Direction 3 -->
 <h3 style="margin-top:32px; color:var(--accent4); font-size:1.05em;">🌊 方向三：对比 / 竞争型素材</h3>
 <div class="card">
   <h3>为什么是 Blue Ocean？</h3>
@@ -736,6 +1223,7 @@
   </ul>
 </div>
 
+<!-- Direction 4 -->
 <h3 style="margin-top:32px; color:var(--accent4); font-size:1.05em;">🌊 方向四：互动 / 参与型素材</h3>
 <div class="card">
   <h3>为什么是 Blue Ocean？</h3>
@@ -753,91 +1241,134 @@
   </ul>
 </div>
 
-<h3 style="margin-top:32px; color:var(--accent4); font-size:1.05em;">🌊 方向五：情绪 / 氛围型素材</h3>
+<!-- Direction 5 -->
+<h3 style="margin-top:32px; color:var(--accent4); font-size:1.05em;">🌊 方向五：情绪疗愈 / 精神力量 <span class="status-tag status-validated">已验证</span></h3>
 <div class="card">
-  <h3>为什么是 Blue Ocean？</h3>
-  <p>当前素材偏向「理性说服」（功能、效果、知识），缺少「感性打动」（氛围、情绪、美学）。尤其在 T1 市场，Lofi / Cozy / Aesthetic 类内容有巨大流量池：</p>
+  <h3>实测数据证明方向可行</h3>
+  <p><strong>Phase 4 验证数据：</strong></p>
   <ul style="margin:12px 0 0 18px; color:var(--text-muted)">
-    <li><strong>情绪 = 停留：</strong>治愈系氛围素材的完播率经常高于理性说服型</li>
-    <li><strong>场景绑定：</strong>「下雨天 + 热咖啡 + 读书」— 制造心锚，让用户把 GrowMe 和舒适感绑定</li>
-    <li><strong>TikTok 友好：</strong>Aesthetic study / reading 是 TikTok 上的稳定内容品类</li>
+    <li>"积极的思想" — $1,203 / 31 购物 / ROAS 0.64</li>
+    <li>"自信" — $1,187 / 25 购物 / ROAS 0.43</li>
+    <li>"活在当下" — $392 / 9 购物 / ROAS 0.25</li>
   </ul>
-  <p style="margin-top:12px"><strong>建议测试方向：</strong></p>
+  <p style="margin-top:10px"><strong>历史数据印证：</strong>Phase 1 的高 CTR 图片中，"疏离感"主题（13.15% CTR）、"圣经式安慰"（11.83% CTR）、"原谅你自己"（10.69% CTR）均属于情绪疗愈类，说明这个方向一直有用户基础。</p>
+  <p style="margin-top:10px"><strong>核心洞察：</strong>用户从「理解自己→治愈自己→重塑自我」的精神需求链路。GrowMe 可以通过阅读为用户的精神世界提供支持，帮助他们完成心灵重建。</p>
+  <p style="margin-top:10px"><strong>建议测试方向：</strong></p>
   <ul style="margin:8px 0 0 18px; color:var(--text-muted)">
-    <li>Rainy Day Reading（雨声 + 书页翻动 + Lofi BGM）</li>
-    <li>Cozy Night Routine（睡前读书仪式感）</li>
-    <li>Silent Vlog Style（无旁白，纯视觉 + 字幕 + 环境音）</li>
+    <li>深夜治愈系：雨声 + 书页 + Lofi BGM + 情绪文案</li>
+    <li>「原谅自己」系列：从心理学书籍中提取自我和解的内容</li>
+    <li>「你不需要完美」系列：与优秀素材 01/03 的反焦虑主题深度结合</li>
   </ul>
 </div>
 
-<div class="highlight" style="margin-top:28px;">
-  <p><strong>📊 近期新增验证方向：</strong>「沟通能力」场景化内容（0601 周首批测试 WW CPI $0.82）——围绕 How to Win Friends &amp; Influence People 等社交技能类书籍制作实用场景素材，首批数据正面。建议与公式六（牛皮纸转变故事）结合使用，纳入常规测试队列。</p>
+<!-- Direction 6 - New -->
+<h3 style="margin-top:32px; color:var(--accent4); font-size:1.05em;">🌊 方向六：社交焦虑 / 公开表达 <span class="status-tag status-validated">已验证</span></h3>
+<div class="card">
+  <h3>Phase 4 新增验证方向</h3>
+  <p><strong>实测数据：</strong></p>
+  <ul style="margin:12px 0 0 18px; color:var(--text-muted)">
+    <li>"开口表达时感到害怕" — ROAS 0.62</li>
+    <li>"公开演讲中学到的技巧" — $1,010 / 24 购物 / ROAS 0.45</li>
+    <li>"你必须比害怕被羞耻更害怕浪费你的生命" — $1,227 / 24 购物</li>
+  </ul>
+  <p style="margin-top:10px"><strong>为什么有效：</strong>社交焦虑是全球年轻人的普遍痛点。"害怕开口说英语"和"害怕公开表达"本质上是同一个心理障碍 — 怕被评判。围绕 How to Win Friends & Influence People 等社交技能类书籍制作实用场景素材，首批数据正面。</p>
+  <p style="margin-top:10px"><strong>建议：</strong>与公式六（牛皮纸转变故事）结合使用，纳入常规测试队列。</p>
+</div>
+
+<!-- Direction 7 - New -->
+<h3 style="margin-top:32px; color:var(--accent4); font-size:1.05em;">🌊 方向七：年龄焦虑 / 人生感悟 <span class="status-tag status-validated">已验证</span></h3>
+<div class="card">
+  <h3>Phase 4 新增验证方向</h3>
+  <p><strong>实测数据：</strong></p>
+  <ul style="margin:12px 0 0 18px; color:var(--text-muted)">
+    <li>"对于年纪焦虑/落后时代人的建议" — ROAS 0.52</li>
+    <li>"也许你有个梦想，就是把英语学好" — ROAS 0.57</li>
+    <li>"给认为阅读太费时间的人的忠告" — ROAS 0.57</li>
+  </ul>
+  <p style="margin-top:10px"><strong>为什么有效：</strong>25-35 岁用户群体普遍存在"年龄焦虑"和"落后感"。这类素材用温暖的语气告诉用户"现在开始也不晚"，与 GrowMe 的"每天读一点"主张完美契合。</p>
+  <p style="margin-top:10px"><strong>建议：</strong>扩展至"30 岁后才开始学英语晚不晚？"、"35 岁重启人生书单"等主题。</p>
 </div>
 
 
 <!-- ==================================================================
-     PART 4：下阶段选题与测试规划
+     PART 5：下阶段选题与测试规划
      ================================================================== -->
-<h2 class="sec-title" id="s4">
-  <span class="icon">🎯</span> Part 4：下阶段选题与测试规划
-  <span class="num">T1 &amp; T2/T3 双轨作战计划</span>
+<h2 class="sec-title" id="s5">
+  <span class="icon">🎯</span> Part 5：下阶段选题与测试规划
+  <span class="num">基于实测数据的调整方案</span>
 </h2>
 
 <div class="highlight">
-  <p><strong>战略原则：</strong>T1（英美）卖认知升级和效率感，T2/T3（土耳其/越南/东南亚）卖低门槛和安全感。两个市场的用户痛点和决策逻辑不同，素材策略必须分开设计。</p>
-  <p style="margin-top:8px"><strong>💡 基于近两周数据的即时调整：</strong>学习类（ROAS 2.63+）和牛皮纸公式（CPI $0.78）当前效率最高，建议加量；沟通能力方向初见成效，可从 P2 提至 P1 试跑。</p>
+  <p><strong>战略原则：</strong>T1 卖认知升级与情绪价值，T2/T3 卖低门槛与安全感。优先级同时参考：周测好素材榜 + 全库 FX×ZT 交叉表 + 阶段性项目「内容先行再挂产品」路线。</p>
+</div>
+
+<div class="highlight success">
+  <p><strong>基于实测数据的即时调整（2026.07）：</strong></p>
+  <ul style="margin:8px 0 0 18px; color:var(--text-muted)">
+    <li><strong>加量：</strong>阅读习惯 / PAS 提词器壳（公式八）；Professionals×growth；Students×learning；SelfGrowth×lifelessons/habits；情绪疗愈与社交焦虑主题</li>
+    <li><strong>维持：</strong>牛皮纸转变故事（公式六）、慢速英语（公式四）、书单图片高 CTR 测方向</li>
+    <li><strong>收窄：</strong>EnglishLearners×learning 量大但率仅 15% — 锁定已验文案，只换 RS 壳 / LVL1 钩子，禁止无脑扩量</li>
+    <li><strong>暂停：</strong>selfimprovement 全系、womenempowerment、多组 0% 集群；095KB / pingme 低效产能</li>
+    <li><strong>迭代后重测：</strong>AI 数字人（首测 ROAS 0.35）</li>
+  </ul>
 </div>
 
 <!-- T1 计划 -->
 <h3 style="margin-top:32px; color:var(--accent2); font-size:1.1em;">🇺🇸🇬🇧 T1 市场（美国 / 英国）作战计划</h3>
 
 <div class="action-item">
-  <div class="check">P0</div>
+  <div class="check done">✓</div>
   <div class="action-content">
-    <h4>黑色字幕系列升级：从「自我激励」到「认知重锤」<span class="priority priority-p0">P0</span></h4>
-    <p>当前黑色字幕主打「You can do it」型激励。下一步测试「认知颠覆型」文案 — 用反常识观点制造冲击感。例如：<br>
-    「The most successful people don't read more — they read differently」「You've been learning English wrong for 10 years」<br>
-    <em>每周产出 5 条，A/B 测试激励型 vs 颠覆型文案的 CPI 差异。</em></p>
+    <h4>阅读习惯 × 公式八模板化放量 <span class="priority priority-p0">P0</span> <span class="status-tag status-validated">已验证</span></h4>
+    <p>周榜头牌 + 优秀素材 PAS 拆解已对齐。立刻产出 10+ 变体：锁文案主线，只换话题（专注力/焦虑/职场英语）或只换 RS 壳（纸质 vs 黑底 vs page）。FX 优先 EnglishLearners / Readers / Students。</p>
   </div>
 </div>
 
 <div class="action-item">
-  <div class="check">P0</div>
+  <div class="check done">✓</div>
   <div class="action-content">
-    <h4>AI 数字人讲座系列启动<span class="priority priority-p0">P0</span></h4>
-    <p>选择 5 本 T1 市场高认知度书籍（如 Atomic Habits、The Psychology of Money），用 AI 数字人做「3 个最颠覆的观点」短视频。每本书拆成 3 条素材（每个观点 1 条），共 15 条。关键：数字人的语气必须是「朋友聊天」而非「老师讲课」。</p>
+    <h4>Professionals × growth 深度加码 <span class="priority priority-p0">P0</span> <span class="status-tag status-validated">BI 头牌</span></h4>
+    <p>0706 周单条约 52 购物 / ROAS≈0.7。同一文案出 4–6 个视觉壳（P1X1R3C3 / P3X1R1C3 / 有脸 vs 无脸），验证是「文案赢」还是「版式赢」。</p>
+  </div>
+</div>
+
+<div class="action-item">
+  <div class="check done">✓</div>
+  <div class="action-content">
+    <h4>情绪疗愈方向系列化 <span class="priority priority-p0">P0</span> <span class="status-tag status-validated">已验证</span></h4>
+    <p>"积极的思想"ROAS 0.64、"自信"ROAS 0.43。结合公式七/八做「你不需要完美」系列。注意合规：停留在「阅读陪伴」，不暗示医疗效果。</p>
+  </div>
+</div>
+
+<div class="action-item">
+  <div class="check testing">↻</div>
+  <div class="action-content">
+    <h4>AI 数字人讲座 V2 迭代 <span class="priority priority-p1">P1</span> <span class="status-tag status-testing">需迭代</span></h4>
+    <p>首测 ROAS 0.35。V2：改「1 本书如何改变了我」第一人称；数字人+书本动画+金句弹幕；语气「朋友聊天」。Meta AI 内容政策须合规标注。</p>
+  </div>
+</div>
+
+<div class="action-item">
+  <div class="check done">✓</div>
+  <div class="action-content">
+    <h4>社交焦虑/公开表达方向扩展 <span class="priority priority-p1">P1</span> <span class="status-tag status-validated">已验证</span></h4>
+    <p>与公式六结合："STOP BEING AFRAID TO SPEAK UP"。书源 How to Win Friends 等技能书 — 对齐阶段性项目「知识技能类增强学习动机」。</p>
   </div>
 </div>
 
 <div class="action-item">
   <div class="check">P1</div>
   <div class="action-content">
-    <h4>影子跟读（Shadowing）素材测试<span class="priority priority-p1">P1</span></h4>
-    <p>影子跟读是英语学习中的热门方法，与 GrowMe 的阅读场景天然契合。素材设计：展示一句英文 → 用户跟读 → 下一句，营造「训练节奏感」。目标验证这个方向是否能打开「英语学习者」这个比「读书人」更大的受众池。</p>
-  </div>
-</div>
-
-<div class="action-item">
-  <div class="check">P1</div>
-  <div class="action-content">
-    <h4>名著听故事系列化<span class="priority priority-p1">P1</span></h4>
-    <p>当前名著听书是单本单条，下一步做系列化：「This Week's Classic」「5 Classics You Can Finish in a Week」。系列化内容天然提高用户回访和品牌记忆。选书策略：优先短篇经典（动物农场、老人与海）降低用户心理门槛。</p>
+    <h4>图片高 CTR 继续做「方向探针」 <span class="priority priority-p1">P1</span> <span class="status-tag status-validated">项目结论</span></h4>
+    <p>阶段性项目：图片 CTR 可到 9–13%（疏离感/安慰/高价值女性等）。流程不变：图片测选题 → 视频放大。每周保留图片产能测新话题。</p>
   </div>
 </div>
 
 <div class="action-item">
   <div class="check">P2</div>
   <div class="action-content">
-    <h4>搞钱 / 理财类内容探索<span class="priority priority-p2">P2</span></h4>
-    <p>文档提到的 T1 方向之一。测试「财富思维」类书单和拆书内容（Rich Dad Poor Dad、The Millionaire Next Door）。注意：这类素材在 FB 广告中需要避免「承诺收入」类违规表述。</p>
-  </div>
-</div>
-
-<div class="action-item">
-  <div class="check">P2</div>
-  <div class="action-content">
-    <h4>社交证明型 + 氛围型素材试点<span class="priority priority-p2">P2</span></h4>
-    <p>从 Part 3 的 Blue Ocean 方向中各选 1 个子方向做小规模测试（每周各 2-3 条），验证 CTR 和 CPI 数据后再决定是否扩大。</p>
+    <h4>年龄焦虑 / 社交证明 / 对比型试点 <span class="priority priority-p2">P2</span></h4>
+    <p>各每周 2–3 条。对比型避免点名竞品；社交证明优先真实评论截图。</p>
   </div>
 </div>
 
@@ -845,10 +1376,10 @@
 <h3 style="margin-top:40px; color:var(--accent3); font-size:1.1em;">🇹🇷🇻🇳 T2/T3 市场（土耳其 / 越南 / 东南亚）作战计划</h3>
 
 <div class="action-item">
-  <div class="check">P0</div>
+  <div class="check done">✓</div>
   <div class="action-content">
-    <h4>慢速英语系列量产化<span class="priority priority-p0">P0</span></h4>
-    <p>当前 ROAS 0.8-0.9 是最高段位，立刻扩大产能。按「话题 × 难度」矩阵规划：<br>
+    <h4>慢速英语系列持续量产 <span class="priority priority-p0">P0</span> <span class="status-tag status-validated">已验证</span></h4>
+    <p>当前 ROAS 0.8-0.9 是最高段位，持续扩大产能。按「话题 × 难度」矩阵规划：<br>
     话题：Daily Life / Travel / Work / Love & Relationship / Self-Improvement<br>
     难度：Beginner（60 wpm）/ Easy（90 wpm）/ Medium（120 wpm）<br>
     <em>目标：每周产出 10 条慢速英语素材，覆盖 5 个话题 × 2 个难度等级。</em></p>
@@ -856,9 +1387,9 @@
 </div>
 
 <div class="action-item">
-  <div class="check">P0</div>
+  <div class="check">P1</div>
   <div class="action-content">
-    <h4>B1 等级挑战系列化<span class="priority priority-p0">P0</span></h4>
+    <h4>B1 等级挑战系列化 <span class="priority priority-p1">P1</span></h4>
     <p>当前双语素材已验证，下一步做等级系列化：<br>
     「A2 Starter」「B1 Intermediate」「B2 Upper-Intermediate」— 每级 5 条素材<br>
     每个等级内容在视觉上有统一模板但色彩区分（绿色 A2 / 蓝色 B1 / 紫色 B2），建立品牌识别系统。<br>
@@ -869,7 +1400,7 @@
 <div class="action-item">
   <div class="check">P1</div>
   <div class="action-content">
-    <h4>双语功能型素材扩展<span class="priority priority-p1">P1</span></h4>
+    <h4>双语功能型素材扩展 <span class="priority priority-p1">P1</span></h4>
     <p>当前双语素材以阅读为主，扩展至 App 其他核心功能：<br>
     - 双语词典查询演示（查一个单词 → 展示例句 → 收藏）<br>
     - 双语 AI 讲解演示（选中一段 → AI 用母语解释）<br>
@@ -879,9 +1410,9 @@
 </div>
 
 <div class="action-item">
-  <div class="check">P1</div>
+  <div class="check">P2</div>
   <div class="action-content">
-    <h4>Quiz / 互动型素材 T2/T3 版<span class="priority priority-p1">P1</span></h4>
+    <h4>Quiz / 互动型素材 T2/T3 版 <span class="priority priority-p2">P2</span></h4>
     <p>语言学习类 Quiz 在 T2/T3 市场互动率极高。设计：<br>
     「Can you answer these 3 English questions?」→ 评论区互动 → 算法加权<br>
     每周 3-5 条，测试不同难度等级的 Quiz 对互动率和 CPI 的影响。</p>
@@ -891,13 +1422,13 @@
 <div class="action-item">
   <div class="check">P2</div>
   <div class="action-content">
-    <h4>本土化 KOL / 网红素材探索<span class="priority priority-p2">P2</span></h4>
-    <p>在土耳其和越南市场寻找微型英语学习博主（1k-50k 粉丝），合作制作「我用 GrowMe 学英语」类 UGC 素材。微 influencer 的合作成本低、信任度高，适合测试社交证明在 T2/T3 的效果。</p>
+    <h4>情绪疗愈方向 T2/T3 本土化 <span class="priority priority-p2">P2</span> <span class="status-tag status-new">新方向</span></h4>
+    <p>Phase 4 在 T1 验证了情绪疗愈方向（ROAS 0.64），T2/T3 市场的年轻人同样有社交焦虑和自我怀疑。将"你不需要完美"、"原谅自己"等主题翻译成土耳其语/越南语版本，用双语字幕降低理解门槛。</p>
   </div>
 </div>
 
-<!-- 测试节奏总览 -->
-<h3 style="margin-top:40px; color:var(--accent2); font-size:1.1em;">📅 推荐测试节奏（4 周滚动计划）</h3>
+<!-- 推荐测试节奏 -->
+<h3 style="margin-top:40px; color:var(--accent2); font-size:1.1em;">📅 推荐测试节奏（4 周滚动计划 — 基于实测数据调整）</h3>
 
 <table class="data-table">
   <tr>
@@ -905,23 +1436,23 @@
   </tr>
   <tr>
     <td><strong>Week 1</strong></td>
-    <td>黑色字幕「认知重锤」文案 5 条 + AI 数字人 3 条上线</td>
+    <td>公式八 PAS 阅读挑战 8 条 + Professionals×growth 壳测 6 条 + 情绪疗愈 5 条</td>
     <td>慢速英语量产 10 条 → 跑 3A 测试</td>
   </tr>
   <tr>
     <td><strong>Week 2</strong></td>
-    <td>分析 Week 1 数据，迭代到 v2 + 影子跟读 3 条上线</td>
-    <td>B1 等级系列 A2 级 5 条 + 双语功能 3 条</td>
+    <td>复盘 0713 下滑根因；EnglishLearners 只换壳不加新 ZT；社交焦虑 5 条</td>
+    <td>B1 等级 A2 5 条 + 双语功能 3 条</td>
   </tr>
   <tr>
     <td><strong>Week 3</strong></td>
-    <td>名著系列化 5 条 + 社交证明型 2 条试点</td>
-    <td>慢速英语数据复盘 + 难度矩阵调整 + Quiz 型 3 条</td>
+    <td>图片探针新话题 8 条 → 胜出选题视频化；AI 数字人 V2 3 条</td>
+    <td>慢速英语复盘 + Quiz 3 条</td>
   </tr>
   <tr>
     <td><strong>Week 4</strong></td>
-    <td>全方向数据汇总 → 确定 T1 第二梯队重点 + 搞钱/理财 3 条</td>
-    <td>等级系列 B1 级 5 条 + KOL 合作素材 1 条试点</td>
+    <td>全方向汇总：砍 0% 集群产能；确认下一月 FX×ZT 白名单</td>
+    <td>等级 B1 5 条 + 情绪疗愈本土化复盘</td>
   </tr>
 </table>
 
@@ -939,7 +1470,7 @@
   </div>
   <div class="card">
     <h3>失败素材也要归档</h3>
-    <p>每条没跑起来的素材，记录失败原因（钩子太弱？受众不对？内容太复杂？）。3 个月后回头看，这些数据比成功案例更能指导方向。</p>
+    <p>每条没跑起来的素材，记录失败原因（钩子太弱？受众不对？内容太复杂？）。AI 数字人首测 ROAS 0.35 的案例说明：方向可能对但执行需要迭代。</p>
   </div>
   <div class="card">
     <h3>每周五数据复盘，决定下周方向</h3>
@@ -954,7 +1485,21 @@
     <li>T2/T3 市场的慢速英语红利窗口可能有限，一旦竞品跟进，ROAS 可能快速下降 — 趁现在加速放量</li>
     <li>AI 数字人素材需检查 Meta 的 AI 生成内容政策，确保合规标注</li>
     <li>对比 / 竞争型素材注意避免直接点名竞品，使用「generic vs smart」的模糊对比方式</li>
+    <li>情绪疗愈方向注意避免暗示医疗/心理治疗效果，保持在"阅读陪伴"的安全边界内</li>
+    <li><strong>0713 周出单率 8.2% 是红色信号</strong> — 先查预算与创意质量，再决定是否加产能</li>
+    <li><strong>selfimprovement 等 0% 集群继续铺 = 烧炮灰</strong> — 先停再拆因</li>
   </ul>
+</div>
+
+<div class="highlight" style="margin-top:20px; text-align:center;">
+  <p style="font-size:0.85em; color:var(--text-muted);">
+    📊 数据来源：
+    <a href="https://grow-me-database.vercel.app/" style="color:var(--accent2)">买量素材复盘 BI</a> ·
+    <a href="https://ladar4rspyn.feishu.cn/wiki/Gn5kwNYVIiFs21kxXOIcq1A7nTf" style="color:var(--accent2)">好素材分享</a> ·
+    <a href="https://ladar4rspyn.feishu.cn/wiki/UqYwwEq1kiK6upkPtZrcc1FVnSd" style="color:var(--accent2)">周测试好素材</a> ·
+    <a href="https://my.feishu.cn/wiki/E4MywdwVPi0ySrkgrWrcYSaPnnd" style="color:var(--accent2)">阶段性项目复盘</a><br>
+    📅 最后更新：2026.07.21 · 下次更新：2026.08 月初
+  </p>
 </div>
 
 </div><!-- /container -->
