@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowMe 用户反馈截图分析 — 广告素材策略报告</title>
+<style>
+  :root {
+    --bg: #f8f7f4;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --text-2: #555;
+    --accent: #e85d3a;
+    --accent-soft: #fef0ec;
+    --green: #2d8659;
+    --green-soft: #eaf6f0;
+    --yellow: #d4a017;
+    --yellow-soft: #fdf8ec;
+    --red: #c0392b;
+    --red-soft: #fdecea;
+    --border: #e8e6e0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 40px 20px;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle { color: var(--text-2); font-size: 14px; margin-bottom: 32px; }
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 36px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 24px 0 10px;
+    color: var(--text);
+  }
+  p { margin-bottom: 12px; font-size: 15px; }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .tag-pos { background: var(--green-soft); color: var(--green); }
+  .tag-neg { background: var(--red-soft); color: var(--red); }
+  .tag-warn { background: var(--yellow-soft); color: var(--yellow); }
+  .tag-info { background: var(--accent-soft); color: var(--accent); }
+  .insight-box {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .insight-box strong { color: var(--accent); }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+  }
+  @media (max-width: 720px) { .grid-4 { grid-template-columns: 1fr 1fr; } }
+  .stat-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .stat-num { font-size: 32px; font-weight: 800; color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--text-2); margin-top: 4px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  th { background: var(--bg); font-weight: 700; font-size: 13px; color: var(--text-2); }
+  tr:hover { background: var(--bg); }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 6px; font-size: 15px; }
+  .highlight { background: var(--yellow-soft); padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+  blockquote {
+    border-left: 3px solid var(--border);
+    padding-left: 16px;
+    color: var(--text-2);
+    margin: 12px 0;
+    font-size: 14px;
+    font-style: italic;
+  }
+  .quote {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .quote small {
+    display: block;
+    margin-top: 6px;
+    color: var(--text-2);
+    font-size: 12px;
+  }
+  .priority-p0 { color: var(--red); font-weight: 700; }
+  .priority-p1 { color: var(--yellow); font-weight: 700; }
+  .priority-p2 { color: var(--green); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>GrowMe 用户反馈截图分析</h1>
+<p class="subtitle">基于 182 张 Zendesk 工单截图（Store 评论 54 + General 工单 128）的海外广告素材策略报告</p>
+
+<div class="card">
+  <h2>一、核心发现</h2>
+  <div class="insight-box">
+    <strong>Store 口碑高度正面，但 General 工单暴露两个 P0 级广告-产品信任危机：</strong>“双语/双文本阅读”广告卖点在产品中找不到；免费试用/问卷后未经授权直接扣费、退款难。
+  </div>
+  <ul>
+    <li><strong>Store 评价</strong>：54 条中有 50 条（92.6%）为 5 星，好评集中在“motivation / calmness / self-discipline / habit-building / easy to understand / social media replacement / practice English”。</li>
+    <li><strong>General 工单</strong>：128 条以 issue_others（44）和 issue_technical（30）为主，其次为 issue_how_to_use（17）、issue_billing（7）。</li>
+    <li><strong>P0 广告素材红线</strong>：4 条工单明确投诉“广告展示的双语/双语文本阅读功能在产品里找不到”；1 条称“app does not work in a bilingual language”。</li>
+    <li><strong>P0 付费信任危机</strong>：13+ 条涉及 refund / cancel / charged immediately / unauthorized charge / trial payment error；4 条 1 星 Store 评论中 2 条直接写“Scam”。</li>
+    <li><strong>未被满足的内容需求</strong>：3 条工单询问 English level（B1）书籍筛选，说明英语学习人群有明确但未被服务的诉求。</li>
+    <li><strong>可识别市场</strong>：US 占最高（21），其次 TH（3）、IN（3）、NG（3）；大量工单未携带国家信息，说明多渠道来源混杂。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>二、数据概览</h2>
+  <div class="grid-4">
+    <div class="stat-card"><div class="stat-num">182</div><div class="stat-label">总工单/评论数</div></div>
+    <div class="stat-card"><div class="stat-num">92.6%</div><div class="stat-label">Store 5 星占比</div></div>
+    <div class="stat-card"><div class="stat-num">13+</div><div class="stat-label">退款/扣费相关工单</div></div>
+    <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">双语功能投诉</div></div>
+  </div>
+
+  <h3>评分与情感分布</h3>
+  <table>
+    <tr><th>维度</th><th>分布</th><th>说明</th></tr>
+    <tr><td>Store 评分</td><td>5 星 50 / 1 星 4</td><td>样本仅包含两极评价，无 2-4 星记录</td></tr>
+    <tr><td>情感标签</td><td>positive 45 / negative 4 / 未标注 133</td><td>情感标签主要来自 Store 评论；General 工单极少带情感标签</td></tr>
+  </table>
+
+  <h3>可识别国家/地区 Top 10</h3>
+  <table>
+    <tr><th>国家/地区</th><th>数量</th><th>来源</th></tr>
+    <tr><td>US</td><td>21</td><td>App Info 国家码 + Store tag</td></tr>
+    <tr><td>TH</td><td>3</td><td>App Info</td></tr>
+    <tr><td>IN</td><td>3</td><td>Store tag</td></tr>
+    <tr><td>NG</td><td>3</td><td>Store tag</td></tr>
+    <tr><td>TW / TR / DE / CN / VN / AM / ID / MY / GT / ZA</td><td>各 1</td><td>App Info / Store tag</td></tr>
+    <tr><td>Unknown</td><td>142</td><td>未携带国家信息</td></tr>
+  </table>
+
+  <h3>主题标签分布（ Zendesk 原生标签）</h3>
+  <table>
+    <tr><th>标签</th><th>数量</th><th>广告含义</th></tr>
+    <tr><td>issue_others</td><td>44</td><td>大量问题未被归类，需进一步细分</td></tr>
+    <tr><td>issue_technical</td><td>30</td><td>崩溃/黑屏/无法加载等技术稳定性问题</td></tr>
+    <tr><td>topic_satisfiedusers</td><td>29</td><td>高满意度用户，适合作为好评素材来源</td></tr>
+    <tr><td>issue_how_to_use</td><td>17</td><td>用户不会用，说明 onboarding 和广告引导有落差</td></tr>
+    <tr><td>issue_billing</td><td>7</td><td>付费/订阅问题，直接影响转化率与信任</td></tr>
+    <tr><td>topic_pricing</td><td>4</td><td>价格敏感用户，广告需明确价值锚点</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>三、Store 好评深度分析：用户真正在为什么买单</h2>
+  <p>Store 评论语言多元（英/法/西/德/越），但核心情绪一致：他们把 GrowMe 当作 <span class="highlight">“低门槛的自我提升工具”</span>，而不是单纯的“读书 App”。</p>
+
+  <h3>1. 情绪燃料：Motivation / Daily Inspiration / Uplift</h3>
+  <div class="quote">
+    “A well-designed motivational app that delivers daily inspiration and focus. The content is uplifting, and the reminders help maintain a positive mindset throughout the day. I really love this app! The daily quotes lift my mood and keep me motivated.” <small>— #640142, 5 星</small>
+  </div>
+  <div class="quote">
+    “What a great idea. This is such a great way to read and educate yourself.” <small>— #752135, 5 星</small>
+  </div>
+  <p><span class="tag tag-info">素材启示</span> 广告可继续用“daily dose of motivation / start your day with one powerful idea”作为 hook。</p>
+
+  <h3>2. 习惯替代：从“刷手机”到“读一页”</h3>
+  <div class="quote">
+    “Life Changing. That book showed me that there's much more value for me and more rewarding content in reading than scrolling through a feed on social media. It's genuinely helpful for people who would like to develop a reading habit.” <small>— #983773, 5 星</small>
+  </div>
+  <p><span class="tag tag-info">素材启示</span> 这是目前最强素材角度之一：直接对标社交媒体时间消耗，卖“用阅读替代无意义刷屏”。</p>
+
+  <h3>3. 自律与习惯养成：Atomic Habits / Self-discipline</h3>
+  <div class="quote">
+    “Self discipline. Thanks. It's not just a normal guide, it will change your life zero to top if you make habit on it.” <small>— #783572, 5 星</small>
+  </div>
+  <div class="quote">
+    “Motivative and inspirative. The books in this app spill out the facts of life and guides every reader to the path of eliminating all negations to focus on building a better life. I really love it.” <small>— #802567, 5 星</small>
+  </div>
+  <p><span class="tag tag-info">素材启示</span> 用“Atomic Habits 式微习惯”做 hook：每天 3 分钟，建立阅读自律。</p>
+
+  <h3>4. 平静与减压：Calmness / Anxiety Relief</h3>
+  <div class="quote">
+    “Audio books for Calmness. It such a great book that brought calmness to my heart.” <small>— #661530, 5 星</small>
+  </div>
+  <p><span class="tag tag-info">素材启示</span> 可尝试“read to calm your mind”情绪线，吸引焦虑/压力人群。</p>
+
+  <h3>5. 易读性：非读者也能读懂 / 学英语</h3>
+  <div class="quote">
+    “As a non reader I was able to relate and better understand how to deal with people that challenges me daily.” <small>— #919959, 5 星</small>
+  </div>
+  <div class="quote">
+    “Simply an incredible idea to take a moment to read something interesting. Even when you need to practice your English.” <small>— #970183, 5 星</small>
+  </div>
+  <div class="quote">
+    “Avis favorable. Cette application aide à comprendre les mots et simplifie les études des textes.” <small>— #692291, 5 星</small>
+  </div>
+  <p><span class="tag tag-info">素材启示</span> “Even if you're not a reader”和“practice English while reading”是降低门槛的强钩子。</p>
+
+  <h3>好评主题汇总表</h3>
+  <table>
+    <tr><th>主题</th><th>用户原话关键词</th><th>广告可用 Hook</th></tr>
+    <tr><td>Motivation</td><td>motivational, daily inspiration, uplift, focus</td><td>“Start your day with one idea that moves you”</td></tr>
+    <tr><td>Habit replacement</td><td>better than scrolling, develop reading habit</td><td>“Replace 5 min of scrolling with 5 min of growth”</td></tr>
+    <tr><td>Self-discipline</td><td>self discipline, atomic habits, build habit</td><td>“The 3-minute habit that compounds”</td></tr>
+    <tr><td>Calmness</td><td>calmness, heart calm, anxiety relief</td><td>“Read to calm your mind”</td></tr>
+    <tr><td>Easy to understand</td><td>easy to understand, non-reader friendly</td><td>“Finally, books that don't feel like homework”</td></tr>
+    <tr><td>English practice</td><td>practice your English, understand the words</td><td>“Read in English, level up your English”</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>四、General 工单深度分析：广告不能踩的雷</h2>
+  <p>General 工单是用户主动找客服的真实痛点，最能暴露“广告承诺 vs 产品现实”的落差。</p>
+
+  <h3><span class="priority-p0">P0 风险 1：广告里的“双语/双文本阅读”找不到</span></h3>
+  <p>4 条工单明确指向同一问题：广告展示了阅读界面同时显示两种语言，但用户付费后找不到该功能。</p>
+  <div class="quote">
+    “Hello, I recently purchased your application because I was particularly interested in the feature shown in your advertisement, where two languages are displayed simultaneously in the reading section. However, I am currently unable to see this dual-language display while using the app. This feature was one of the main reasons I chose your application.” <small>— #810337</small>
+  </div>
+  <table>
+    <tr><th>工单</th><th>标题</th><th>核心诉求</th></tr>
+    <tr><td>#809844</td><td>Issue with Dual Language Display in Reading Section</td><td>付费后找不到双语显示</td></tr>
+    <tr><td>#809845</td><td>Issue with Dual Language Display in Reading</td><td>同上</td></tr>
+    <tr><td>#810337</td><td>Issue with Dual Language Display in Reading Section</td><td>因广告中的双语功能购买</td></tr>
+    <tr><td>#938755</td><td>The app does not work in a bilingual language</td><td>双语功能无法使用</td></tr>
+  </table>
+  <div class="insight-box">
+    <strong>广告人动作：</strong>立即停掉所有展示“双语文本 / 双语对照 / side-by-side translation”视觉的素材；如产品无此功能，继续使用会被视为虚假宣传并引发退款潮。
+  </div>
+
+  <h3><span class="priority-p0">P0 风险 2：免费试用与付费流程的信任崩塌</span></h3>
+  <p>用户感知：问卷后强制绑卡、7 天试用立即扣款、订阅失败仍扣款、退款无门。这些工单和 1 星 Store 评论共同构成了“Scam”关键词。</p>
+  <div class="quote">
+    “Scam. I spent 10 minutes going through a questionnaire, only to end up having to link my card without even being able to try the service or read anything. Seriously?” <small>— #984975, Store 1 星</small>
+  </div>
+  <div class="quote">
+    “I attempted to subscribe to a plan today, but the app displayed a message stating that the subscription was 'Unsuccessful.' However, I have already been charged for the transaction via the Apple App Store.” <small>— #858862</small>
+  </div>
+  <div class="quote">
+    “I try to trial 7days with 1 year payment after that. But, you immediately charge me.” <small>— #922910</small>
+  </div>
+  <div class="quote">
+    “Yêu cầu hoàn tiền do không có nhu cầu đăng ký... Đến ngày hôm nay đã gần 1 tháng... Tôi nhắc lại lần cuối, hãy hoàn lại số tiền cho tôi... Nếu không, tôi sẽ xem như là phần mềm app cố tình lừa đảo.” <small>— #985594, Store 1 星（越南语，大意：近一个月未收到退款，视为故意诈骗）</small>
+  </div>
+  <table>
+    <tr><th>工单</th><th>标题/关键词</th><th>问题模式</th></tr>
+    <tr><td>#807152</td><td>I'd like to request a refund. I did not mean to purchase this.</td><td>误购 / 冲动付费后退款</td></tr>
+    <tr><td>#808513</td><td>Urgent: Cancel Free Trial Subscription Before Billing</td><td>试用到期前取消</td></tr>
+    <tr><td>#858862</td><td>Subscription shown as unsuccessful, already charged</td><td>订阅失败但仍扣款</td></tr>
+    <tr><td>#914932</td><td>I was Charged for free trial</td><td>免费试用被扣款</td></tr>
+    <tr><td>#922910</td><td>Trial payment error</td><td>7 天试用立即扣全年费用</td></tr>
+    <tr><td>#939840</td><td>Refund Request for Accidental 3-Month Subscription</td><td>误触订阅</td></tr>
+    <tr><td>#946412</td><td>Urgent: Unauthorized Immediate Charge and Refund Request</td><td>未经授权立即扣款</td></tr>
+    <tr><td>#953460 / #964065</td><td>Is your app a scam?</td><td>用户直接质疑诈骗</td></tr>
+  </table>
+  <div class="insight-box">
+    <strong>广告人动作：</strong>避免在素材中强调“free”而落地页/App 实际扣费；所有含试用/订阅的素材必须附带清晰可执行的“cancel anytime”说明；客服侧需优先处理退款时效。
+  </div>
+
+  <h3><span class="priority-p1">P1 风险：技术稳定性影响广告转化</span></h3>
+  <p>30 条 issue_technical 工单，主要表现：App 黑屏、崩溃、更新后无法使用、已订阅仍提示订阅。</p>
+  <table>
+    <tr><th>工单</th><th>标题</th><th>用户原话</th></tr>
+    <tr><td>#815098</td><td>App is crashed</td><td>—</td></tr>
+    <tr><td>#816599</td><td>App not working</td><td>“No books or anything, just all black. Please fix this.”</td></tr>
+    <tr><td>#817163</td><td>The App is NOT Working</td><td>“I cannot read any book, nor can I access the old books.”</td></tr>
+    <tr><td>#818224</td><td>My apps is not working after the updates</td><td>—</td></tr>
+    <tr><td>#863667</td><td>Unable to read or do anything</td><td>“Already joined the plan, but it shows error.”</td></tr>
+  </table>
+  <p><span class="tag tag-warn">素材启示</span> 在广告 CTA 和落地页需降低“下载后即用”的预期差；如产品稳定性未修复，避免过度承诺即时阅读体验。</p>
+
+  <h3><span class="priority-p1">P1 风险：账号删除 / 取消订阅流程不畅</span></h3>
+  <p>多条工单要求 delete account / cancel subscription，说明用户一旦想离开，找不到出口，进一步加剧“scam”印象。</p>
+  <table>
+    <tr><th>工单</th><th>标题</th></tr>
+    <tr><td>#809212</td><td>Cancelar conta</td></tr>
+    <tr><td>#838002</td><td>Cancellation the app</td></tr>
+    <tr><td>#901093</td><td>Delete account</td></tr>
+  </table>
+
+  <h3><span class="priority-p2">P2 机会：English level 与内容发现</span></h3>
+  <p>3 条工单询问 B1 / English level 书籍筛选，反映英语学习人群有明确需求但产品未提供入口。</p>
+  <div class="quote">
+    “How to Adjust my English Level in the app? I want to find b1 level books to practice my English. I can't find any place to research the book with English Level.” <small>— #785651</small>
+  </div>
+  <p><span class="tag tag-info">素材启示</span> 这是一个差异化卖点：广告可以打“B1-level books to grow your English”，但产品必须先补上 English level 筛选/标签。</p>
+</div>
+
+<div class="card">
+  <h2>五、广告素材策略建议</h2>
+
+  <h3>1. 立即停止的素材类型</h3>
+  <ul>
+    <li><strong>任何展示“双语对照 / 双语文本 / side-by-side translation”的画面、文案或 demo。</strong> 这是当前最直接的虚假宣传风险。</li>
+    <li><strong>过度强调“完全免费 / 7-day free without commitment”的 hook。</strong> 如果产品实际会在试用期内或问卷后扣款，此类素材会激化退款和差评。</li>
+    <li><strong>用“ scammy 问卷”作为前导的落地页。</strong> #984975 的 1 星差评直接点名“10 minutes questionnaire only to link my card”。</li>
+  </ul>
+
+  <h3>2. 可继续放量的高潜素材方向</h3>
+  <table>
+    <tr><th>方向</th><th>Hook 示例</th><th>视觉建议</th></tr>
+    <tr>
+      <td><strong>习惯替代</strong></td>
+      <td>“You’ll never get this time back. Read for 3 min instead.”</td>
+      <td>黑底 + 手机屏对比：左滑 TikTok / 右滑 GrowMe 书摘</td>
+    </tr>
+    <tr>
+      <td><strong>微自律</strong></td>
+      <td>“One idea a day. 30 days later, you’re not the same person.”</td>
+      <td>日历翻动 + 金句轮播</td>
+    </tr>
+    <tr>
+      <td><strong>情绪 calm</strong></td>
+      <td>“Anxious? Read one page.”</td>
+      <td>深色背景 + 舒缓文案 + 耳机/书图标</td>
+    </tr>
+    <tr>
+      <td><strong>非读者友好</strong></td>
+      <td>“Not a reader? This app was made for you.”</td>
+      <td>真实用户头像 + “I never read until…” 证言</td>
+    </tr>
+    <tr>
+      <td><strong>英语提升</strong></td>
+      <td>“Grow your English while reading something that actually matters.”</td>
+      <td>英短句分行，B1 难度标识</td>
+    </tr>
+  </table>
+
+  <h3>3. Hook 结构建议（FB 黑底字幕轮播风）</h3>
+  <ol>
+    <li><strong>0-1.5s 钩子：</strong>用冲突或身份标签抓住注意力。<br><em>“I used to scroll 2 hours a day.” / “I’ve never finished a book.”</em></li>
+    <li><strong>1.5-4s 转折：</strong>介绍 GrowMe 的低门槛解决方案。<br><em>“Then I found 3-minute book summaries.” / “Now I read one key idea every morning.”</em></li>
+    <li><strong>4-7s 证言/价值：</strong>展示真实用户好评关键词。<br><em>“calmness” “self-discipline” “life-changing”</em></li>
+    <li><strong>7-9s CTA：</strong>明确但诚实的行动指令。<br><em>“Try your first summary. Cancel anytime in Settings.”</em></li>
+  </ol>
+
+  <h3>4. 多语言市场的素材本地化注意</h3>
+  <p>Store 评论已出现法、西、德、越等语言。在 EN 主市场之外：</p>
+  <ul>
+    <li><strong>东南亚（TH / VN / ID / MY / PH）：</strong>价格敏感、退款诉求高，素材必须强调 clear pricing 和 easy cancel。</li>
+    <li><strong>欧洲（DE / FR / ES / IT）：</strong>更信任“习惯养成 / 个人成长”概念，适合 micro-habit 素材。</li>
+    <li><strong>美国：</strong>核心市场，可主打 habit replacement + self-improvement。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>六、产品 / 运营优先改进建议（广告人视角）</h2>
+  <p>广告素材的可持续性取决于产品是否能兑现承诺。以下优先级基于工单密度与用户情绪强度。</p>
+  <table>
+    <tr><th>优先级</th><th>问题</th><th>改进动作</th><th>对广告的影响</th></tr>
+    <tr>
+      <td class="priority-p0">P0</td>
+      <td>双语/双文本阅读功能缺失</td>
+      <td>① 立即下架相关广告素材；② 评估是否开发该功能；③ 如不做，必须统一所有市场素材口径</td>
+      <td>避免“scam”标签扩散，降低退款率</td>
+    </tr>
+    <tr>
+      <td class="priority-p0">P0</td>
+      <td>试用/订阅扣费逻辑不透明</td>
+      <td>① 明确展示试用规则与扣费时间；② 提供一键取消入口；③ 建立快速退款 SOP</td>
+      <td>素材可以更安全地提“free trial”</td>
+    </tr>
+    <tr>
+      <td class="priority-p1">P1</td>
+      <td>技术稳定性（崩溃/黑屏/订阅状态不同步）</td>
+      <td>修复崩溃、黑屏、更新后不可用、已订阅仍弹订阅窗的问题</td>
+      <td>降低落地页到留存的流失</td>
+    </tr>
+    <tr>
+      <td class="priority-p1">P1</td>
+      <td>账号删除 / 取消订阅入口难找</td>
+      <td>在 App Settings 增加显眼的 Delete Account / Cancel Subscription</td>
+      <td>减少“scam”感知与客服压力</td>
+    </tr>
+    <tr>
+      <td class="priority-p2">P2</td>
+      <td>缺少 English Level 内容筛选</td>
+      <td>增加 B1/B2/C1 标签与筛选； onboarding 中询问英语水平</td>
+      <td>打开“学英语”素材赛道</td>
+    </tr>
+    <tr>
+      <td class="priority-p2">P2</td>
+      <td>工单分类粗放（issue_others 44）</td>
+      <td>细化标签（ads_misleading / payment / content_request 等），便于广告人 weekly review</td>
+      <td>更快发现素材-产品落差</td>
+    </tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>七、结论：广告素材下一步</h2>
+  <p>这 182 张截图验证了之前 Feishu 文档的核心判断：<strong>GrowMe 的好评来自“低门槛自我提升 / 情绪价值 / 习惯替代”，而最危险的用户流失来自“广告承诺未兑现 + 付费信任崩塌”。</strong></p>
+  <p>作为广告设计师 leader，接下来两周建议：</p>
+  <ol>
+    <li><strong>清素材：</strong>检查所有在跑素材，删除含“双语/双文本/完全免费”的画面与文案。</li>
+    <li><strong>上素材：</strong>基于本报告中的 5 个高潜方向，产出 20-30 条新素材，优先测“习惯替代”和“微自律”。</li>
+    <li><strong>盯数据：</strong>每周跟踪 refund rate、1 星评论关键词、客服工单中“scam / bilingual / charged”提及量，作为素材健康度指标。</li>
+    <li><strong>推产品：</strong>把 P0/P1 问题同步给产品，尤其是付费流程和双语功能，广告才能安全放量。</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h2>附录：分析方法</h2>
+  <ul>
+    <li><strong>数据来源</strong>：~/Downloads/growme_feedback_screenshots_2026-08-12/ 下的 182 张 Zendesk 工单截图（store/ 54 张 + general/ 128 张）。</li>
+    <li><strong>OCR</strong>：使用 macOS Vision 框架（Swift）对全部截图进行文字识别，输出为 .txt 文本。</li>
+    <li><strong>结构化</strong>：Python 脚本解析文本，提取 ticket_id、标签、标题、用户消息、App Info（版本/设备/国家/订阅状态）。</li>
+    <li><strong>分析</strong>：基于关键词聚类与主题标签统计，结合人工抽样复核生成洞察。</li>
+    <li><strong>文件</strong>：
+      <ul>
+        <li><code>growme_feedback_parsed.json</code>：182 条结构化记录</li>
+        <li><code>growme_feedback_summary.md</code>：机器汇总摘要</li>
+        <li><code>growme-screenshot-analysis.html</code>：本报告</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
